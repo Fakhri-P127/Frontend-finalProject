@@ -1,0 +1,80 @@
+@mixin flex($align: null, $justify: null, $direction: null, $wrap: null) {
+  display: flex;
+
+  @if ($direction) {
+    flex-direction: $direction;
+  }
+
+  @if ($align) {
+    align-items: $align;
+  }
+
+  @if ($justify) {
+    justify-content: $justify;
+  }
+
+  @if ($wrap) {
+    flex-wrap: $wrap;
+  }
+}
+
+$breakpoints-up: (
+  "medium": 768px,
+  "large": 992px,
+);
+
+$breakpoints-down: (
+  "small": 767px,
+  "medium": 991px,
+  "large": 1199px,
+);
+
+@mixin breakpoint-up($size) {
+  @if map-has-key($breakpoints-up, $size) {
+    @media (min-width: map-get($breakpoints-up, $size)) {
+      @content;
+    }
+  }
+}
+
+@mixin breakpoint-down($size) {
+  @if map-has-key($breakpoints-down, $size) {
+    @media (max-width: map-get($breakpoints-down, $size)) {
+      @content;
+    }
+  }
+}
+
+@mixin moveToLeft() {
+  animation: moveToLeft 800ms forwards;
+  @keyframes moveToLeft {
+    // animation: mover 400ms;
+    0% {
+      opacity: 0;
+      transform: translate(30%, 20%);
+    }
+    70% {
+      opacity: 1;
+      transform: translate(8%, 20%);
+    }
+    100% {
+      transform: translate(10%, 20%);
+    }
+  }
+}
+@mixin moveToRight {
+  animation: moveToRight 800ms forwards;
+  @keyframes moveToRight {
+    0% {
+      opacity: 0;
+      transform: translate(0, 50%);
+    }
+    70% {
+      opacity: 1;
+      transform: translate(12%, 50%);
+    }
+    100% {
+      transform: translate(10%, 50%);
+    }
+  }
+}

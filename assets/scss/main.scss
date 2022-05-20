@@ -1,0 +1,482 @@
+//font-family
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@import "assets/mixins", "assets/colors";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  font-size: 1.6rem;
+  font-family: "Montserrat", sans-serif;
+}
+// Globals start
+.btn {
+  width: 4.6rem;
+  height: 4.6rem;
+  background-color: $grey;
+  color: $darker;
+  border: none;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+// Globals end
+
+.header {
+  &__top {
+    background-color: $mainColor;
+    height: 50px;
+    // padding: 1.3rem;
+    line-height: 2.72rem;
+    font-size: 1.4rem;
+    color: $white;
+    @include flex(center, flex-start);
+    &__left {
+      @include flex(center);
+      p {
+        margin: 0;
+      }
+    }
+    &__right {
+      @include flex(center, flex-end);
+      //   color: $white;
+      > ul {
+        @include flex();
+        column-gap: 2rem;
+
+        .custom-dropdown {
+          position: relative;
+
+          i {
+            cursor: pointer;
+            margin-left: 0.2rem;
+            font-size: 1rem;
+          }
+          &:first-child::after {
+            content: "";
+            padding-right: 1.6rem;
+            border-right: 0.1rem solid $white;
+          }
+          &:hover .custom-dropdown__menu {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transform: translateY(0px);
+          }
+        }
+
+        .custom-dropdown__menu {
+          opacity: 0;
+          //   flex-direction: column;
+          background-color: $white;
+          color: $dark;
+          position: absolute;
+          left: -45%;
+          top: 100%;
+          width: 15rem;
+          border: 1px solid $grey;
+          pointer-events: none;
+          font-size: 1.4rem;
+          line-height: 2.4rem;
+          padding: 1.5rem 1.5rem 2rem;
+          opacity: 0;
+          transform: translateY(20px);
+          transition: 400ms opacity, 400ms transform;
+          li {
+            &:hover {
+              color: $mainColor;
+            }
+          }
+        }
+      }
+    }
+  }
+  &__bottom {
+    height: 12rem;
+    @include flex(center);
+    &__logo {
+      @include flex(center);
+    }
+    &__nav-links {
+      line-height: 27.2px;
+      > ul {
+        @include flex(null, center);
+        font-size: 1.6rem;
+        li:first-child {
+          color: $mainColor;
+          font-family: Montserrat;
+          font-weight: 500;
+          line-height: 16px;
+          padding: 52px 15px 52px 0px;
+          //   text-align: left;
+          text-transform: uppercase;
+        }
+        li {
+          @include flex(center);
+
+          color: $dark;
+          font-family: Montserrat;
+          font-weight: 500;
+          line-height: 16px;
+          padding: 52px 15px;
+          text-transform: uppercase;
+          i {
+            font-size: 1rem;
+            padding: 0 4px;
+          }
+          &:hover {
+            color: $mainColor;
+          }
+        }
+      }
+    }
+    &__config {
+      @include flex(center);
+      > ul {
+        // font-size: 1.6rem;
+        @include flex();
+        gap: 2rem;
+
+        > li {
+          > button {
+            border: none;
+            background-color: transparent;
+            > i {
+              font-size: 2.5rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.custom-container {
+  margin: 0 auto;
+  width: 500px;
+  @include breakpoint-up("large") {
+    width: 1170px;
+  }
+}
+
+.hero__slider {
+  height: 47rem;
+  overflow: hidden;
+  .sliders {
+    position: relative;
+
+    .slide {
+      display: none;
+    }
+    .slider--active {
+      display: block;
+    }
+    .btn__slider {
+      position: absolute;
+      top: 40%;
+      left: 0%;
+      transform: translateX(20%);
+      &:last-child {
+        left: 100%;
+        transform: translateX(-120%);
+      }
+    }
+  }
+}
+.hero__slider {
+  .slide {
+    img {
+      width: 100%;
+    }
+  }
+}
+
+.service-policy-area {
+  &__box {
+    width: 37rem;
+    height: 11.1rem;
+    @include flex();
+    width: 100%;
+    color: $dark;
+    line-height: 2.72rem;
+    margin-top: 3rem;
+    padding: 3rem;
+    &__info {
+      margin-left: 1rem;
+      h5 {
+        font-size: 1.8rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        padding-bottom: 0.5rem;
+      }
+      p {
+        font-size: 1.6rem;
+        font-weight: 400;
+      }
+    }
+  }
+  .bg-antique {
+    background-color: #fcedda;
+  }
+  .bg-lightgreen {
+    background-color: #f2fbcb;
+  }
+  .bg-lightpurple {
+    background-color: #f7d8f9;
+  }
+}
+
+.products {
+  margin-top: 7rem;
+
+  &__title {
+    text-align: center;
+    padding: 0px 0px 42px;
+    h2 {
+      font-size: 3rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+    }
+    p {
+      font-size: 1.7rem;
+    }
+  }
+  &__cards {
+    // text-align: center;
+    &__card {
+      width: 27rem;
+      border: 1px solid $grey;
+      border-radius: 0.4rem;
+      transition: 400ms border;
+      &:hover {
+        border: 1px solid $mainColor;
+
+        .btn__product--hidden:first-child {
+          opacity: 1;
+          visibility: visible;
+          transform: translateX(0);
+        }
+        .btn__product--hidden:last-child {
+          opacity: 1;
+          visibility: visible;
+          transform: translateX(0);
+        }
+        img {
+          transform: scale(1.3);
+        }
+      }
+      &__top {
+        overflow: hidden;
+
+        &__img {
+          cursor: pointer;
+          img {
+            width: 100%;
+            transition: 400ms transform;
+          }
+        }
+      }
+      &__bottom {
+        text-align: center;
+        &__info {
+          h5 {
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            // line-height: 21.6px;
+          }
+          span {
+            font-size: 1.8rem;
+            margin-right: 0.4rem;
+          }
+          del {
+            font-size: 1.6rem;
+          }
+        }
+        &__buttons {
+          transform: translateY(50%);
+          @include flex(null, center);
+          gap: 2rem;
+
+          .btn__product {
+            border-radius: 50%;
+            border: 1px solid $mainColor;
+            background-color: $white;
+            color: $mainColor;
+            cursor: pointer;
+            transition: 600ms all;
+            font-size: 1.6rem;
+            &:hover {
+              background-color: $mainColor;
+              color: $white;
+            }
+            &--hidden:first-child {
+              opacity: 0;
+              visibility: hidden;
+              transform: translateX(150%);
+            }
+            &--hidden:last-child {
+              opacity: 0;
+              visibility: hidden;
+              transform: translateX(-150%);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.banner-sale {
+  margin-top: 10.4rem;
+
+  .col-lg-6 {
+    padding: 0;
+    overflow: hidden;
+  }
+
+  &__left-side {
+    // background: url(../images/banner-1.jpg) center/cover;
+    position: relative;
+    overflow: hidden;
+    height: 25rem;
+
+    cursor: pointer;
+    transition: 400ms transform;
+    .background {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      transition: all 300ms ease-in-out;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    &__text {
+      color: $white;
+      position: relative;
+      top: 19%;
+      z-index: 1;
+      cursor: default;
+
+      h5 {
+        font-size: 1.8rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        padding-bottom: 1.4rem;
+        @include moveToRight();
+      }
+      h3 {
+        font-size: 3rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        @include moveToLeft();
+      }
+    }
+    &:hover::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 1;
+    }
+    &:hover {
+      .background {
+        transform: scale(1.1);
+      }
+    }
+  }
+  &__right-side {
+    // background: url(../images/banner-2.jpg) center/cover;
+    // width: 48.5rem;
+    height: 25rem;
+    position: relative;
+    cursor: pointer;
+    transition: 400ms transform;
+    &:hover {
+      .background {
+        transform: scale(1.1);
+      }
+    }
+    .background {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      transition: all 300ms ease-in-out;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &:hover::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 1;
+    }
+
+    &__text {
+      position: relative;
+      z-index: 1;
+      cursor: default;
+      color: $white;
+      top: 19%;
+      h5 {
+        font-size: 1.8rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        padding-bottom: 1.4rem;
+        @include moveToRight();
+      }
+      h3 {
+        font-size: 3rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        @include moveToLeft();
+      }
+    }
+  }
+}
+
+.top-seller {
+  margin-top: 7.2rem;
+  &__title {
+    text-align: center;
+    padding: 0px 0px 42px;
+    h2 {
+      font-size: 3rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+    }
+    p {
+      font-size: 1.7rem;
+    }
+  }
+}
