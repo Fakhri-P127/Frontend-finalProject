@@ -14,9 +14,14 @@ body {
 .btn {
   width: 4.6rem;
   height: 4.6rem;
-  background-color: #e5e5e5;
+  background-color: #f4f4f4;
   color: #333;
-  border: none; }
+  border: none;
+  cursor: pointer;
+  transition: 400ms all; }
+  .btn:hover {
+    color: #fff;
+    background-color: #e3a51e; }
 
 ul {
   list-style-type: none;
@@ -25,6 +30,9 @@ ul {
 
 a {
   text-decoration: none; }
+
+.col-lg-6 {
+  padding: 0; }
 
 .header__top {
   background-color: #e3a51e;
@@ -158,12 +166,12 @@ a {
 .service-policy-area__box {
   width: 37rem;
   height: 11.1rem;
-  display: flex;
   width: 100%;
   color: #555;
   line-height: 2.72rem;
   margin-top: 3rem;
-  padding: 3rem; }
+  padding: 3rem;
+  display: flex; }
   .service-policy-area__box__info {
     margin-left: 1rem; }
     .service-policy-area__box__info h5 {
@@ -258,7 +266,6 @@ a {
 .banner-sale {
   margin-top: 10.4rem; }
   .banner-sale .col-lg-6 {
-    padding: 0;
     overflow: hidden; }
   .banner-sale__left-side {
     position: relative;
@@ -399,3 +406,38 @@ a {
       margin-bottom: 2rem; }
     .top-seller__title p {
       font-size: 1.7rem; }
+  .top-seller__products__img-container {
+    width: 37rem; }
+    .top-seller__products__img-container img {
+      cursor: pointer;
+      width: 100%; }
+  .top-seller__products__sliders {
+    height: 100%;
+    padding-left: 1.2rem; }
+    .top-seller__products__sliders .row {
+      row-gap: 2rem; }
+    .top-seller__products__sliders__slider {
+      display: flex;
+      height: 100%; }
+      .top-seller__products__sliders__slider__left-side img {
+        height: 100%;
+        cursor: pointer; }
+      .top-seller__products__sliders__slider__right-side {
+        padding-left: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; }
+        .top-seller__products__sliders__slider__right-side__title h6 {
+          font-weight: 500;
+          line-height: 19.2px;
+          font-size: 1.6rem;
+          color: #333;
+          margin-bottom: 1rem; }
+          .top-seller__products__sliders__slider__right-side__title h6 span,
+          .top-seller__products__sliders__slider__right-side__title h6 del {
+            color: #555; }
+        .top-seller__products__sliders__slider__right-side__reviews i {
+          font-size: 1.2rem;
+          color: #e3a51e; }
+        .top-seller__products__sliders__slider__right-side__buttons i {
+          font-size: 2rem; }

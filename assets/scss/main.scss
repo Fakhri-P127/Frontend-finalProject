@@ -19,9 +19,15 @@ body {
 .btn {
   width: 4.6rem;
   height: 4.6rem;
-  background-color: $grey;
+  background-color: $lightWhite;
   color: $darker;
   border: none;
+  cursor: pointer;
+  transition: 400ms all;
+  &:hover {
+    color: $white;
+    background-color: $mainColor;
+  }
 }
 
 ul {
@@ -34,6 +40,9 @@ a {
   text-decoration: none;
 }
 
+.col-lg-6 {
+  padding: 0;
+}
 // Globals end
 
 .header {
@@ -209,12 +218,13 @@ a {
   &__box {
     width: 37rem;
     height: 11.1rem;
-    @include flex();
     width: 100%;
     color: $dark;
     line-height: 2.72rem;
     margin-top: 3rem;
     padding: 3rem;
+    @include flex();
+
     &__info {
       margin-left: 1rem;
       h5 {
@@ -345,7 +355,6 @@ a {
   margin-top: 10.4rem;
 
   .col-lg-6 {
-    padding: 0;
     overflow: hidden;
   }
 
@@ -477,6 +486,60 @@ a {
     }
     p {
       font-size: 1.7rem;
+    }
+  }
+  &__products {
+    &__img-container {
+      width: 37rem;
+      img {
+        cursor: pointer;
+        width: 100%;
+      }
+    }
+    &__sliders {
+      height: 100%;
+      padding-left: 1.2rem;
+      .row {
+        row-gap: 2rem;
+      }
+      &__slider {
+        @include flex();
+        height: 100%;
+        &__left-side {
+          img {
+            height: 100%;
+            cursor: pointer;
+          }
+        }
+        &__right-side {
+          padding-left: 2rem;
+          @include flex(null, space-between, column);
+          &__title {
+            h6 {
+              font-weight: 500;
+              line-height: 19.2px;
+              font-size: 1.6rem;
+              color: $darker;
+              margin-bottom: 1rem;
+              span,
+              del {
+                color: $dark;
+              }
+            }
+          }
+          &__reviews {
+            i {
+              font-size: 1.2rem;
+              color: $mainColor;
+            }
+          }
+          &__buttons {
+            i {
+              font-size: 2rem;
+            }
+          }
+        }
+      }
     }
   }
 }
