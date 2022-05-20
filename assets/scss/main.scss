@@ -16,6 +16,7 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 // Globals start
+
 .btn {
   width: 4.6rem;
   height: 4.6rem;
@@ -23,7 +24,7 @@ body {
   color: $darker;
   border: none;
   cursor: pointer;
-  transition: 400ms all;
+  transition: 300ms all;
   &:hover {
     color: $white;
     background-color: $mainColor;
@@ -35,21 +36,36 @@ ul {
   margin: 0;
   padding: 0;
 }
-
 a {
   text-decoration: none;
 }
-
+.custom-container {
+  width: 100%;
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+  margin-right: auto;
+  margin-left: auto;
+}
 .col-lg-6 {
   padding: 0;
 }
+// .custom-container {
+//   margin: 0 auto;
+//   // width: 500px;
+//   @include breakpoint-up("large") {
+//     width: 1170px;
+//   }
+//   @include breakpoint-up("medium") {
+//     width: 1170px;
+//   }
+// }
+
 // Globals end
 
 .header {
   &__top {
     background-color: $mainColor;
-    height: 50px;
-    // padding: 1.3rem;
+    height: 5rem;
     line-height: 2.72rem;
     font-size: 1.4rem;
     color: $white;
@@ -62,7 +78,6 @@ a {
     }
     &__right {
       @include flex(center, flex-end);
-      //   color: $white;
       > ul {
         @include flex();
         column-gap: 2rem;
@@ -82,7 +97,6 @@ a {
           }
           &:hover .custom-dropdown__menu {
             opacity: 1;
-            visibility: visible;
             pointer-events: auto;
             transform: translateY(0px);
           }
@@ -90,7 +104,6 @@ a {
 
         .custom-dropdown__menu {
           opacity: 0;
-          //   flex-direction: column;
           background-color: $white;
           color: $dark;
           position: absolute;
@@ -103,9 +116,11 @@ a {
           line-height: 2.4rem;
           padding: 1.5rem 1.5rem 2rem;
           opacity: 0;
+          z-index: 1;
           transform: translateY(20px);
           transition: 400ms opacity, 400ms transform;
           li {
+            transition: 400ms color;
             &:hover {
               color: $mainColor;
             }
@@ -117,68 +132,155 @@ a {
   &__bottom {
     height: 12rem;
     @include flex(center);
+    nav {
+      position: relative;
+    }
     &__logo {
       @include flex(center);
     }
     &__nav-links {
-      line-height: 27.2px;
       > ul {
         @include flex(null, center);
         font-size: 1.6rem;
-        li:first-child {
-          color: $mainColor;
-          font-family: Montserrat;
-          font-weight: 500;
-          line-height: 16px;
-          padding: 52px 15px 52px 0px;
-          //   text-align: left;
-          text-transform: uppercase;
-        }
-        li {
-          @include flex(center);
 
-          color: $dark;
+        > li {
+          @include flex(center);
+          color: $darker;
           font-family: Montserrat;
           font-weight: 500;
           line-height: 16px;
           padding: 52px 15px;
+          cursor: pointer;
           text-transform: uppercase;
+          transition: 400ms color;
+
+          > .home__dropdown {
+            @include nav-dropdown();
+            width: 22rem;
+            > li {
+              @include main-style-a();
+            }
+          }
+          .pages__dropdown {
+            @include flex();
+            @include nav-dropdown();
+            left: 0;
+            width: 100%;
+
+            > li {
+              flex-basis: 25%;
+              line-height: 1.6rem;
+              padding: 1rem 1.5rem;
+              @include main-style-a();
+
+              a {
+                font-size: 1.6rem;
+                font-weight: 500;
+                color: $darker;
+                padding: 0;
+              }
+              ul {
+                cursor: default;
+                margin-top: 1rem;
+                li {
+                  padding: 1rem 0;
+                  @include main-style-a();
+                  a {
+                    padding: 0;
+                  }
+                }
+              }
+            }
+          }
+          .shop__dropdown {
+            @include nav-dropdown();
+            width: 22rem;
+            li {
+              position: relative;
+              @include main-style-a();
+              ul {
+                @include nav-dropdown();
+                top: 0%;
+                left: 100%;
+                width: 25rem;
+              }
+            }
+          }
+          .blog__dropdown {
+            @include nav-dropdown();
+            li {
+              @include main-style-a();
+            }
+          }
           i {
             font-size: 1rem;
-            padding: 0 4px;
+            padding: 0 0.8rem;
           }
           &:hover {
             color: $mainColor;
+          }
+
+          &:hover ul,
+          &:hover ul li:hover ul {
+            opacity: 1;
+            transform: translateY(0%);
+            pointer-events: auto;
           }
         }
       }
     }
     &__config {
-      @include flex(center);
+      @include flex(center, flex-end);
       > ul {
-        // font-size: 1.6rem;
         @include flex();
-        gap: 2rem;
+        gap: 2.6rem;
 
         > li {
           > button {
+            cursor: pointer;
+            position: relative;
             border: none;
             background-color: transparent;
-            > i {
-              font-size: 2.5rem;
+            > img {
+              width: 2.2rem;
             }
+            span {
+              position: absolute;
+              top: -40%;
+              left: 50%;
+              background-color: $mainColor;
+              color: $white;
+              border-radius: 50%;
+              width: 1.8rem;
+              height: 1.8rem;
+              line-height: 1.8rem;
+              font-size: 1rem;
+            }
+            ul {
+              @include nav-dropdown();
+              width: 15.9rem;
+              left: -630%;
+              text-align: start;
+              li {
+                font-size: 1.3rem;
+                font-weight: 400;
+                padding: 0.5rem 1.5rem;
+                @include main-style-a();
+                a {
+                  padding: 0;
+                  font-size: 1.3rem;
+                }
+              }
+            }
+          }
+          &:hover ul {
+            pointer-events: auto;
+            opacity: 1;
+            transform: translateY(0%);
           }
         }
       }
     }
-  }
-}
-
-.custom-container {
-  margin: 0 auto;
-  width: 500px;
-  @include breakpoint-up("large") {
-    width: 1170px;
   }
 }
 
@@ -187,7 +289,6 @@ a {
   overflow: hidden;
   .sliders {
     position: relative;
-
     .slide {
       display: none;
     }
@@ -217,7 +318,7 @@ a {
 .service-policy-area {
   &__box {
     width: 37rem;
-    height: 11.1rem;
+    min-height: 11.1rem;
     width: 100%;
     color: $dark;
     line-height: 2.72rem;
@@ -499,16 +600,28 @@ a {
     &__sliders {
       height: 100%;
       padding-left: 1.2rem;
+
       .row {
         row-gap: 2rem;
       }
       &__slider {
         @include flex();
         height: 100%;
+        &:hover {
+          .top-seller__products__sliders__slider__left-side {
+            img {
+              transform: scale(1.2);
+            }
+          }
+        }
+
         &__left-side {
+          overflow: hidden;
+
           img {
             height: 100%;
             cursor: pointer;
+            transition: 400ms transform;
           }
         }
         &__right-side {
@@ -543,3 +656,28 @@ a {
     }
   }
 }
+
+// Medias start
+
+@media (min-width: 576px) {
+  .custom-container {
+    max-width: 540px;
+  }
+}
+@media (min-width: 768px) {
+  .custom-container {
+    max-width: 720px;
+  }
+}
+@media (min-width: 992px) {
+  .custom-container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .custom-container {
+    max-width: 1200px;
+  }
+}
+// Medias end
