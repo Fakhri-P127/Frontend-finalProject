@@ -29,7 +29,7 @@ window.addEventListener("scroll", function () {
   } else {
     headerBottom.classList.remove("sticky");
   }
-  if (this.window.scrollY == 0) {
+  if (this.window.scrollY < 100) {
     headerBottom.style.height = "12rem";
   }
 });

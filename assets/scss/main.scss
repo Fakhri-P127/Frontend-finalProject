@@ -18,8 +18,8 @@ body {
 .btn {
   width: 4.6rem;
   height: 4.6rem;
-  background-color: $lightWhite;
-  color: $darker;
+  background-color: $white-200;
+  color: $dark;
   border: none;
   cursor: pointer;
   transition: 300ms all;
@@ -27,6 +27,10 @@ body {
     color: $white;
     background-color: $mainColor;
   }
+}
+
+.active {
+  color: $mainColor;
 }
 ul {
   list-style-type: none;
@@ -129,14 +133,20 @@ a {
         font-size: 1.6rem;
         > li {
           @include flex(center);
-          color: $darker;
-          font-family: Montserrat;
-          font-weight: 500;
+
+          // font-family: Montserrat;
           line-height: 16px;
-          padding: 52px 15px;
+
           cursor: pointer;
           text-transform: uppercase;
-          transition: 400ms color;
+
+          a {
+            @include flex(center);
+            color: $dark;
+            transition: 400ms color;
+            font-weight: 500;
+            padding: 52px 15px;
+          }
           > .home__dropdown {
             @include nav-dropdown();
             width: 22rem;
@@ -158,9 +168,10 @@ a {
               a {
                 font-size: 1.6rem;
                 font-weight: 500;
-                color: $darker;
+                color: $dark;
                 padding: 0;
               }
+
               ul {
                 cursor: default;
                 margin-top: 1rem;
@@ -199,7 +210,10 @@ a {
             padding: 0 0.8rem;
           }
           &:hover {
-            color: $mainColor;
+            a {
+              color: $mainColor;
+            }
+
             ul {
               opacity: 1;
               transform: translateY(0%);
@@ -310,7 +324,7 @@ a {
     width: 37rem;
     min-height: 11.1rem;
     width: 100%;
-    color: $dark;
+    color: $dark-100;
     line-height: 2.72rem;
     margin-top: 3rem;
     padding: 3rem;
@@ -595,13 +609,13 @@ a {
               font-weight: 500;
               line-height: 19.2px;
               font-size: 1.6rem;
-              color: $darker;
+              color: $dark;
               margin-bottom: 1rem;
               span {
-                color: $dark;
+                color: $dark-100;
               }
               del {
-                color: $dark;
+                color: $dark-100;
               }
             }
           }
@@ -643,7 +657,7 @@ a {
           font-size: 1.8rem;
           font-weight: 600;
           a {
-            color: $darker;
+            color: $dark;
             transition: 300ms color;
             &:hover {
               color: $mainColor;
@@ -663,7 +677,7 @@ a {
       }
       &__link {
         font-size: 1.5rem;
-        color: $darker;
+        color: $dark;
         font-weight: 500;
         transition: 300ms color;
         &:hover {
@@ -693,7 +707,7 @@ a {
 
 .footer {
   &__top {
-    background: $bg-footer;
+    background: $white-300;
     padding: 8rem 0;
 
     &__left-side {
@@ -701,7 +715,7 @@ a {
         padding-bottom: 2.8rem;
         font-size: 1.8rem;
         font-weight: 600;
-        color: $darker;
+        color: $dark;
       }
       &__list {
         li {
@@ -731,7 +745,7 @@ a {
       padding-bottom: 2.5rem;
       font-size: 1.8rem;
       font-weight: 600;
-      color: $darker;
+      color: $dark;
     }
     &__list {
       line-height: 1.7;
@@ -741,7 +755,7 @@ a {
         font-weight: 400;
         margin-bottom: 1.5rem;
         cursor: pointer;
-        color: $darker;
+        color: $dark;
         transition: 400ms transform, 400ms color;
         &:hover {
           color: $mainColor;
@@ -774,7 +788,7 @@ a {
       gap: 2.4rem;
       li {
         a {
-          color: $dark;
+          color: $dark-100;
           transition: 300ms color;
           i {
             font-size: 1.5rem;
