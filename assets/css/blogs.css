@@ -18,7 +18,7 @@
       font-size: 1.5rem; }
       .breadcrumb__list__item a {
         color: #333; }
-      .breadcrumb__list__item:first-child::after {
+      .breadcrumb__list__item:not(:last-child)::after {
         content: "/";
         margin-left: 0.4rem; }
 

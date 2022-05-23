@@ -21,7 +21,7 @@
       a {
         color: $dark;
       }
-      &:first-child::after {
+      &:not(:last-child)::after {
         content: "/";
         margin-left: 0.4rem;
       }
