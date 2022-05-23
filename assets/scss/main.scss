@@ -5,6 +5,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 html {
   font-size: 62.5%;
@@ -47,9 +48,9 @@ a {
   margin-right: auto;
   margin-left: auto;
 }
-.col-lg-6 {
-  padding: 0;
-}
+// .col-lg-6 {
+//   padding: 0;
+// }
 
 // Globals end
 
@@ -359,7 +360,8 @@ a {
   }
   &__cards {
     &__card {
-      width: 27rem;
+      width: 100%;
+
       border: 1px solid #e5e5e5;
       border-radius: 0.4rem;
       transition: 400ms border;
@@ -370,6 +372,13 @@ a {
           img {
             width: 100%;
             transition: 400ms transform;
+          }
+          @include breakpoint-down("medium") {
+            img {
+              width: 20rem;
+            }
+
+            @include flex(null, center);
           }
         }
       }
@@ -437,7 +446,7 @@ a {
           }
         }
         img {
-          transform: scale(1.3);
+          transform: scale(1.2);
         }
       }
     }
@@ -446,10 +455,10 @@ a {
 
 .banner-sale {
   margin-top: 10.4rem;
-  .col-lg-6 {
-    overflow: hidden;
-  }
 
+  .col-lg-6 {
+    padding: 0;
+  }
   &__left-side {
     position: relative;
     overflow: hidden;
@@ -507,6 +516,7 @@ a {
     }
   }
   &__right-side {
+    overflow: hidden;
     height: 25rem;
     position: relative;
     cursor: pointer;
@@ -803,4 +813,27 @@ a {
       @include flex(center, space-between);
     }
   }
+}
+
+.btn-fixed {
+  position: fixed;
+  bottom: 8%;
+  right: 1.5%;
+  border-radius: 4px;
+  padding: 0.3rem;
+  width: 4rem;
+  height: 4rem;
+  background-color: $mainColor;
+  color: $white;
+  &:hover {
+    border: 1px solid $mainColor;
+    background: $white-100;
+    color: $dark;
+  }
+  i {
+    font-size: 1.8rem;
+  }
+}
+
+.hidden {
 }
