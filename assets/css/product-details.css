@@ -14,9 +14,11 @@
       .product__left-side .zoom img:hover {
         opacity: 0; }
   .product__left-side .thumbs-container {
-    margin: 20px 0; }
+    margin: 20px 0;
+    width: 100%; }
     .product__left-side .thumbs-container img {
-      height: 80px; }
+      max-width: 11rem;
+      border: 1px solid #e5e5e5; }
 
 .product__right-side__text {
   gap: 1rem; }
@@ -50,6 +52,10 @@
     gap: 1.3rem;
     padding: 0 1.5rem;
     border: 1px solid #e5e5e5; }
+    .product__right-side__buy--count .count-minus {
+      cursor: pointer; }
+    .product__right-side__buy--count .count-plus {
+      cursor: pointer; }
   .product__right-side__buy--add button {
     border-radius: 0;
     font-size: 16px;
@@ -97,5 +103,131 @@
         .product__right-side__extra div ul li button:hover i {
           color: #fff; }
 
+.tabs {
+  padding-top: 8rem; }
+  .tabs ul {
+    display: flex;
+    gap: 0.05rem; }
+    .tabs ul li button {
+      background-color: #979898;
+      color: #fff;
+      display: block;
+      font-size: 1.5rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      padding: 0.8rem 1rem;
+      border: 1px solid #f0f0f0;
+      cursor: pointer;
+      transition: 300ms color, 300ms background-color; }
+      .tabs ul li button:hover {
+        background-color: #fff;
+        color: #666; }
+    .tabs ul li .active--tab-link {
+      background-color: #fff;
+      color: #666; }
+  .tabs .tab {
+    border: 1px solid #f0f0f0;
+    color: #666;
+    line-height: 2.72rem;
+    padding: 1.5rem 2rem 2rem; }
+  .tabs__desc__product {
+    padding: 2.5rem 0;
+    display: flex; }
+    .tabs__desc__product__img-container {
+      flex-basis: 300px; }
+      .tabs__desc__product__img-container img {
+        max-width: 30rem; }
+    .tabs__desc__product__info {
+      margin-left: 4rem; }
+      .tabs__desc__product__info h3 {
+        font-size: 2rem;
+        text-transform: capitalize;
+        font-weight: 500;
+        color: #e3a51e;
+        padding-bottom: 1rem; }
+      .tabs__desc__product__info ul {
+        display: flex;
+        flex-direction: column;
+        list-style-type: disc; }
+        .tabs__desc__product__info ul li {
+          padding: 3px 0; }
+  .tabs__desc p {
+    font-size: 1.5rem; }
+  .tabs__information table {
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid #e5e5e5;
+    border-collapse: collapse; }
+    .tabs__information table tr {
+      text-transform: capitalize; }
+      .tabs__information table tr td {
+        padding: 1.2rem;
+        border: 1px solid #e5e5e5; }
+  .tabs__reviews h5 {
+    font-size: 1.8rem;
+    font-weight: 500;
+    padding-bottom: 2rem;
+    text-transform: capitalize; }
+    .tabs__reviews h5 span {
+      color: #e3a51e; }
+  .tabs__reviews__all-reviews {
+    display: flex;
+    color: #666; }
+    .tabs__reviews__all-reviews__box {
+      border: 1px solid #f0f0f0;
+      margin-left: 10px;
+      border: 1px solid #e5e5e5;
+      padding: 10px; }
+      .tabs__reviews__all-reviews__box__ratings i {
+        font-size: 1.4rem;
+        color: #e3a51e; }
+      .tabs__reviews__all-reviews__box__date {
+        font-size: 1.2rem;
+        padding-bottom: 1rem; }
+        .tabs__reviews__all-reviews__box__date p span {
+          font-size: 1.3rem; }
+      .tabs__reviews__all-reviews__box p {
+        font-style: italic;
+        font-size: 1.3rem;
+        line-height: 1.7; }
+  .tabs__reviews__submit {
+    padding-top: 4rem; }
+    .tabs__reviews__submit form div {
+      width: 100%; }
+    .tabs__reviews__submit form label span {
+      color: crimson; }
+    .tabs__reviews__submit form input:not([type="radio"]) {
+      width: 100%;
+      padding: 1rem;
+      padding: 0.8rem 0.8rem;
+      margin-bottom: 1rem;
+      line-height: 1.5;
+      color: #666;
+      border: 1px solid #ced4da;
+      border-radius: 0.25rem; }
+    .tabs__reviews__submit form textarea {
+      width: 100%;
+      padding: 1.5rem; }
+    .tabs__reviews__submit form p {
+      margin-bottom: 2rem; }
+      .tabs__reviews__submit form p span {
+        color: crimson; }
+    .tabs__reviews__submit form button {
+      margin-top: 2rem;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: #333; }
+    .tabs__reviews__submit form .radio-box {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem; }
+  .tabs .tab-hidden {
+    display: none; }
+  .tabs .tab-show {
+    display: block; }
+
 .related {
-  padding: 8rem 0; }
+  padding: 4rem 0 8rem; }

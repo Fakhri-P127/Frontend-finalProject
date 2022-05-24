@@ -82,6 +82,7 @@
           margin-right: 2rem;
           @include flex();
           p {
+            width: 9rem;
             @include flex(center);
             margin-right: 1rem;
           }
@@ -95,8 +96,8 @@
             padding: 10px 10px;
           }
         }
-        &__right-side {
-        }
+        // &__right-side {
+        // }
       }
     }
     &__cards {
@@ -108,35 +109,40 @@
   }
 }
 
+// input range css start
 .price-input {
+  @include flex();
   width: 100%;
-  display: flex;
-  margin: 2rem 0 1.5rem;
+  margin: 1.5rem 0;
 }
 .price-input .field {
-  display: flex;
-  width: 100%;
+  @include flex();
+  flex: 1;
   height: 4.5rem;
   align-items: center;
-}
-.field input {
-  padding: 1rem;
-  width: 50%;
-  height: 70%;
-  outline: none;
-  font-size: 19px;
-  margin-left: 12px;
-  border-radius: 5px;
-  text-align: center;
-  border: 1px solid #999;
+  & span {
+    font-size: 1.4rem;
+  }
+  & input {
+    width: 25%;
+    height: 70%;
+    outline: none;
+    text-align: center;
+    border: none;
+  }
+
+  div {
+    text-align: end;
+  }
+  #price {
+    font-weight: 500;
+    font-size: 1.6rem;
+  }
 }
 
 .price-input .separator {
-  padding: 0 1rem;
-  display: flex;
-  font-size: 19px;
-  align-items: center;
-  justify-content: center;
+  padding: 0 0.5rem;
+  @include flex(center, center);
 }
 .slider {
   height: 5px;
@@ -193,3 +199,146 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield; /* Firefox */
 }
+// input range css end
+
+//select styling starts
+form {
+  @include flex(center, center);
+  width: 100%;
+  height: 100%;
+
+  // padding-bottom: 75px;
+  // background-image: radial-gradient(at top, #b5e6cf, #9dddad);
+}
+
+.select {
+  position: relative;
+  width: 225px;
+  height: 40px;
+  cursor: pointer;
+  background-color: $white;
+  box-shadow: 0 2px 0 $white;
+  border-radius: 2px;
+  transition: all 0.2s ease-in-out;
+
+  &_expand {
+    width: 0;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    color: $grey-100;
+    right: 0;
+
+    &::after {
+      content: "\003E";
+      position: absolute;
+      top: 60%;
+      right: 8px;
+      transform: translate(-50%, -50%) rotate(90deg) scaleY(1.75);
+      color: $grey-100;
+      font-size: 1rem;
+      font-weight: 300;
+      pointer-events: none;
+      z-index: 2;
+      transform-origin: 50% 0;
+      transition: all 0.2s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out;
+      opacity: 0.6;
+    }
+
+    &:hover::after {
+      opacity: 1;
+    }
+
+    &:checked::after {
+      transform: translate(-50%, -50%) rotate(90deg) scaleX(-1) scaleY(1.75);
+    }
+  }
+
+  &_expandLabel {
+    display: block;
+    width: 100%;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+  }
+
+  &_close {
+    display: none;
+  }
+
+  &_closeLabel {
+    width: 100%;
+    height: 5rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+  }
+
+  &_items {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid #e8e8e8;
+    border-radius: 2px;
+    padding-top: 4rem;
+    color: $grey-100;
+  }
+
+  &_input {
+    display: none;
+  }
+
+  &_label {
+    transition: all 0.2s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out;
+    display: block;
+    height: 0;
+    font-size: 1.2rem;
+    line-height: 4rem;
+    overflow: hidden;
+    background-color: #fff;
+    cursor: pointer;
+    padding-left: 1rem;
+
+    &-placeholder {
+      height: 40px;
+      font-size: 1.5rem;
+      font-weight: 400;
+      vertical-align: middle;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: transparent;
+      color: $grey-100;
+    }
+  }
+
+  &_expand:checked {
+    + .select_closeLabel {
+      display: block;
+
+      + .select_options {
+        .select_label {
+          height: 40px;
+          &:hover {
+            background-color: #f7f7f7;
+          }
+        }
+
+        + .select_expandLabel {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &_input:checked + .select_label {
+    height: 40px;
+    margin-top: -40px;
+  }
+}
+
+// select styling ends
