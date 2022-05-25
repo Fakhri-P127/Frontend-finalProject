@@ -83,6 +83,9 @@ a {
   line-height: 2.72rem;
   font-size: 1.4rem;
   color: #fff; }
+  @media (max-width: 991px) {
+    .header__top {
+      display: none; } }
   .header__top__left {
     display: flex;
     align-items: center; }
@@ -136,11 +139,17 @@ a {
   height: 12rem;
   display: flex;
   align-items: center; }
+  @media (max-width: 991px) {
+    .header__bottom {
+      height: 6rem; } }
   .header__bottom nav {
     position: relative; }
   .header__bottom__logo {
     display: flex;
     align-items: center; }
+  @media (max-width: 991px) {
+    .header__bottom__nav-links {
+      display: none; } }
   .header__bottom__nav-links > ul {
     display: flex;
     justify-content: center;
@@ -324,13 +333,21 @@ a {
     .header__bottom__config > ul {
       display: flex;
       gap: 2.6rem; }
+      @media (max-width: 991px) {
+        .header__bottom__config > ul > li:first-child {
+          display: none; }
+        .header__bottom__config > ul > li:nth-child(2) {
+          display: none; } }
       .header__bottom__config > ul > li > button {
         cursor: pointer;
         position: relative;
         border: none;
         background-color: transparent; }
-        .header__bottom__config > ul > li > button > img {
-          width: 2.2rem; }
+        .header__bottom__config > ul > li > button > i {
+          font-size: 2.2rem;
+          transition: 400ms color; }
+          .header__bottom__config > ul > li > button > i:hover {
+            color: #e3a51e; }
         .header__bottom__config > ul > li > button span {
           position: absolute;
           top: -40%;
@@ -376,6 +393,9 @@ a {
             .header__bottom__config > ul > li > button ul li a {
               padding: 0;
               font-size: 1.3rem; }
+      @media (min-width: 992px) {
+        .header__bottom__config > ul > li #hamburger i {
+          display: none; } }
       .header__bottom__config > ul > li:hover ul {
         pointer-events: auto;
         opacity: 1;
@@ -840,3 +860,33 @@ a {
     color: #333; }
   .btn-fixed i {
     font-size: 1.8rem; }
+
+.canvas__overlay {
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 99;
+  transform: translateX(-100%); }
+
+.canvas__content {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 30rem;
+  height: 100vh;
+  background-color: #fff;
+  z-index: 999;
+  transform: translateX(-100%);
+  transition: 400ms transform; }
+
+body::-webkit-scrollbar {
+  width: 0.4rem; }
+
+body::-webkit-scrollbar-track {
+  background-color: #e5e5e5; }
+
+body::-webkit-scrollbar-thumb {
+  background-color: #e3a51e; }

@@ -48,9 +48,6 @@ a {
   margin-right: auto;
   margin-left: auto;
 }
-// .col-lg-6 {
-//   padding: 0;
-// }
 
 // Globals end
 
@@ -62,7 +59,9 @@ a {
     line-height: 2.72rem;
     font-size: 1.4rem;
     color: $white;
-
+    @include breakpoint-down("medium") {
+      display: none;
+    }
     &__left {
       @include flex(center);
       p {
@@ -119,7 +118,9 @@ a {
   &__bottom {
     height: 12rem;
     @include flex(center);
-
+    @include breakpoint-down("medium") {
+      height: 6rem;
+    }
     nav {
       position: relative;
     }
@@ -129,6 +130,9 @@ a {
     }
 
     &__nav-links {
+      @include breakpoint-down("medium") {
+        display: none;
+      }
       > ul {
         @include flex(null, center);
         font-size: 1.6rem;
@@ -240,14 +244,30 @@ a {
         @include flex();
         gap: 2.6rem;
         > li {
+          @include breakpoint-down("medium") {
+            &:first-child {
+              display: none;
+            }
+
+            &:nth-child(2) {
+              display: none;
+            }
+          }
           > button {
             cursor: pointer;
             position: relative;
             border: none;
             background-color: transparent;
-            > img {
-              width: 2.2rem;
+
+            > i {
+              font-size: 2.2rem;
+              transition: 400ms color;
+
+              &:hover {
+                color: $mainColor;
+              }
             }
+
             span {
               position: absolute;
               top: -40%;
@@ -274,6 +294,13 @@ a {
                   padding: 0;
                   font-size: 1.3rem;
                 }
+              }
+            }
+          }
+          #hamburger {
+            @include breakpoint-up("large") {
+              i {
+                display: none;
               }
             }
           }
@@ -837,3 +864,46 @@ a {
 
 // .hidden {
 // }
+
+// For Javascript starts
+
+.canvas {
+  // z-index: 9999;
+  &__overlay {
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 99;
+    transform: translateX(-100%);
+    // transition: 100ms transform;
+  }
+
+  &__content {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 30rem;
+    height: 100vh;
+    background-color: $white;
+    z-index: 999;
+    transform: translateX(-100%);
+    transition: 400ms transform;
+  }
+}
+
+// For Javascript ends
+
+// Extra
+
+body::-webkit-scrollbar {
+  width: 0.4rem;
+}
+body::-webkit-scrollbar-track {
+  background-color: $grey;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: $mainColor;
+}

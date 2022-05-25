@@ -123,3 +123,12 @@ reviewBox.forEach((reviewBox) =>
     );
   })
 );
+
+const hamburger = document.querySelector("#hamburger");
+const canvas = document.querySelector(".canvas__content");
+const canvasOverlay = document.querySelector(".canvas__overlay");
+
+hamburger.addEventListener("click", function (e) {
+  canvas.style.transform = "translateX(0)";
+  canvasOverlay.style.transform = "translateX(0)";
+});
