@@ -202,11 +202,111 @@
  <aside class="canvas">
    <div class="canvas__overlay"></div>
    <div class="canvas__content">
-     <div class="custom-container">
-     <input type="search" name="" id="" style="width:100%">
-
+     <div class="canvas__content__closeBtn">
+       <button><i class="fa-solid fa-xmark"></i></button>
      </div>
+     <form class="canvas__content__form">
+        <input type="search" placeholder="Search Here..." />
+        <button>
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+     </form>
+
+     <ul class="canvas__content__accordions">
+       <li>
+         <div>
+ <a href="index.html">Home</a>
+         
+         <div class="toggle"></div>
+         </div>
+        
+
+         <ul class="canvas__content__accordions__dropdown">
+           <li>
+             <a href="index.html">
+              Home Version 01
+             </a>
+            
+           </li>
+           <li>
+             <a href="index.html">
+              Home Version 02
+             </a>
+           </li>
+         </ul>
+       </li>
+       <li>
+         <div>
+ <a href="shop.html">Pages</a>
+         
+         <div class="wrap">
+<div class="toggle"></div>
+         </div>
+         </div>
+         
+
+         <ul class="canvas__content__accordions__dropdown">
+           <li>
+             <a href="">Column 01</a>
+           </li>
+           <li>
+             <a href="">Column 02</a>
+           </li>
+            <li>
+             <a href="">Column 03</a>
+           </li>
+            <li>
+             <a href="">Column 04</a>
+                       </li>
+         </ul>
+       </li>
+       <li>
+         <div>
+ <a href="shop.html">Shop</a>
+         
+         <div class="toggle"></div>
+         </div>
+         
+
+         <ul class="canvas__content__accordions__dropdown">
+           <li>
+             <a href="">Shop Grid Layout</a>
+           </li>
+           <li>
+             <a href="">Shop List Layout</a>
+           </li>
+            <li>
+             <a href="">Products Details</a>
+           </li>
+           
+         </ul>
+       </li>
+       <li>
+         <div>
+ <a href="blogs.html">Blog</a>
+         <div class="wrap">
+<div class="toggle"></div>
+         </div>
+         
+         </div>
+         
+
+         <ul class="canvas__content__accordions__dropdown">
+           <li>
+             <a href="">Blog Left Sidebar</a>
+           </li>
+            <li>
+             <a href="">Blog Right Sidebar</a>
+           </li>
+           
+         </ul>
+       </li>
+     </ul>
+
+
+    
    </div>
+   
  </aside>
 <!-- Aside canvas ends -->
     <!-- Main starts  -->
@@ -223,12 +323,17 @@
                     <h5>Top Selling!</h5>
                     <h2>Top Collection</h2>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit quo officiis obcaecati ut?</p>
-
                     <button>Shop Now</button>
                   </div>
                 </div>
                 <div class="slide">
                   <img src="assets/images/slider/slider-2.jpg" alt="slider img">
+                   <div class="slider__text">
+                    <h5>Top Selling!</h5>
+                    <h2>Top Collection</h2>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit quo officiis obcaecati ut?</p>
+                    <button>Shop Now</button>
+                  </div>
                 </div>
                 <button class="btn btn__slider" id="btn-prev"><i class="fa-solid fa-angle-left"></i></button>
                 <button class="btn btn__slider" id="btn-next"><i class="fa-solid fa-angle-right"></i></button>

@@ -871,16 +871,95 @@ a {
   z-index: 99;
   transform: translateX(-100%); }
 
+.canvas .return {
+  transform: translateX(0); }
+
 .canvas__content {
   position: fixed;
   top: 0;
   left: 0;
   width: 30rem;
   height: 100vh;
+  padding: 20px;
   background-color: #fff;
   z-index: 999;
-  transform: translateX(-100%);
-  transition: 400ms transform; }
+  transform: translateX(-500%);
+  transition: 300ms transform ease-in-out; }
+  .canvas__content__closeBtn {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    color: #fff;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.4s all;
+    background-color: #e3a51e; }
+    .canvas__content__closeBtn button {
+      background-color: #e3a51e;
+      border: none;
+      height: 100%;
+      transition: 400ms transform; }
+      .canvas__content__closeBtn button:hover {
+        transform: rotate(90deg); }
+      .canvas__content__closeBtn button i {
+        font-size: 2rem;
+        cursor: pointer;
+        color: #fff; }
+  .canvas__content__form {
+    display: flex; }
+    .canvas__content__form input {
+      color: #666;
+      font-size: 13px;
+      width: 100%;
+      height: 40px;
+      border: none;
+      padding: 0 40px 0 10px;
+      background-color: #f2f2f2;
+      outline: none; }
+      .canvas__content__form input::placeholder {
+        color: #aaa;
+        font-style: italic; }
+    .canvas__content__form button {
+      padding: 0 2rem;
+      border: none;
+      background-color: #f2f2f2; }
+  .canvas__content__accordions {
+    margin-top: 3rem; }
+    .canvas__content__accordions li {
+      width: 100%;
+      position: relative; }
+      .canvas__content__accordions li div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between; }
+        .canvas__content__accordions li div a {
+          font-size: 15px;
+          color: #333333;
+          text-transform: capitalize;
+          line-height: 18px;
+          padding: 10px 0;
+          transition: 400ms color; }
+          .canvas__content__accordions li div a:hover {
+            color: #e3a51e; }
+    .canvas__content__accordions__dropdown {
+      max-height: 0;
+      overflow: hidden;
+      transition: 0.4s;
+      background-color: #fff; }
+      .canvas__content__accordions__dropdown li {
+        margin-left: 1.5rem;
+        padding: 1rem 0;
+        font-size: 1.4rem; }
+        .canvas__content__accordions__dropdown li a {
+          color: #333;
+          padding: 0.8rem 0;
+          transition: 400ms color; }
+          .canvas__content__accordions__dropdown li a:hover {
+            color: #e3a51e; }
 
 body::-webkit-scrollbar {
   width: 0.4rem; }

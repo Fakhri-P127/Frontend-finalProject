@@ -128,7 +128,70 @@ const hamburger = document.querySelector("#hamburger");
 const canvas = document.querySelector(".canvas__content");
 const canvasOverlay = document.querySelector(".canvas__overlay");
 
-hamburger.addEventListener("click", function (e) {
-  canvas.style.transform = "translateX(0)";
-  canvasOverlay.style.transform = "translateX(0)";
-});
+const showCanvas = function (e) {
+  canvas.classList.add("return");
+  canvasOverlay.classList.add("return");
+};
+const hideCanvas = function () {
+  canvas.classList.remove("return");
+  canvasOverlay.classList.remove("return");
+};
+
+hamburger.addEventListener("click", showCanvas);
+
+canvasOverlay.addEventListener("click", hideCanvas);
+
+const accordions = document.querySelectorAll(".canvas__content__accordions>li");
+
+const showDropdown = function () {
+  const dropdowns = document.querySelectorAll(
+    ".canvas__content__accordions li ul"
+  );
+  dropdowns.forEach((dropdown) => (dropdown.style.maxHeight = 0 + "px"));
+  const ulDropdown = this.querySelector("ul");
+
+  ulDropdown.style.maxHeight = ulDropdown.scrollHeight + "px";
+};
+
+// const hideDropdown = function () {
+//   const ulDropdown = this.querySelector("ul");
+//   console.log(ulDropdown.style.maxHeight);
+//   console.log(ulDropdown);
+//   if (ulDropdown.style.maxHeight != "0px") {
+//     ulDropdown.style.maxHeight = "1" + "px";
+//   }
+// };
+
+// accordions.forEach((accordion) =>
+//   accordion.addEventListener("click", hideDropdown)
+// );
+accordions.forEach((accordion) =>
+  accordion.addEventListener("click", showDropdown)
+);
+// const toggle = document.querySelector(".toggle");
+// const wrap = document.querySelector(".wrap");
+// let isPlus = false;
+
+// wrap.addEventListener("click", function () {
+//   toggle.className = isPlus ? "toggle" : "toggle open";
+//   isPlus = !isPlus;
+// });
+
+// const btnAccordion = document.querySelectorAll('.');
+// let isPlus = false;
+// const toggles = document.querySelectorAll(".toggle");
+// const li = document.querySelector(".canvas__content__accordions li");
+// li.addEventListener("click", function () {
+//   toggles.forEach((toggle) => {
+//     // toggle.addEventListener("click", function (e) {
+//     toggle.className = isPlus ? "toggle" : "toggle open";
+//     isPlus = !isPlus;
+//     // });
+//   });
+// });
+
+// accordions.addEventListener("click", (e) => {
+//   e.preventDefault();
+//   toggle.className = isPlus ? "toggle" : "toggle open";
+//   isPlus = !isPlus;
+// });
