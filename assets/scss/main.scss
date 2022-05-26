@@ -318,15 +318,27 @@ a {
 }
 
 .hero__slider {
-  height: 47rem;
-  overflow: hidden;
+  max-height: 47rem;
+  // overflow: hidden;
+  @include flex();
+
   .sliders {
     position: relative;
+
     .slide {
       display: none;
+      width: 100%;
+      // transform: translateY(100%);
+
+      // opacity: 0;
+      transition: 400ms all;
+      .slider__text {
+      }
     }
     .slider--active {
       display: block;
+      // transform: translateY(0);
+      // opacity: 1;
     }
     .btn__slider {
       position: absolute;
@@ -386,9 +398,11 @@ a {
     @include main-title();
   }
   &__cards {
+    padding: 4rem 0.8rem;
     &__card {
       width: 100%;
-
+      // width: 32rem;
+      // padding: 0 2rem;
       border: 1px solid #e5e5e5;
       border-radius: 0.4rem;
       transition: 400ms border;
@@ -413,6 +427,11 @@ a {
       .products__cards__card__bottom {
         text-align: center;
         &__info {
+          color: $dark;
+          transition: 400ms color;
+          &:hover {
+            color: $mainColor;
+          }
           h5 {
             font-size: 1.8rem;
             font-weight: 500;
@@ -491,7 +510,9 @@ a {
     overflow: hidden;
     height: 25rem;
     transition: 400ms transform;
-
+    @include breakpoint-down("medium") {
+      margin-bottom: 2.5rem;
+    }
     &__text {
       position: relative;
       top: 19%;
@@ -605,8 +626,22 @@ a {
     @include main-title();
   }
   &__products {
+    @include breakpoint-down("medium") {
+      // @include flex(null, center);
+    }
     &__img-container {
       width: 37rem;
+      // @include breakpoint-down("medium") {
+      //   width: 27rem;
+      // }
+      @include breakpoint-down("medium") {
+        // width: 38.4rem;
+        max-width: 39rem;
+        margin-bottom: 2rem;
+      }
+      // @include breakpoint-down("small") {
+      //   width: 25rem;
+      // }
       img {
         cursor: pointer;
         width: 100%;
@@ -615,13 +650,24 @@ a {
     &__sliders {
       height: 100%;
       padding-left: 1.2rem;
+      @include breakpoint-down("medium") {
+        // margin-left: 5rem;
 
+        margin-left: 0;
+        padding-left: 0;
+      }
+      .custom-padding {
+        padding-bottom: 3rem;
+      }
       .row {
         row-gap: 2rem;
       }
       &__slider {
         @include flex();
         height: 100%;
+        @include breakpoint-down("medium") {
+          flex-direction: column;
+        }
         &:hover {
           .top-seller__products__sliders__slider__left-side {
             img {
@@ -631,17 +677,31 @@ a {
         }
         &__left-side {
           overflow: hidden;
-          img {
-            height: 100%;
-            cursor: pointer;
-            transition: 400ms transform;
+          &__img-container {
+            @include breakpoint-down("medium") {
+              width: 39rem;
+            }
+            // @include breakpoint-down("small") {
+            //   width: 25rem;
+            // }
+            img {
+              width: 100%;
+              height: 100%;
+              cursor: pointer;
+              transition: 400ms transform;
+            }
           }
         }
         &__right-side {
           @include flex(null, space-between, column);
           padding-left: 2rem;
-
+          @include breakpoint-down("medium") {
+            padding-left: 0;
+            @include flex();
+            gap: 2rem;
+          }
           &__title {
+            color: $dark;
             h6 {
               font-weight: 500;
               line-height: 19.2px;
@@ -704,6 +764,7 @@ a {
       }
       &__date {
         padding-bottom: 3rem;
+        color: $dark;
         span {
           margin-right: 0.2rem;
           font-size: 1.4rem;
@@ -727,14 +788,21 @@ a {
 
 .brands {
   padding: 8rem 1.5rem;
+  .custom-flex {
+    @include flex(null, center);
+  }
   &__brand {
     @include flex(null, center);
 
+    width: 15rem;
     cursor: pointer;
     img {
+      // @include flex(null, center);
       max-width: 100%;
       opacity: 0.3;
       transition: 400ms opacity;
+
+      // margin: 0 auto;
       &:hover {
         opacity: 1;
       }
@@ -928,7 +996,7 @@ a {
     &__form {
       @include flex();
       input {
-        color: #666;
+        color: $grey-100;
         font-size: 13px;
         width: 100%;
         height: 40px;
@@ -949,7 +1017,7 @@ a {
     }
 
     &__accordions {
-      margin-top: 3rem;
+      margin: 3rem 0 1.5rem;
       li {
         width: 100%;
         position: relative;
@@ -1024,6 +1092,60 @@ a {
             &:hover {
               color: $mainColor;
             }
+          }
+        }
+      }
+    }
+    &__bottom {
+      border-top: 1px solid $grey;
+      padding: 2rem 0;
+      li {
+        padding: 0.8rem 0;
+        font-size: 1.4rem;
+        a {
+          color: $dark;
+          transition: 400ms color;
+          &:hover {
+            color: $mainColor;
+          }
+        }
+        i {
+          font-size: 1.4rem;
+        }
+      }
+    }
+    &__contact-info {
+      padding-top: 50rem;
+
+      @include breakpoint-down("small") {
+        padding-top: 30rem;
+      }
+      li {
+        padding: 0.5rem 0;
+        font-size: 1.5rem;
+        i {
+          margin-right: 1rem;
+        }
+
+        a {
+          color: $grey-100;
+          transition: 400ms color;
+          &:hover {
+            color: $mainColor;
+          }
+        }
+      }
+    }
+    &__social-medias {
+      @include flex();
+      padding-top: 3rem;
+      gap: 2rem;
+      li {
+        font-size: 1.5rem;
+
+        a {
+          color: $grey-100;
+          i {
           }
         }
       }

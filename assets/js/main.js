@@ -34,6 +34,74 @@ window.addEventListener("scroll", function () {
   }
 });
 
+$("#product-carousel").owlCarousel({
+  loop: true,
+  margin: 10,
+  dots: false,
+  responsive: {
+    0: {
+      items: 1,
+    },
+    600: {
+      items: 2,
+    },
+    1000: {
+      items: 4,
+    },
+  },
+});
+
+$("#top-seller-carousel").owlCarousel({
+  loop: true,
+  margin: 10,
+  padding: 10,
+  dots: false,
+  responsive: {
+    0: {
+      items: 1,
+    },
+    // 600: {
+    //   // items: 1,
+    // },
+    1000: {
+      items: 2,
+    },
+  },
+});
+$("#blog-carousel").owlCarousel({
+  loop: true,
+  margin: 10,
+  dots: false,
+  responsive: {
+    0: {
+      items: 1,
+    },
+    600: {
+      items: 2,
+    },
+    1000: {
+      items: 3,
+    },
+  },
+});
+$("#brand-carousel").owlCarousel({
+  loop: true,
+  margin: 10,
+  dots: false,
+
+  responsive: {
+    0: {
+      items: 1,
+    },
+    600: {
+      items: 2,
+    },
+    1000: {
+      items: 4,
+    },
+  },
+});
+
 // const products = document.querySelector(".products");
 // console.log(products);
 // const headerBottom = document.querySelector(".header__bottom");

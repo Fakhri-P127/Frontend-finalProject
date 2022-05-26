@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Juan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -15,6 +17,8 @@
 
 <!-- CSS only -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.0-beta1/css/bootstrap-grid.min.css" integrity="sha512-QWjMsIpO5eW4+c4ASTEaZ4+eZNZ4YTtSDiu167Rq1Eqw//WlO+rXo4OvZMpyW/ykbN5LFeXmN6N416OzmWo7fA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
     <link rel="stylesheet" href="assets/css/main.css" />
   </head>
   <body>
@@ -301,10 +305,45 @@
            
          </ul>
        </li>
+       <li>
+         <div>
+ <a href="index.html">Contact Us</a>
+         </div>
+       </li>
      </ul>
-
-
-    
+     <ul class="canvas__content__bottom">
+       <li>
+         <a href="">Currency</a> <i class="fa-solid fa-angle-down"></i>
+       </li>
+       <li>
+        <a href="">My Account</a> <i class="fa-solid fa-angle-down"></i>
+       </li>
+     </ul>
+     <ul class="canvas__content__contact-info">
+       <li>
+         <i class="fa fa-mobile"></i> <a href="">0123456789</a>
+       </li>
+       <li>
+         <i class="fa-regular fa-envelope"></i> <a href="">info@yourdomain.com</a>
+       </li>
+     </ul>
+    <ul class="canvas__content__social-medias">
+      <li><a href="">
+<i class="fa-brands fa-facebook-f"></i>
+      </a></li>
+      <li><a href="">
+<i class="fa-brands fa-twitter"></i>
+      </a></li>
+      <li><a href="">
+<i class="fa-brands fa-pinterest-p"></i>
+      </a></li>
+      <li><a href="">
+<i class="fa-brands fa-linkedin-in"></i>
+      </a></li>
+      <li><a href="">
+<i class="fa-brands fa-youtube"></i>
+      </a></li>
+    </ul>
    </div>
    
  </aside>
@@ -396,8 +435,8 @@
       <h2>Our Product</h2>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing</p>
     </div>
-      <div class="row">
-      <div class="col-lg-3">
+      <div id="product-carousel" class="row owl-carousel owl-theme">
+      <div class="item">
     <div class="products__cards">
       <div class="products__cards__card">
         <div class="products__cards__card__top">
@@ -420,7 +459,7 @@
       </div>
     </div>
       </div>
-      <div class="col-lg-3">
+      <div class=" item">
     <div class="products__cards">
       <div class="products__cards__card">
         <div class="products__cards__card__top">
@@ -442,7 +481,7 @@
          
       </div>
     </div>
-      </div><div class="col-lg-3">
+      </div><div class=" item">
     <div class="products__cards">
       <div class="products__cards__card">
         <div class="products__cards__card__top">
@@ -465,7 +504,7 @@
       </div>
     </div>
       </div>
-      <div class="col-lg-3">
+      <div class="item">
     <div class="products__cards">
       <div class="products__cards__card">
         <div class="products__cards__card__top">
@@ -553,18 +592,22 @@
     </div>
     <div class="top-seller__products">
       <div class="row">
-        <div class="col-lg-4">
+        <div class=" col-12  col-lg-4">
           <div class="top-seller__products__img-container">
-            <img src="assets/images/banner/banner-3.jpg" alt="shoe">
+           <img src="assets/images/banner/banner-3.jpg" alt="">
           </div>
         </div>
-        <div class="col-lg-8">
+        <div class="col-12  col-lg-8">
           <div class="top-seller__products__sliders">
-            <div class="row">
-              <div class="col-lg-6">
+            <div>
+            <div id="top-seller-carousel" class="row owl-carousel owl-theme">
+              <div >
+              <div class="item custom-padding" >
                 <div class="top-seller__products__sliders__slider">
                   <div class="top-seller__products__sliders__slider__left-side">
-                    <img src="assets/images/small/pro-small-1.jpg" alt="fabric shoe">
+                    <div class="top-seller__products__sliders__slider__left-side__img-container">
+                       <img src="assets/images/small/pro-small-2.jpg" alt="Quickiin shoe">
+                    </div>
                     </div>
                     <div class="top-seller__products__sliders__slider__right-side">
                       <div class="top-seller__products__sliders__slider__right-side__title">
@@ -587,10 +630,15 @@
                   </div>
                 </div>
               </div>
-              <div class="col-lg-6">
+              
+              
+              <div class="item" >
                 <div class="top-seller__products__sliders__slider">
                   <div class="top-seller__products__sliders__slider__left-side">
-                    <img src="assets/images/small/pro-small-3.jpg" alt="Quickiin shoe">
+                    <div class="top-seller__products__sliders__slider__left-side__img-container">
+                       <img src="assets/images/small/pro-small-3.jpg" alt="Quickiin shoe">
+                    </div>
+                   
                     </div>
                     <div class="top-seller__products__sliders__slider__right-side">
                       <div class="top-seller__products__sliders__slider__right-side__title">
@@ -613,10 +661,14 @@
                   </div>
                 </div>
               </div>
-              <div class="col-lg-6">
+              </div>
+              <div>
+              <div class="item custom-padding" >
                 <div class="top-seller__products__sliders__slider">
                   <div class="top-seller__products__sliders__slider__left-side">
-                    <img src="assets/images/small/pro-small-2.jpg" alt="Exclusive shoe">
+                    <div class="top-seller__products__sliders__slider__left-side__img-container">
+                       <img src="assets/images/small/pro-small-2.jpg" alt="Quickiin shoe">
+                    </div>
                     </div>
                     <div class="top-seller__products__sliders__slider__right-side">
                       <div class="top-seller__products__sliders__slider__right-side__title">
@@ -624,7 +676,7 @@
                       <span>$80.00</span> <del>$70.00</del>
                     </div>
                     <div class="top-seller__products__sliders__slider__right-side__reviews">
-                      <!-- bunlara js da hover edende ichi dolsun -->
+                     
                       <i class="fa-regular fa-star"></i>
                       <i class="fa-regular fa-star"></i>
                       <i class="fa-regular fa-star"></i>
@@ -639,10 +691,12 @@
                   </div>
                 </div>
               </div>
-              <div class="col-lg-6">
+              <div class="item">
                 <div class="top-seller__products__sliders__slider">
                   <div class="top-seller__products__sliders__slider__left-side">
-                    <img src="assets/images/small/pro-small-4.jpg" alt="Primitive shoe">
+                    <div class="top-seller__products__sliders__slider__left-side__img-container">
+                       <img src="assets/images/small/pro-small-4.jpg" alt="Quickiin shoe">
+                    </div>
                     </div>
                     <div class="top-seller__products__sliders__slider__right-side">
                       <div class="top-seller__products__sliders__slider__right-side__title">
@@ -650,7 +704,7 @@
                       <span>$80.00</span> <del>$70.00</del>
                     </div>
                     <div class="top-seller__products__sliders__slider__right-side__reviews">
-                      <!-- bunlara js da hover edende ichi dolsun -->
+                     
                       <i class="fa-regular fa-star"></i>
                       <i class="fa-regular fa-star"></i>
                       <i class="fa-regular fa-star"></i>
@@ -665,10 +719,17 @@
                   </div>
                 </div>
               </div>
+              </div>
+              </div>
+              
+              
+              
             </div>
+            
           </div>  
         </div>
       </div>
+      
     </div>
    </div>
  </section>
@@ -684,8 +745,8 @@
     </div>
 
     <div class="blog__cards">
-      <div class="row">
-        <div class="col-lg-4">
+      <div id="blog-carousel" class="row owl-carousel owl-theme">
+        <div class="item">
           <div class="blog__cards__card">
             <div class="blog__cards__card__img-container">
               <img src="assets/images/dragShoes/blog-1.jpg" alt="shoe">
@@ -704,7 +765,7 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-4">
+        <div class="item">
           <div class="blog__cards__card">
             <div class="blog__cards__card__img-container">
               <img src="assets/images/dragShoes/blog-2.jpg" alt="shoe">
@@ -723,7 +784,7 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-4">
+        <div class="item  ">
           <div class="blog__cards__card">
             <div class="blog__cards__card__img-container">
               <img src="assets/images/dragShoes/blog-3.jpg" alt="shoe">
@@ -751,23 +812,23 @@
  <!-- Brands aside  start -->
  <aside class="brands">
    <div class="custom-container">
-   <div class="row">
-     <div class="col-lg-3">
+   <div id="brand-carousel" class="row owl-carousel owl-theme">
+     <div class="item custom-flex">
        <div class="brands__brand">
        <img src="assets/images/brands/br1.jpg" alt="brand logo">
        </div>
      </div>
-     <div class="col-lg-3">
+     <div class="item custom-flex" >
        <div class="brands__brand">
        <img src="assets/images/brands/br2.jpg" alt="brand logo">
        </div>
      </div>
-     <div class="col-lg-3">
+     <div class="item custom-flex">
        <div class="brands__brand">
        <img src="assets/images/brands/br3.jpg" alt="brand logo">
        </div>
      </div>
-     <div class="col-lg-3">
+     <div class="item custom-flex">
        <div class="brands__brand">
        <img src="assets/images/brands/br4.jpg" alt="brand logo">
        </div>
@@ -880,6 +941,11 @@
     <!-- fixed back to top -->
     <a class="hidden" href="#"><button class="btn btn-fixed"><i class="fa-solid fa-angle-up"></i></button></a>
 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="assets/js/main.js"></script>
   </body>
 </html>
