@@ -1,39 +1,5 @@
 "use strict";
 
-const btnPrev = document.querySelector("#btn-prev");
-const btnNext = document.querySelector("#btn-next");
-btnNext.addEventListener("click", function (e) {
-  //   console.log(e.target);
-  const activeSlide = document.querySelector(".slider--active");
-  // if()
-  activeSlide.classList.remove("slider--active");
-  activeSlide.nextElementSibling.classList.add("slider--active");
-});
-
-btnPrev.addEventListener("click", function (e) {
-  const activeSlide = document.querySelector(".slider--active");
-
-  activeSlide.classList.remove("slider--active");
-  activeSlide.previousElementSibling.classList.add("slider--active");
-});
-
-const headerBottom = document.querySelector(".header__bottom");
-const heroSlider = document.querySelector(".hero__slider");
-window.addEventListener("scroll", function () {
-  const clientSection = heroSlider.getBoundingClientRect();
-
-  // console.log(clientSection);
-  if (this.window.scrollY > clientSection.height) {
-    headerBottom.classList.add("sticky");
-    headerBottom.style.height = "7.6rem";
-  } else {
-    headerBottom.classList.remove("sticky");
-  }
-  if (this.window.scrollY < 100) {
-    headerBottom.style.height = "12rem";
-  }
-});
-
 $("#product-carousel").owlCarousel({
   loop: true,
   margin: 10,
@@ -54,15 +20,11 @@ $("#product-carousel").owlCarousel({
 $("#top-seller-carousel").owlCarousel({
   loop: true,
   margin: 10,
-  padding: 10,
   dots: false,
   responsive: {
     0: {
       items: 1,
     },
-    // 600: {
-    //   // items: 1,
-    // },
     1000: {
       items: 2,
     },
@@ -86,7 +48,7 @@ $("#blog-carousel").owlCarousel({
 });
 $("#brand-carousel").owlCarousel({
   loop: true,
-  margin: 10,
+  // margin: 10,
   dots: false,
 
   responsive: {
@@ -101,28 +63,6 @@ $("#brand-carousel").owlCarousel({
     },
   },
 });
-
-// const products = document.querySelector(".products");
-// console.log(products);
-// const headerBottom = document.querySelector(".header__bottom");
-// console.log(headerBottom);
-
-// const headerSticky = function (entries) {
-//   const [entry] = entries;
-//   console.log(entry);
-//   if (!entry.isIntersecting) {
-//     headerBottom.classList.add("sticky");
-//     headerBottom.style.height = "7.6rem";
-//   } else {
-//     headerBottom.classList.remove("sticky");
-//   }
-// };
-// const headerObserver = new IntersectionObserver(headerSticky, {
-//   root: null,
-//   threshold: 0,
-//   rootMargin: "25px",
-// });
-// headerObserver.observe(products);
 
 const reviews = document.querySelectorAll(
   ".top-seller__products__sliders__slider__right-side__reviews i"
@@ -192,35 +132,6 @@ reviewBox.forEach((reviewBox) =>
   })
 );
 
-const hamburger = document.querySelector("#hamburger");
-const canvas = document.querySelector(".canvas__content");
-const canvasOverlay = document.querySelector(".canvas__overlay");
-
-const showCanvas = function (e) {
-  canvas.classList.add("return");
-  canvasOverlay.classList.add("return");
-};
-const hideCanvas = function () {
-  canvas.classList.remove("return");
-  canvasOverlay.classList.remove("return");
-};
-
-hamburger.addEventListener("click", showCanvas);
-
-canvasOverlay.addEventListener("click", hideCanvas);
-
-const accordions = document.querySelectorAll(".canvas__content__accordions>li");
-
-const showDropdown = function () {
-  const dropdowns = document.querySelectorAll(
-    ".canvas__content__accordions li ul"
-  );
-  dropdowns.forEach((dropdown) => (dropdown.style.maxHeight = 0 + "px"));
-  const ulDropdown = this.querySelector("ul");
-
-  ulDropdown.style.maxHeight = ulDropdown.scrollHeight + "px";
-};
-
 // const hideDropdown = function () {
 //   const ulDropdown = this.querySelector("ul");
 //   console.log(ulDropdown.style.maxHeight);
@@ -233,9 +144,10 @@ const showDropdown = function () {
 // accordions.forEach((accordion) =>
 //   accordion.addEventListener("click", hideDropdown)
 // );
-accordions.forEach((accordion) =>
-  accordion.addEventListener("click", showDropdown)
-);
+
+// accordions.forEach((accordion) =>
+//   accordion.addEventListener("click", showDropdown)
+// );
 // const toggle = document.querySelector(".toggle");
 // const wrap = document.querySelector(".wrap");
 // let isPlus = false;
@@ -263,3 +175,90 @@ accordions.forEach((accordion) =>
 //   toggle.className = isPlus ? "toggle" : "toggle open";
 //   isPlus = !isPlus;
 // });
+
+// Slider
+const slider = function () {
+  const slides = document.querySelectorAll(".hero__sliders__slide");
+  const btnLeft = document.querySelector(".hero__sliders__btn--left");
+  const btnRight = document.querySelector(".hero__sliders__btn--right");
+  const dotContainer = document.querySelector(".dots");
+
+  slides[0].style.opacity = "1";
+  let curSlide = 0;
+  const maxSlide = slides.length;
+
+  // Functions
+  const createDots = function () {
+    slides.forEach(function (_, i) {
+      dotContainer.insertAdjacentHTML(
+        "beforeend",
+        `<button class="dots__dot" data-slide="${i}"></button>`
+      );
+    });
+  };
+
+  const activateDot = function (slide) {
+    document
+      .querySelectorAll(".dots__dot")
+      .forEach((dot) => dot.classList.remove("dots__dot--active"));
+
+    document
+      .querySelector(`.dots__dot[data-slide="${slide}"]`)
+      .classList.add("dots__dot--active");
+  };
+
+  const goToSlide = function (slide) {
+    slides.forEach(
+      (s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`)
+    );
+    // slides.forEach((slide) => $(slide).fadeIn());
+  };
+
+  // Next slide
+  const nextSlide = function () {
+    if (curSlide === maxSlide - 1) {
+      curSlide = 0;
+    } else {
+      curSlide++;
+    }
+
+    goToSlide(curSlide);
+    activateDot(curSlide);
+  };
+
+  const prevSlide = function () {
+    if (curSlide === 0) {
+      curSlide = maxSlide - 1;
+    } else {
+      curSlide--;
+    }
+    goToSlide(curSlide);
+    activateDot(curSlide);
+  };
+
+  const init = function () {
+    goToSlide(0);
+    createDots();
+
+    activateDot(0);
+  };
+  init();
+
+  // Event handlers
+  btnRight.addEventListener("click", nextSlide);
+  btnLeft.addEventListener("click", prevSlide);
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") prevSlide();
+    e.key === "ArrowRight" && nextSlide();
+  });
+
+  dotContainer.addEventListener("click", function (e) {
+    if (e.target.classList.contains("dots__dot")) {
+      const { slide } = e.target.dataset;
+      goToSlide(slide);
+      activateDot(slide);
+    }
+  });
+};
+slider();

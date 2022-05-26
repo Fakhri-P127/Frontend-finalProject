@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/blogs.css" />
     <link rel="stylesheet" href="assets/css/contact-us.css">
+
   </head>
   <body>
 
@@ -70,16 +71,15 @@
       </div>
       <div class="header__bottom">
           <div class="custom-container">
-              <nav><div class="row">
-              <div class="col-lg-2 header__bottom__logo">
-                  <!-- <div class=""> -->
-                      <a href="#">
+              <nav>
+                <div class="row">
+              <div class="col-6 col-lg-2 header__bottom__logo">
+                  <a href="index.html">
                           <img src="assets/images/logo.jpg" alt="brand logo">
                       </a>
-                  <!-- </div> -->
               </div>
-              <div class="col-lg-8">
-<div class="header__bottom__nav-links">
+              <div class="header__bottom__nav-links col-lg-8">
+
     <ul>
         <li>
           <a href="index.html">Home<i class="fa fa-angle-down"></i></a> 
@@ -90,22 +90,22 @@
         <li>
          <a href="#">Pages<i class="fa fa-angle-down"></i></a>
           <ul class="pages__dropdown">
-            <li><a href="#">Column 1</a>
+            <li><a href="shop.html">Column 1</a>
 
               <ul>
-                <li><a href="#">shop grid left sidebar</a></li>
-                <li><a href="#">shop grid right sidebar</a></li>
-                <li><a href="#">shop list left sidebar</a></li>
-                <li><a href="#">shop list right sidebar</a></li>
+                <li><a href="shop.html">shop grid left sidebar</a></li>
+                <li><a href="shop.html">shop grid right sidebar</a></li>
+                <li><a href="shop.html">shop list left sidebar</a></li>
+                <li><a href="shop.html">shop list right sidebar</a></li>
               </ul>
             </li>
-            <li><a href="">Column 2</a>
+            <li><a href="product-details.html">Column 2</a>
 
               <ul>
-                <li><a href="#">product details</a></li>
-                <li><a href="#">product details affiliate</a></li>
-                <li><a href="#">product details variable</a></li>
-                <li><a href="#">product details group</a></li>
+                <li><a href="product-details.html">product details</a></li>
+                <li><a href="product-details.html">product details affiliate</a></li>
+                <li><a href="product-details.html">product details variable</a></li>
+                <li><a href="product-details.html">product details group</a></li>
               </ul>
             </li>
             <li><a href="">Column 3</a>
@@ -116,17 +116,17 @@
                 <li><a href="#">wishlist</a></li>
               </ul>
             </li>
-            <li><a href="">Column 4</a>
+            <li><a href="contact-us.html">Column 4</a>
               <ul>
                 <li><a href="#">my-account</a></li>
                 <li><a href="#">login-register</a></li>
-                <li><a href="#">contact us</a></li>
+                <li><a href="contact-us.html">contact us</a></li>
               </ul>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#">Shop<i class="fa fa-angle-down"></i></a>
+          <a href="shop.html">Shop<i class="fa fa-angle-down"></i></a>
           <ul class="shop__dropdown">
             <li>
               <a href="">shop grid layout<i class="fa-solid fa-angle-right"></i></a>
@@ -171,15 +171,15 @@
         </li>
         <li><a href="contact-us.html">Contact Us</a></li>
     </ul>
-</div>
+
               </div>
               
-        <div class="col-lg-2 header__bottom__config">
-            <!-- <div class=""> -->
+        <div class=" col-6 col-lg-2 header__bottom__config">
+ 
                 <ul>
-                    <li><button><img src="assets/images/icons/icons8-search-32.png" alt="search"></button></li>
+                    <li><button><i class="fa-solid fa-magnifying-glass"></i></button></li>
                     <li>
-                      <button><img src="assets/images/icons/icons8-settings-32.png" alt="settings">
+                      <button><i class="fa-solid fa-gear"></i>
                       <ul>
                         <li><a href="">Login</a></li>
                         <li><a href="">Register</a></li>
@@ -187,12 +187,13 @@
                       </ul>
                       </li>
                     <li>
-                      <button><img src="assets/images/icons/icons8-shopping-bag-32.png" alt="shopping bag">
+                      <button><i class="fa-solid fa-basket-shopping"></i>
                     <span>2</span></button>
 
                   </li>
+                  <li>
+                    <button id="hamburger"><i class="fa-solid fa-bars"></i></button></li>
                 </ul>
-            <!-- </div> -->
         </div>
           </div></nav>
           </div>
@@ -200,6 +201,153 @@
       </div>
     </header>
     <!-- Header ends -->
+
+<!-- Aside canvas starts --> 
+ <aside class="canvas">
+   <div class="canvas__overlay"></div>
+   <div class="canvas__content">
+     <div class="canvas__content__closeBtn">
+       <button><i class="fa-solid fa-xmark"></i></button>
+     </div>
+     <form class="canvas__content__form">
+        <input type="search" placeholder="Search Here..." />
+        <button>
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+     </form>
+
+     <ul class="canvas__content__accordions">
+       <li>
+         <div>
+ <a href="index.html">Home</a>
+         
+         <div class="toggle"></div>
+         </div>
+        
+
+         <ul class="canvas__content__accordions__dropdown">
+           <li>
+             <a href="index.html">
+              Home Version 01
+             </a>
+            
+           </li>
+           <li>
+             <a href="index.html">
+              Home Version 02
+             </a>
+           </li>
+         </ul>
+       </li>
+       <li>
+         <div>
+ <a href="shop.html">Pages</a>
+         
+         <div class="wrap">
+<div class="toggle"></div>
+         </div>
+         </div>
+         
+
+         <ul class="canvas__content__accordions__dropdown">
+           <li>
+             <a href="">Column 01</a>
+           </li>
+           <li>
+             <a href="">Column 02</a>
+           </li>
+            <li>
+             <a href="">Column 03</a>
+           </li>
+            <li>
+             <a href="">Column 04</a>
+                       </li>
+         </ul>
+       </li>
+       <li>
+         <div>
+ <a href="shop.html">Shop</a>
+         
+         <div class="toggle"></div>
+         </div>
+         
+
+         <ul class="canvas__content__accordions__dropdown">
+           <li>
+             <a href="">Shop Grid Layout</a>
+           </li>
+           <li>
+             <a href="">Shop List Layout</a>
+           </li>
+            <li>
+             <a href="">Products Details</a>
+           </li>
+           
+         </ul>
+       </li>
+       <li>
+         <div>
+ <a href="blogs.html">Blog</a>
+         <div class="wrap">
+<div class="toggle"></div>
+         </div>
+         
+         </div>
+         
+
+         <ul class="canvas__content__accordions__dropdown">
+           <li>
+             <a href="">Blog Left Sidebar</a>
+           </li>
+            <li>
+             <a href="">Blog Right Sidebar</a>
+           </li>
+           
+         </ul>
+       </li>
+       <li>
+         <div>
+ <a href="index.html">Contact Us</a>
+         </div>
+       </li>
+     </ul>
+     <ul class="canvas__content__bottom">
+       <li>
+         <a href="">Currency</a> <i class="fa-solid fa-angle-down"></i>
+       </li>
+       <li>
+        <a href="">My Account</a> <i class="fa-solid fa-angle-down"></i>
+       </li>
+     </ul>
+     <ul class="canvas__content__contact-info">
+       <li>
+         <i class="fa fa-mobile"></i> <a href="">0123456789</a>
+       </li>
+       <li>
+         <i class="fa-regular fa-envelope"></i> <a href="">info@yourdomain.com</a>
+       </li>
+     </ul>
+    <ul class="canvas__content__social-medias">
+      <li><a href="">
+<i class="fa-brands fa-facebook-f"></i>
+      </a></li>
+      <li><a href="">
+<i class="fa-brands fa-twitter"></i>
+      </a></li>
+      <li><a href="">
+<i class="fa-brands fa-pinterest-p"></i>
+      </a></li>
+      <li><a href="">
+<i class="fa-brands fa-linkedin-in"></i>
+      </a></li>
+      <li><a href="">
+<i class="fa-brands fa-youtube"></i>
+      </a></li>
+    </ul>
+   </div>
+   
+ </aside>
+<!-- Aside canvas ends -->
 
     <!-- Main starts  -->
     <main>
@@ -219,32 +367,32 @@
 
         <section class="contact-area">
         <div class="custom-container">
-          <div class="row">
-            <div class="col-lg-6">
+          <div class="row" style="row-gap: 6rem;">
+            <div class="col-12  col-lg-6">
               <div class="contact-area__title">
                 <h2>Tell Us Your Project</h2>
               </div>
               <form class="contact-area__form">
               <div class="row">
-                <div class="col-lg-6">
+                <div class="col-md-6 col-lg-6">
                   
                     <input type="text"  placeholder="Name *">
                   
                   
                 </div>
-                <div class="col-lg-6">
+                <div class="col-md-6 col-lg-6">
                   
                   <input type="tel" pattern="[0-9]"  placeholder="Phone *" >
 
                   
                 </div>
-                <div class="col-lg-6">
+                <div class="col-md-6 col-lg-6">
                   
                   <input type="email" placeholder="Email *" >
 
                   
                 </div>
-                <div class="col-lg-6">
+                <div class="col-md-6 col-lg-6">
                   
                   <input type="text" placeholder="Subject *" >
 
@@ -259,7 +407,7 @@
               </div>
             </form>
             </div>
-<div class="col-lg-6">
+<div class="col-12 col-lg-6">
    <div class="contact-area__title">
                <h2>Contact Us </h2>
                
@@ -297,8 +445,8 @@
     <footer class="footer">
         <div class="footer__top">
           <div class="custom-container">
-          <div class="row">
-            <div class="col-lg-5 footer__top__left-side">
+          <div class="row" style="row-gap: 2rem;">
+            <div class="col-md-6 col-lg-5 footer__top__left-side">
               <h5 class="footer__top__left-side__title">
                 My Account
               </h5>
@@ -308,7 +456,7 @@
                   <li><img src="assets/images/icons/icons8-phone-32.png" alt="phone logo"><span>Phone:</span> <span>+ 00 254 254565</span></li>
               </ul>
             </div>
-            <div class="col-lg-2">
+            <div class="col-md-6  col-lg-2">
               <h5 class="footer__top__title">
                 Categories
               </h5>
@@ -321,7 +469,7 @@
                   <li>Jigoshop</li>
               </ul>
             </div>
-            <div class="col-lg-2">
+            <div class="col-md-6 col-lg-2">
               <h5 class="footer__top__title">
                 Information
               </h5>
@@ -334,7 +482,7 @@
                   <li>Privacy Policy</li>
               </ul>
             </div>
-            <div class="col-lg-3 custom-flex">
+            <div class="col-md-6 col-lg-3 custom-flex">
               <h5 class="footer__top__title">
                 Quick Links
               </h5>
@@ -354,7 +502,7 @@
           <div class="custom-container">
             <div class="footer__bottom__copyright-socialMedias">
 <div class="footer__bottom__copyright">
-          <span>© 2022 <strong>Juan</strong> website made with 💖 by <span class="name">Fakhri</span></span>
+          <span>© 2022 <strong>Juan</strong> website made with 💖💩 by <span class="name">Fakhri</span></span>
         </div>
      
          <ul class="footer__bottom__social-medias">
@@ -396,6 +544,7 @@
 
     
     <!-- <script src="assets/js/main.js"></script> -->
+    <script  src="assets/js/global.js"></script>
     <script src="assets/js/contact-us.js"></script>
   </body>
 </html>

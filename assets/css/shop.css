@@ -1,3 +1,7 @@
+@media (max-width: 991px) {
+  .shop__sidebar {
+    padding-bottom: 6rem; } }
+
 .shop__sidebar__title {
   margin-bottom: 2rem; }
   .shop__sidebar__title h3 {
@@ -42,6 +46,11 @@
 
 .shop__products {
   margin-left: 1.5rem; }
+  @media (max-width: 991px) {
+    .shop__products__top-bar__sort-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem; } }
   .shop__products__top-bar__sort-buttons button {
     width: 4rem;
     height: 4rem;
@@ -55,7 +64,15 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    height: 100%; }
+    height: 100%;
+    row-gap: 2rem; }
+    @media (max-width: 991px) {
+      .shop__products__top-bar__sort-info {
+        justify-content: flex-start;
+        width: 100%; } }
+    @media (max-width: 767px) {
+      .shop__products__top-bar__sort-info {
+        flex-direction: column; } }
     .shop__products__top-bar__sort-info__left-side {
       margin-right: 2rem;
       display: flex; }
@@ -72,10 +89,33 @@
         border: 1px solid #e8e8e8;
         color: #666666;
         padding: 10px 10px; }
-  .shop__products__cards {
-    padding: 3rem 0; }
-    .shop__products__cards .row {
-      row-gap: 5rem; }
+  .shop__products__cards .products__cards__card {
+    animation: scaleUp 1000ms forwards; }
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0); }
+  to {
+    transform: scale(1); } }
+    .shop__products__cards .products__cards__card__top {
+      display: flex;
+      justify-content: center; }
+      .shop__products__cards .products__cards__card__top__img {
+        width: 27rem; }
+        .shop__products__cards .products__cards__card__top__img img {
+          width: 100%; }
+
+.shop__custom__order--1 {
+  order: 0; }
+  @media (max-width: 991px) {
+    .shop__custom__order--1 {
+      order: 1; } }
+
+.shop__custom__order--2 {
+  order: 1; }
+  @media (max-width: 991px) {
+    .shop__custom__order--2 {
+      order: 0; } }
 
 .price-input {
   display: flex;
@@ -170,8 +210,8 @@ form {
 
 .select {
   position: relative;
-  width: 225px;
-  height: 40px;
+  width: 22.5rem;
+  height: 4rem;
   cursor: pointer;
   background-color: #fff;
   box-shadow: 0 2px 0 #fff;
@@ -179,7 +219,7 @@ form {
   transition: all 0.2s ease-in-out; }
   .select_expand {
     width: 0;
-    height: 40px;
+    height: 4rem;
     position: absolute;
     top: 0;
     color: #666;
@@ -196,7 +236,7 @@ form {
       pointer-events: none;
       z-index: 2;
       transform-origin: 50% 0;
-      transition: all 0.2s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out;
+      transition: all 0.4s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out;
       opacity: 0.6; }
     .select_expand:hover::after {
       opacity: 1; }
@@ -231,7 +271,7 @@ form {
   .select_input {
     display: none; }
   .select_label {
-    transition: all 0.2s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out;
+    transition: all 0.3s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out;
     display: block;
     height: 0;
     font-size: 1.2rem;
@@ -241,7 +281,7 @@ form {
     cursor: pointer;
     padding-left: 1rem; }
     .select_label-placeholder {
-      height: 40px;
+      height: 4rem;
       font-size: 1.5rem;
       font-weight: 400;
       vertical-align: middle;
@@ -259,5 +299,5 @@ form {
     .select_expand:checked + .select_closeLabel + .select_options + .select_expandLabel {
       display: none; }
   .select_input:checked + .select_label {
-    height: 40px;
-    margin-top: -40px; }
+    height: 4rem;
+    margin-top: -4rem; }

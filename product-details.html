@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Product Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -71,16 +73,15 @@
       </div>
       <div class="header__bottom">
           <div class="custom-container">
-              <nav><div class="row">
-              <div class="col-lg-2 header__bottom__logo">
-                  <!-- <div class=""> -->
-                      <a href="#">
+              <nav>
+                <div class="row">
+              <div class="col-6 col-lg-2 header__bottom__logo">
+                  <a href="index.html">
                           <img src="assets/images/logo.jpg" alt="brand logo">
                       </a>
-                  <!-- </div> -->
               </div>
-              <div class="col-lg-8">
-<div class="header__bottom__nav-links">
+              <div class="header__bottom__nav-links col-lg-8">
+
     <ul>
         <li>
           <a href="index.html">Home<i class="fa fa-angle-down"></i></a> 
@@ -91,22 +92,22 @@
         <li>
          <a href="#">Pages<i class="fa fa-angle-down"></i></a>
           <ul class="pages__dropdown">
-            <li><a href="#">Column 1</a>
+            <li><a href="shop.html">Column 1</a>
 
               <ul>
-                <li><a href="#">shop grid left sidebar</a></li>
-                <li><a href="#">shop grid right sidebar</a></li>
-                <li><a href="#">shop list left sidebar</a></li>
-                <li><a href="#">shop list right sidebar</a></li>
+                <li><a href="shop.html">shop grid left sidebar</a></li>
+                <li><a href="shop.html">shop grid right sidebar</a></li>
+                <li><a href="shop.html">shop list left sidebar</a></li>
+                <li><a href="shop.html">shop list right sidebar</a></li>
               </ul>
             </li>
-            <li><a href="">Column 2</a>
+            <li><a href="product-details.html">Column 2</a>
 
               <ul>
-                <li><a href="#">product details</a></li>
-                <li><a href="#">product details affiliate</a></li>
-                <li><a href="#">product details variable</a></li>
-                <li><a href="#">product details group</a></li>
+                <li><a href="product-details.html">product details</a></li>
+                <li><a href="product-details.html">product details affiliate</a></li>
+                <li><a href="product-details.html">product details variable</a></li>
+                <li><a href="product-details.html">product details group</a></li>
               </ul>
             </li>
             <li><a href="">Column 3</a>
@@ -117,17 +118,17 @@
                 <li><a href="#">wishlist</a></li>
               </ul>
             </li>
-            <li><a href="">Column 4</a>
+            <li><a href="contact-us.html">Column 4</a>
               <ul>
                 <li><a href="#">my-account</a></li>
                 <li><a href="#">login-register</a></li>
-                <li><a href="#">contact us</a></li>
+                <li><a href="contact-us.html">contact us</a></li>
               </ul>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#">Shop<i class="fa fa-angle-down"></i></a>
+          <a href="shop.html">Shop<i class="fa fa-angle-down"></i></a>
           <ul class="shop__dropdown">
             <li>
               <a href="">shop grid layout<i class="fa-solid fa-angle-right"></i></a>
@@ -172,15 +173,15 @@
         </li>
         <li><a href="contact-us.html">Contact Us</a></li>
     </ul>
-</div>
+
               </div>
               
-        <div class="col-lg-2 header__bottom__config">
-            <!-- <div class=""> -->
+        <div class=" col-6 col-lg-2 header__bottom__config">
+ 
                 <ul>
-                    <li><button><img src="assets/images/icons/icons8-search-32.png" alt="search"></button></li>
+                    <li><button><i class="fa-solid fa-magnifying-glass"></i></button></li>
                     <li>
-                      <button><img src="assets/images/icons/icons8-settings-32.png" alt="settings">
+                      <button><i class="fa-solid fa-gear"></i>
                       <ul>
                         <li><a href="">Login</a></li>
                         <li><a href="">Register</a></li>
@@ -188,12 +189,13 @@
                       </ul>
                       </li>
                     <li>
-                      <button><img src="assets/images/icons/icons8-shopping-bag-32.png" alt="shopping bag">
+                      <button><i class="fa-solid fa-basket-shopping"></i>
                     <span>2</span></button>
 
                   </li>
+                  <li>
+                    <button id="hamburger"><i class="fa-solid fa-bars"></i></button></li>
                 </ul>
-            <!-- </div> -->
         </div>
           </div></nav>
           </div>
@@ -201,6 +203,153 @@
       </div>
     </header>
     <!-- Header ends -->
+
+    <!-- Aside canvas starts --> 
+ <aside class="canvas">
+   <div class="canvas__overlay"></div>
+   <div class="canvas__content">
+     <div class="canvas__content__closeBtn">
+       <button><i class="fa-solid fa-xmark"></i></button>
+     </div>
+     <form class="canvas__content__form">
+        <input type="search" placeholder="Search Here..." />
+        <button>
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+     </form>
+
+     <ul class="canvas__content__accordions">
+       <li>
+         <div>
+ <a href="index.html">Home</a>
+         
+         <div class="toggle"></div>
+         </div>
+        
+
+         <ul class="canvas__content__accordions__dropdown">
+           <li>
+             <a href="index.html">
+              Home Version 01
+             </a>
+            
+           </li>
+           <li>
+             <a href="index.html">
+              Home Version 02
+             </a>
+           </li>
+         </ul>
+       </li>
+       <li>
+         <div>
+ <a href="shop.html">Pages</a>
+         
+         <div class="wrap">
+<div class="toggle"></div>
+         </div>
+         </div>
+         
+
+         <ul class="canvas__content__accordions__dropdown">
+           <li>
+             <a href="">Column 01</a>
+           </li>
+           <li>
+             <a href="">Column 02</a>
+           </li>
+            <li>
+             <a href="">Column 03</a>
+           </li>
+            <li>
+             <a href="">Column 04</a>
+                       </li>
+         </ul>
+       </li>
+       <li>
+         <div>
+ <a href="shop.html">Shop</a>
+         
+         <div class="toggle"></div>
+         </div>
+         
+
+         <ul class="canvas__content__accordions__dropdown">
+           <li>
+             <a href="">Shop Grid Layout</a>
+           </li>
+           <li>
+             <a href="">Shop List Layout</a>
+           </li>
+            <li>
+             <a href="">Products Details</a>
+           </li>
+           
+         </ul>
+       </li>
+       <li>
+         <div>
+ <a href="blogs.html">Blog</a>
+         <div class="wrap">
+<div class="toggle"></div>
+         </div>
+         
+         </div>
+         
+
+         <ul class="canvas__content__accordions__dropdown">
+           <li>
+             <a href="">Blog Left Sidebar</a>
+           </li>
+            <li>
+             <a href="">Blog Right Sidebar</a>
+           </li>
+           
+         </ul>
+       </li>
+       <li>
+         <div>
+ <a href="index.html">Contact Us</a>
+         </div>
+       </li>
+     </ul>
+     <ul class="canvas__content__bottom">
+       <li>
+         <a href="">Currency</a> <i class="fa-solid fa-angle-down"></i>
+       </li>
+       <li>
+        <a href="">My Account</a> <i class="fa-solid fa-angle-down"></i>
+       </li>
+     </ul>
+     <ul class="canvas__content__contact-info">
+       <li>
+         <i class="fa fa-mobile"></i> <a href="">0123456789</a>
+       </li>
+       <li>
+         <i class="fa-regular fa-envelope"></i> <a href="">info@yourdomain.com</a>
+       </li>
+     </ul>
+    <ul class="canvas__content__social-medias">
+      <li><a href="">
+<i class="fa-brands fa-facebook-f"></i>
+      </a></li>
+      <li><a href="">
+<i class="fa-brands fa-twitter"></i>
+      </a></li>
+      <li><a href="">
+<i class="fa-brands fa-pinterest-p"></i>
+      </a></li>
+      <li><a href="">
+<i class="fa-brands fa-linkedin-in"></i>
+      </a></li>
+      <li><a href="">
+<i class="fa-brands fa-youtube"></i>
+      </a></li>
+    </ul>
+   </div>
+   
+ </aside>
+<!-- Aside canvas ends -->
 
     <!-- Main starts  -->
     <main>
@@ -212,7 +361,7 @@
                     <li class="breadcrumb__list__item">
                         <a href="index.html">Home</a>
                 </li>
-                <li class="breadcrumb__list__item">Shop </li>
+                <li class="breadcrumb__list__item"><a href="shop.html">Shop</a> </li>
                 <li class="breadcrumb__list__item active">Product Details</li>
 
                 </ul>
@@ -223,21 +372,29 @@
         
         <section class="product">
             <div class="custom-container">
-                <div class="row">
-                    <div class="col-lg-5">
+                <div class="row" style="row-gap: 1rem;">
+                    <div class="col-12 col-lg-5">
                         <div class="product__left-side">
                             <div class="zoom">
         <img  src="assets/images/dragShoes/product-details-img1.jpg" />
       </div>
       <div class="thumbs-container">
+        <div>
         <img class="thumb" src="assets/images/dragShoes/product-details-img1.jpg">
+        </div>
+        <div>
       <img class="thumb" src="assets/images/dragShoes/product-details-img2.jpg">
+        </div>
+        <div>
       <img class="thumb" src="assets/images/dragShoes/product-details-img3.jpg">
+        </div>
+        <div>
       <img class="thumb" src="assets/images/dragShoes/product-details-img4.jpg">
+        </div>
       </div>
                         </div>
                     </div>
-                    <div class="col-lg-7">
+                    <div class="col-12 col-lg-7">
                         <div class="product__right-side">
                             <div class="product__right-side__text">
                                 <h3>Primitive Mens Premium Shoes</h3>
@@ -344,7 +501,7 @@ Phasellus id nisi quis justo tempus mollis sed et dui. In hac habitasse platea d
               </div>
               <div class="tabs__reviews__submit">
                 <form >
-                  <div class="row">
+                  <div class="row" style="row-gap: 1.5rem;">
                     <div class="col-12">
                      <div> <label for="input-name"><span >* </span>Your Name</label>
                       <input type="text" id="input-name"></div>
@@ -394,8 +551,8 @@ Phasellus id nisi quis justo tempus mollis sed et dui. In hac habitasse platea d
       <h2>Related Product</h2>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing</p>
     </div>
-      <div class="row">
-      <div class="col-lg-3">
+      <div id="related-carousel" class="row owl-carousel owl-theme">
+      <div class="item">
     <div class="products__cards">
       <div class="products__cards__card">
         <div class="products__cards__card__top">
@@ -418,7 +575,7 @@ Phasellus id nisi quis justo tempus mollis sed et dui. In hac habitasse platea d
       </div>
     </div>
       </div>
-      <div class="col-lg-3">
+      <div class=" item">
     <div class="products__cards">
       <div class="products__cards__card">
         <div class="products__cards__card__top">
@@ -440,8 +597,7 @@ Phasellus id nisi quis justo tempus mollis sed et dui. In hac habitasse platea d
          
       </div>
     </div>
-      </div>
-      <div class="col-lg-3">
+      </div><div class=" item">
     <div class="products__cards">
       <div class="products__cards__card">
         <div class="products__cards__card__top">
@@ -464,7 +620,7 @@ Phasellus id nisi quis justo tempus mollis sed et dui. In hac habitasse platea d
       </div>
     </div>
       </div>
-      <div class="col-lg-3">
+      <div class="item">
     <div class="products__cards">
       <div class="products__cards__card">
         <div class="products__cards__card__top">
@@ -474,7 +630,7 @@ Phasellus id nisi quis justo tempus mollis sed et dui. In hac habitasse platea d
         </div>
           <div class="products__cards__card__bottom">
  <div class="products__cards__card__bottom__info">
-            <h5>Primitive Mens Shoes</h5>
+            <h5>Primitive Mens shoes</h5>
             <span>$80.00</span><del>$70.00</del>
           </div>
           <div class="products__cards__card__bottom__buttons">
@@ -487,7 +643,7 @@ Phasellus id nisi quis justo tempus mollis sed et dui. In hac habitasse platea d
       </div>
     </div>
       </div>
-            </div>
+    </div>
         </section>
     </main>
     <!-- Main ends -->
@@ -496,8 +652,8 @@ Phasellus id nisi quis justo tempus mollis sed et dui. In hac habitasse platea d
     <footer class="footer">
         <div class="footer__top">
           <div class="custom-container">
-          <div class="row">
-            <div class="col-lg-5 footer__top__left-side">
+          <div class="row" style="row-gap: 2rem;">
+            <div class="col-md-6 col-lg-5 footer__top__left-side">
               <h5 class="footer__top__left-side__title">
                 My Account
               </h5>
@@ -507,7 +663,7 @@ Phasellus id nisi quis justo tempus mollis sed et dui. In hac habitasse platea d
                   <li><img src="assets/images/icons/icons8-phone-32.png" alt="phone logo"><span>Phone:</span> <span>+ 00 254 254565</span></li>
               </ul>
             </div>
-            <div class="col-lg-2">
+            <div class="col-md-6  col-lg-2">
               <h5 class="footer__top__title">
                 Categories
               </h5>
@@ -520,7 +676,7 @@ Phasellus id nisi quis justo tempus mollis sed et dui. In hac habitasse platea d
                   <li>Jigoshop</li>
               </ul>
             </div>
-            <div class="col-lg-2">
+            <div class="col-md-6 col-lg-2">
               <h5 class="footer__top__title">
                 Information
               </h5>
@@ -533,7 +689,7 @@ Phasellus id nisi quis justo tempus mollis sed et dui. In hac habitasse platea d
                   <li>Privacy Policy</li>
               </ul>
             </div>
-            <div class="col-lg-3 custom-flex">
+            <div class="col-md-6 col-lg-3 custom-flex">
               <h5 class="footer__top__title">
                 Quick Links
               </h5>
@@ -593,7 +749,12 @@ Phasellus id nisi quis justo tempus mollis sed et dui. In hac habitasse platea d
     <a class="hidden" href="#"><button class="btn btn-fixed"><i class="fa-solid fa-angle-up"></i></button></a>
 
     
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <!-- <script src="assets/js/main.js"></script> -->
+    <script  src="assets/js/global.js"></script>
     <script src="assets/js/contact-us.js"></script>
     <script src="assets/js/product-details.js"></script>
   </body>

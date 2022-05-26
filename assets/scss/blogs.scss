@@ -20,6 +20,10 @@
       font-size: 1.5rem;
       a {
         color: $dark;
+        transition: $main-transition-speed color;
+        &:hover {
+          color: $mainColor;
+        }
       }
       &:not(:last-child)::after {
         content: "/";
@@ -42,13 +46,13 @@
       &__item {
         border: 1px solid $grey;
         border-radius: 0.4rem;
-        transition: 400ms background-color;
+        transition: $main-transition-speed background-color;
 
         a {
           display: inline-block;
           padding: 1rem 1.6rem;
           color: $dark;
-          transition: 400ms color;
+          transition: $main-transition-speed color;
           &:hover {
             color: $white;
           }

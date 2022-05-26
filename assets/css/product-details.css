@@ -2,11 +2,10 @@
   margin-right: 2.5rem;
   overflow: hidden; }
   .product__left-side .zoom {
-    background: url(../images/dragShoes/product-details-img1.jpg);
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
+    background: url(../images/dragShoes/product-details-img1.jpg) center center no-repeat;
     overflow: hidden;
-    cursor: zoom-in; }
+    cursor: zoom-in;
+    border: 1px solid #e5e5e5; }
     .product__left-side .zoom img {
       transition: opacity 0.5s;
       display: block;
@@ -14,11 +13,16 @@
       .product__left-side .zoom img:hover {
         opacity: 0; }
   .product__left-side .thumbs-container {
-    margin: 20px 0;
-    width: 100%; }
-    .product__left-side .thumbs-container img {
-      max-width: 11rem;
-      border: 1px solid #e5e5e5; }
+    margin: 2rem 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem; }
+    .product__left-side .thumbs-container div {
+      cursor: pointer; }
+      .product__left-side .thumbs-container div .thumb {
+        width: 100%;
+        border: 1px solid #e5e5e5; }
 
 .product__right-side__text {
   gap: 1rem; }
@@ -132,18 +136,30 @@
   .tabs__desc__product {
     padding: 2.5rem 0;
     display: flex; }
+    @media (max-width: 767px) {
+      .tabs__desc__product {
+        display: block; } }
     .tabs__desc__product__img-container {
-      flex-basis: 300px; }
+      width: 30rem; }
+      @media (max-width: 767px) {
+        .tabs__desc__product__img-container {
+          width: 100%; } }
       .tabs__desc__product__img-container img {
-        max-width: 30rem; }
+        width: 100%; }
     .tabs__desc__product__info {
       margin-left: 4rem; }
+      @media (max-width: 767px) {
+        .tabs__desc__product__info {
+          margin-left: 2rem; } }
       .tabs__desc__product__info h3 {
         font-size: 2rem;
         text-transform: capitalize;
         font-weight: 500;
         color: #e3a51e;
         padding-bottom: 1rem; }
+        @media (max-width: 767px) {
+          .tabs__desc__product__info h3 {
+            margin-top: 2rem; } }
       .tabs__desc__product__info ul {
         display: flex;
         flex-direction: column;

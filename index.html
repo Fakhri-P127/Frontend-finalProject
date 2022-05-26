@@ -348,14 +348,44 @@
    
  </aside>
 <!-- Aside canvas ends -->
+
     <!-- Main starts  -->
     <main>
       <!-- Hero slider section starts -->
-        <section class="hero__slider">
+        <section class="hero">
           <div class="custom-container">
             <div class="row">
               <div class="col-12">
-                <div class="sliders">
+                <div class="hero__sliders">
+        <div id="slide--1" class="hero__sliders__slide">
+          <div class="hero__sliders__slide__content">
+            <h5 class="hero__sliders__slide__content__subtitle">Top Selling!</h5>
+            <h2 class="hero__sliders__slide__content__title">New Collection</h2>
+            <p class="hero__sliders__slide__content__text">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incidid
+            </p>
+            <button class="btn--light">Shop Now</button>
+
+          </div>
+        </div>
+
+        <div id="slide--2" class="hero__sliders__slide">
+          <div class="hero__sliders__slide__content">
+            <h5 class="hero__sliders__slide__content__subtitle">
+              Best Selling!
+            </h5>
+            <h2 class="hero__sliders__slide__content__title">Top Collection</h2>
+            <p class="hero__sliders__slide__content__text">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incidid
+            </p>
+            <button class="btn--light">Shop Now</button>
+          </div>
+        </div>
+        <button class=" hero__sliders__btn hero__sliders__btn--left"><i class="fa-solid fa-angle-left"></i></button>
+        <button class=" hero__sliders__btn hero__sliders__btn--right"><i class="fa-solid fa-angle-right"></i></button>
+        <div class="dots"></div>
+      </div>
+                <!-- <div class="sliders">
                   <div class="slide slider--active ">
                   <img src="assets/images/slider/slider-1.jpg" alt="slider img">
                   <div class="slider__text">
@@ -377,10 +407,8 @@
                 <button class="btn btn__slider" id="btn-prev"><i class="fa-solid fa-angle-left"></i></button>
                 <button class="btn btn__slider" id="btn-next"><i class="fa-solid fa-angle-right"></i></button>
 
-                </div>
-                
+                </div> -->  
               </div>
-              
             </div>
           </div>
         </section>
@@ -592,12 +620,12 @@
     </div>
     <div class="top-seller__products">
       <div class="row">
-        <div class=" col-12  col-lg-4">
+        <div class=" col-12 col-md-5 col-lg-4">
           <div class="top-seller__products__img-container">
            <img src="assets/images/banner/banner-3.jpg" alt="">
           </div>
         </div>
-        <div class="col-12  col-lg-8">
+        <div class="col-12 col-md-7 col-lg-8">
           <div class="top-seller__products__sliders">
             <div>
             <div id="top-seller-carousel" class="row owl-carousel owl-theme">
@@ -606,7 +634,7 @@
                 <div class="top-seller__products__sliders__slider">
                   <div class="top-seller__products__sliders__slider__left-side">
                     <div class="top-seller__products__sliders__slider__left-side__img-container">
-                       <img src="assets/images/small/pro-small-2.jpg" alt="Quickiin shoe">
+                       <img src="assets/images/small/pro-small-1.jpg" alt="Quickiin shoe">
                     </div>
                     </div>
                     <div class="top-seller__products__sliders__slider__right-side">
@@ -845,8 +873,8 @@
     <footer class="footer">
         <div class="footer__top">
           <div class="custom-container">
-          <div class="row">
-            <div class="col-lg-5 footer__top__left-side">
+          <div class="row" style="row-gap: 2rem;">
+            <div class="col-md-6 col-lg-5 footer__top__left-side">
               <h5 class="footer__top__left-side__title">
                 My Account
               </h5>
@@ -856,7 +884,7 @@
                   <li><img src="assets/images/icons/icons8-phone-32.png" alt="phone logo"><span>Phone:</span> <span>+ 00 254 254565</span></li>
               </ul>
             </div>
-            <div class="col-lg-2">
+            <div class="col-md-6  col-lg-2">
               <h5 class="footer__top__title">
                 Categories
               </h5>
@@ -869,7 +897,7 @@
                   <li>Jigoshop</li>
               </ul>
             </div>
-            <div class="col-lg-2">
+            <div class="col-md-6 col-lg-2">
               <h5 class="footer__top__title">
                 Information
               </h5>
@@ -882,7 +910,7 @@
                   <li>Privacy Policy</li>
               </ul>
             </div>
-            <div class="col-lg-3 custom-flex">
+            <div class="col-md-6 col-lg-3 custom-flex">
               <h5 class="footer__top__title">
                 Quick Links
               </h5>
@@ -946,6 +974,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="assets/js/global.js"></script>
     <script src="assets/js/main.js"></script>
   </body>
 </html>

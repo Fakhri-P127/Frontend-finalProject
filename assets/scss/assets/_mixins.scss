@@ -77,7 +77,17 @@ $breakpoints-down: (
     }
   }
 }
-
+@mixin scaleAnimation {
+  animation: scaleUp 1000ms forwards;
+  @keyframes scaleUp {
+    from {
+      transform: scale(0);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+}
 @mixin nav-dropdown() {
   opacity: 0;
   position: absolute;
@@ -90,7 +100,7 @@ $breakpoints-down: (
   text-transform: capitalize;
   pointer-events: none;
   transform: translateY(20%);
-  transition: 400ms opacity, 400ms transform;
+  transition: $main-transition-speed opacity, $main-transition-speed transform;
 }
 
 @mixin main-style-a() {

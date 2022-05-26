@@ -17,7 +17,10 @@
       font-weight: 400;
       font-size: 1.5rem; }
       .breadcrumb__list__item a {
-        color: #333; }
+        color: #333;
+        transition: 400ms color; }
+        .breadcrumb__list__item a:hover {
+          color: #e3a51e; }
       .breadcrumb__list__item:not(:last-child)::after {
         content: "/";
         margin-left: 0.4rem; }
