@@ -1,8 +1,6 @@
 @import "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap";
 @import "assets/mixins", "assets/_medias", "assets/colors", "assets/_forJS";
 
-$main-transition-speed: 400ms;
-
 * {
   margin: 0;
   padding: 0;
@@ -348,43 +346,108 @@ a {
 
   &__sliders {
     // max-width: 100rem;
-    height: 47rem;
+    // height: 47rem;
     margin: 0 auto;
     position: relative;
-    overflow: hidden;
+    // overflow: hidden;
 
+    .owl-nav .owl-next,
+    .owl-nav .owl-prev {
+      position: absolute;
+      top: 50%;
+      z-index: 1000;
+      border: none;
+      background: rgba(255, 255, 255, 0.7) !important;
+      // font-size: 2rem;
+      color: $dark;
+      height: 4.6rem;
+      width: 4.6rem;
+      font-size: 3rem !important;
+      cursor: pointer;
+
+      transition: $main-transition-speed color,
+        $main-transition-speed background-color;
+      &:hover {
+        background-color: $mainColor !important;
+        color: $white !important;
+      }
+
+      @include breakpoint-down("medium") {
+        display: none !important;
+      }
+    }
+    .owl-prev {
+      left: 4%;
+      transform: translate(-50%, -50%);
+    }
+    .owl-next {
+      right: 4%;
+      transform: translate(50%, -50%);
+    }
+
+    .owl-dots {
+      display: none;
+    }
     @include breakpoint-down("medium") {
-      height: 40rem;
+      .owl-dots {
+        @include flex();
+        position: absolute;
+        bottom: 5%;
+        left: 50%;
+        transform: translateX(-50%);
+
+        & .owl-dot {
+          span {
+            border: none;
+            background-color: #e7e7e7;
+            // opacity: 0.7;
+            height: 0.6rem;
+            width: 3rem;
+            border-radius: 10px;
+            margin-right: 1rem;
+            cursor: pointer;
+            transition: all 0.4s;
+          }
+          &:last-child {
+            span {
+              margin: 0;
+            }
+          }
+        }
+      }
+
+      .owl-drag .owl-dots .active {
+        span {
+          background-color: $mainColor;
+        }
+      }
     }
-    @include breakpoint-down("small") {
-      height: 35rem;
-    }
-    #slide--1 {
-      background: url(../images/slider/slider-1.jpg) center/cover;
-    }
-    #slide--2 {
-      background: url(../images/slider/slider-2.jpg) center/cover;
-    }
+    // @include breakpoint-down("medium") {
+    //   height: 40rem;
+    // }
+    // @include breakpoint-down("small") {
+    //   height: 35rem;
+    // }
+
     &__slide {
       @include flex(center);
-      position: absolute;
-      top: 0;
+
+      // top: 0;
       width: 100%;
-      // height: 40rem;
       height: 100%;
       // opacity: 0;
-      transition: opacity 1s, 1s transform;
+      // transition: opacity 1s;
 
-      @include breakpoint-down("small") {
-        height: 35rem;
-      }
+      // @include breakpoint-down("small") {
+      //   height: 35rem;
+      // }
 
       &__content {
         max-width: 40rem;
         position: relative;
         margin: 0 10rem;
         color: $white;
-
+        top: 25%;
         @include breakpoint-down("medium") {
           max-width: 35rem;
           margin: 0 3rem;
@@ -409,68 +472,38 @@ a {
       }
     }
     &:hover &__btn {
-      position: absolute;
-      top: 50%;
-      z-index: 10;
-      border: none;
-      background: rgba(255, 255, 255, 0.7);
-      font-family: inherit;
-      color: $dark;
-      height: 4.6rem;
-      width: 4.6rem;
-      font-size: 2rem;
-      cursor: pointer;
+      // position: absolute;
+      // top: 50%;
+      // z-index: 10;
+      // border: none;
+      // background: rgba(255, 255, 255, 0.7);
+      // font-family: inherit;
+      // color: $dark;
+      // height: 4.6rem;
+      // width: 4.6rem;
+      // font-size: 2rem;
+      // cursor: pointer;
 
-      transition: $main-transition-speed color,
-        $main-transition-speed background-color;
-      &:hover {
-        background-color: $mainColor;
-        color: $white;
-      }
+      // transition: $main-transition-speed color,
+      //   $main-transition-speed background-color;
+      // &:hover {
+      //   background-color: $mainColor;
+      //   color: $white;
+      // }
 
-      @include breakpoint-down("medium") {
-        display: none;
-      }
+      // @include breakpoint-down("medium") {
+      //   display: none;
+      // }
 
-      &--left {
-        left: 4%;
-        transform: translate(-50%, -50%);
-      }
+      // &--left {
+      //   left: 4%;
+      //   transform: translate(-50%, -50%);
+      // }
 
-      &--right {
-        right: 4%;
-        transform: translate(50%, -50%);
-      }
-    }
-
-    @include breakpoint-down("medium") {
-      .dots {
-        @include flex();
-        position: absolute;
-        bottom: 5%;
-        left: 50%;
-        transform: translateX(-50%);
-      }
-      .dots__dot {
-        border: none;
-        background-color: #e7e7e7;
-        // opacity: 0.7;
-        height: 0.6rem;
-        width: 3rem;
-        border-radius: 10px;
-        margin-right: 1rem;
-        cursor: pointer;
-        transition: all 0.4s;
-      }
-
-      .dots__dot:last-child {
-        margin: 0;
-      }
-
-      .dots__dot--active {
-        background-color: $mainColor;
-        opacity: 1;
-      }
+      // &--right {
+      //   right: 4%;
+      //   transform: translate(50%, -50%);
+      // }
     }
   }
 }
@@ -520,16 +553,14 @@ a {
     @include main-title();
   }
   &__cards {
-    padding: 4rem 0.8rem;
+    padding: 3rem 0.8rem;
 
     &__card {
       width: 100%;
-      // width: 32rem;
-      // padding: 0 2rem;
       border: 1px solid $grey;
       border-radius: 0.4rem;
       transition: $main-transition-speed border;
-      @include moveToLeft();
+      // @include moveToLeftRight();
       &__top {
         overflow: hidden;
         &__img {
@@ -551,14 +582,16 @@ a {
         text-align: center;
         &__info {
           color: $dark;
-          transition: $main-transition-speed color;
-          &:hover {
-            color: $mainColor;
-          }
+
           h5 {
             font-size: 1.8rem;
             font-weight: 500;
             margin-bottom: 1rem;
+            cursor: pointer;
+            transition: $main-transition-speed color;
+            &:hover {
+              color: $mainColor;
+            }
           }
           span {
             font-size: 1.8rem;
@@ -648,13 +681,13 @@ a {
         font-weight: 500;
         text-transform: uppercase;
         padding-bottom: 1.4rem;
-        @include moveToRight();
+        @include moveToRightLeft();
       }
       h3 {
         font-size: 3rem;
         font-weight: 600;
         text-transform: uppercase;
-        @include moveToLeft();
+        @include moveToLeftRight();
       }
     }
 
@@ -704,13 +737,13 @@ a {
         font-weight: 500;
         text-transform: uppercase;
         padding-bottom: 1.4rem;
-        @include moveToRight();
+        @include moveToRightLeft();
       }
       h3 {
         font-size: 3rem;
         font-weight: 600;
         text-transform: uppercase;
-        @include moveToLeft();
+        @include moveToLeftRight();
       }
     }
 
@@ -1090,7 +1123,7 @@ a {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.3);
-    z-index: 99;
+    z-index: 999;
     transform: translateX(-100%);
     // cursor: pointer;
 
@@ -1308,4 +1341,22 @@ body::-webkit-scrollbar-track {
 }
 body::-webkit-scrollbar-thumb {
   background-color: $mainColor;
+}
+
+.item-1 {
+  background-image: url(https://htmldemo.net/juan/juan/assets/img/slider/slider-1.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 470px;
+  position: relative;
+}
+.item-2 {
+  background-image: url(https://htmldemo.net/juan/juan/assets/img/slider/slider-2.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 470px;
 }

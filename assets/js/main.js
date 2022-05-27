@@ -1,5 +1,24 @@
 "use strict";
 
+var owl = $(".first-slider");
+owl.owlCarousel({
+  items: 1,
+  loop: true,
+  margin: 10,
+  nav: true,
+  // dots: false,
+  autoplay: true,
+  autoplayTimeout: 3000,
+  autoplayHoverPause: true,
+  animateOut: "fadeOut",
+});
+$(".play").on("click", function () {
+  owl.trigger("play.owl.autoplay", [3000]);
+});
+$(".stop").on("click", function () {
+  owl.trigger("stop.owl.autoplay");
+});
+
 $("#product-carousel").owlCarousel({
   loop: true,
   margin: 10,
@@ -207,10 +226,17 @@ const slider = function () {
       .classList.add("dots__dot--active");
   };
 
+  // slides.forEach((slide) => (slide.style.opacity = "0"));
+  // slides[0].style.opacity = "1";
+  // slides;
+  const salam = document.querySelectorAll(".hero__sliders__slide");
+  console.log(salam);
   const goToSlide = function (slide) {
     slides.forEach(
       (s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`)
     );
+    // salam.forEach((sa) => sa.classList.add("active-slider"));
+
     // slides.forEach((slide) => $(slide).fadeIn());
   };
 
@@ -221,6 +247,7 @@ const slider = function () {
     } else {
       curSlide++;
     }
+    salam.forEach((sa) => sa.classList.add("active-slider"));
 
     goToSlide(curSlide);
     activateDot(curSlide);
@@ -232,6 +259,7 @@ const slider = function () {
     } else {
       curSlide--;
     }
+
     goToSlide(curSlide);
     activateDot(curSlide);
   };
