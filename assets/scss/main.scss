@@ -345,102 +345,28 @@ a {
   @include flex();
 
   &__sliders {
-    // max-width: 100rem;
-    // height: 47rem;
     margin: 0 auto;
     position: relative;
-    // overflow: hidden;
-
-    .owl-nav .owl-next,
-    .owl-nav .owl-prev {
-      position: absolute;
-      top: 50%;
-      z-index: 1000;
-      border: none;
-      background: rgba(255, 255, 255, 0.7) !important;
-      // font-size: 2rem;
-      color: $dark;
-      height: 4.6rem;
-      width: 4.6rem;
-      font-size: 3rem !important;
-      cursor: pointer;
-
-      transition: $main-transition-speed color,
-        $main-transition-speed background-color;
-      &:hover {
-        background-color: $mainColor !important;
-        color: $white !important;
-      }
-
-      @include breakpoint-down("medium") {
-        display: none !important;
-      }
-    }
-    .owl-prev {
-      left: 4%;
-      transform: translate(-50%, -50%);
-    }
-    .owl-next {
-      right: 4%;
-      transform: translate(50%, -50%);
-    }
-
-    .owl-dots {
-      display: none;
-    }
-    @include breakpoint-down("medium") {
-      .owl-dots {
-        @include flex();
-        position: absolute;
-        bottom: 5%;
-        left: 50%;
-        transform: translateX(-50%);
-
-        & .owl-dot {
-          span {
-            border: none;
-            background-color: #e7e7e7;
-            // opacity: 0.7;
-            height: 0.6rem;
-            width: 3rem;
-            border-radius: 10px;
-            margin-right: 1rem;
-            cursor: pointer;
-            transition: all 0.4s;
-          }
-          &:last-child {
-            span {
-              margin: 0;
-            }
-          }
-        }
-      }
-
-      .owl-drag .owl-dots .active {
-        span {
-          background-color: $mainColor;
-        }
-      }
-    }
-    // @include breakpoint-down("medium") {
-    //   height: 40rem;
-    // }
-    // @include breakpoint-down("small") {
-    //   height: 35rem;
-    // }
+    overflow: hidden;
 
     &__slide {
       @include flex(center);
-
-      // top: 0;
       width: 100%;
       height: 100%;
-      // opacity: 0;
-      // transition: opacity 1s;
 
-      // @include breakpoint-down("small") {
-      //   height: 35rem;
-      // }
+      .item-1 {
+        background: url(https://htmldemo.net/juan/juan/assets/img/slider/slider-1.jpg)
+          center/cover no-repeat;
+        width: 100%;
+        height: 47rem;
+        position: relative;
+      }
+      .item-2 {
+        background: url(https://htmldemo.net/juan/juan/assets/img/slider/slider-2.jpg)
+          center/cover no-repeat;
+        width: 100%;
+        height: 47rem;
+      }
 
       &__content {
         max-width: 40rem;
@@ -470,40 +396,82 @@ a {
           line-height: 2.72rem;
         }
       }
-    }
-    &:hover &__btn {
-      // position: absolute;
-      // top: 50%;
-      // z-index: 10;
-      // border: none;
-      // background: rgba(255, 255, 255, 0.7);
-      // font-family: inherit;
-      // color: $dark;
-      // height: 4.6rem;
-      // width: 4.6rem;
-      // font-size: 2rem;
-      // cursor: pointer;
+      .owl-dots {
+        display: none;
+      }
+      @include breakpoint-down("medium") {
+        .owl-dots {
+          @include flex();
+          position: absolute;
+          bottom: 5%;
+          left: 50%;
+          transform: translateX(-50%);
 
-      // transition: $main-transition-speed color,
-      //   $main-transition-speed background-color;
-      // &:hover {
-      //   background-color: $mainColor;
-      //   color: $white;
-      // }
+          & .owl-dot {
+            span {
+              border: none;
+              background-color: #e7e7e7;
+              height: 0.6rem;
+              width: 3rem;
+              border-radius: 10px;
+              margin-right: 1rem;
+              cursor: pointer;
+              transition: all 0.4s;
+            }
+            &:last-child {
+              span {
+                margin: 0;
+              }
+            }
+          }
+        }
 
-      // @include breakpoint-down("medium") {
-      //   display: none;
-      // }
+        .owl-drag .owl-dots .active {
+          span {
+            background-color: $mainColor;
+          }
+        }
+      }
 
-      // &--left {
-      //   left: 4%;
-      //   transform: translate(-50%, -50%);
-      // }
+      .owl-next,
+      .owl-prev {
+        opacity: 0;
+        visibility: hidden;
+      }
+      .owl-carousel:hover .owl-next,
+      .owl-carousel:hover .owl-prev {
+        position: absolute;
+        top: 50%;
+        z-index: 1000;
+        opacity: 1;
+        visibility: visible;
+        border: none;
+        background: rgba(255, 255, 255, 0.7);
+        color: $dark;
+        height: 4.6rem;
+        width: 4.6rem;
+        font-size: 3rem;
+        cursor: pointer;
+        transition: $main-transition-speed color,
+          $main-transition-speed background-color;
 
-      // &--right {
-      //   right: 4%;
-      //   transform: translate(50%, -50%);
-      // }
+        &:hover {
+          background-color: $mainColor;
+          color: $white;
+        }
+
+        @include breakpoint-down("medium") {
+          display: none;
+        }
+      }
+      .owl-prev {
+        left: 3%;
+        transform: translate(-50%, -50%);
+      }
+      .owl-next {
+        right: 3%;
+        transform: translate(50%, -50%);
+      }
     }
   }
 }
@@ -560,7 +528,6 @@ a {
       border: 1px solid $grey;
       border-radius: 0.4rem;
       transition: $main-transition-speed border;
-      // @include moveToLeftRight();
       &__top {
         overflow: hidden;
         &__img {
@@ -656,6 +623,7 @@ a {
 }
 // Products section ends
 
+// Banner sale section starts
 .banner-sale {
   margin-top: 10.4rem;
 
@@ -778,6 +746,9 @@ a {
   }
 }
 
+// Banner sale section starts
+
+// Top seller section starts
 .top-seller {
   &__title {
     @include main-title();
@@ -791,11 +762,7 @@ a {
       @include breakpoint-down("medium") {
         width: 27rem;
       }
-      // @include breakpoint-down("medium") {
-      //   // width: 38.4rem;
-      //   max-width: 39rem;
-      //   margin-bottom: 2rem;
-      // }
+
       @include breakpoint-down("small") {
         width: 100%;
         margin-bottom: 2rem;
@@ -809,8 +776,6 @@ a {
       height: 100%;
       padding-left: 1.2rem;
       @include breakpoint-down("medium") {
-        // margin-left: 5rem;
-
         margin-left: 0;
         padding-left: 0;
       }
@@ -893,7 +858,9 @@ a {
     }
   }
 }
+// Top seller section ends
 
+// Blog section starts
 .blog {
   &__title {
     @include main-title();
@@ -945,7 +912,9 @@ a {
     }
   }
 }
+// Blog section ends
 
+// Brands section starts
 .brands {
   padding: 8rem 1.5rem;
   .custom-flex {
@@ -968,7 +937,9 @@ a {
     }
   }
 }
+// Brands section ends
 
+// Footer starts
 .footer {
   &__top {
     background: $white-300;
@@ -1110,12 +1081,10 @@ a {
     font-size: 1.8rem;
   }
 }
-// .hidden {
-//   display: none;
-// }
+// Footer ends
+
 // Javascript related
 .canvas {
-  // z-index: 9999;
   &__overlay {
     position: fixed;
     top: 0%;
@@ -1125,9 +1094,6 @@ a {
     background-color: rgba(0, 0, 0, 0.3);
     z-index: 999;
     transform: translateX(-100%);
-    // cursor: pointer;
-
-    // transition: 100ms transform;
   }
   .return {
     transform: translateX(0);
@@ -1138,20 +1104,21 @@ a {
     left: 0;
     width: 30rem;
     height: 100vh;
-    padding: 20px;
+    padding: 2rem;
     background-color: $white;
     z-index: 999;
     transform: translateX(-500%);
     transition: $main-transition-speed transform ease-in-out;
+
     &__closeBtn {
       position: absolute;
       top: 0;
       left: 100%;
-      width: 40px;
-      height: 40px;
-      font-size: 20px;
+      width: 4rem;
+      height: 4rem;
+      font-size: 2rem;
       color: #fff;
-      line-height: 40px;
+      line-height: 4rem;
       text-align: center;
       cursor: pointer;
       transition: 0.4s all;
@@ -1176,11 +1143,11 @@ a {
       @include flex();
       input {
         color: $grey-100;
-        font-size: 13px;
+        font-size: 1.3rem;
         width: 100%;
-        height: 40px;
+        height: 4rem;
         border: none;
-        padding: 0 40px 0 10px;
+        padding: 0 4rem 0 1rem;
         background-color: #f2f2f2;
         outline: none;
         &::placeholder {
@@ -1204,13 +1171,12 @@ a {
         div {
           @include flex(center, space-between);
           a {
-            font-size: 15px;
-            color: #333333;
+            font-size: 1.5rem;
+            color: $dark;
             text-transform: capitalize;
             line-height: 18px;
-            // position: relative;
-            // display: inline-block;
-            padding: 10px 0;
+
+            padding: 1rem 0;
             transition: $main-transition-speed color;
             &:hover {
               color: $mainColor;
@@ -1341,22 +1307,4 @@ body::-webkit-scrollbar-track {
 }
 body::-webkit-scrollbar-thumb {
   background-color: $mainColor;
-}
-
-.item-1 {
-  background-image: url(https://htmldemo.net/juan/juan/assets/img/slider/slider-1.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 470px;
-  position: relative;
-}
-.item-2 {
-  background-image: url(https://htmldemo.net/juan/juan/assets/img/slider/slider-2.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 470px;
 }

@@ -89,6 +89,9 @@
         border: 1px solid #e8e8e8;
         color: #666666;
         padding: 10px 10px; }
+  @media (max-width: 767px) {
+    .shop__products__cards #mycol {
+      width: 100%; } }
   .shop__products__cards #cards--2 {
     padding: 3rem 0; }
     .shop__products__cards #cards--2 .products__full__cards {
@@ -145,8 +148,10 @@
 
 @keyframes scaleUp {
   from {
-    transform: scale(0); }
+    opacity: 0;
+    transform: scale(0.7); }
   to {
+    opacity: 1;
     transform: scale(1); } }
   .shop__products__cards .move-to-left {
     animation: moveToLeft 1000ms forwards; }
@@ -374,8 +379,10 @@ input[type="number"] {
 
 @keyframes scaleUp {
   from {
-    transform: scale(0); }
+    opacity: 0;
+    transform: scale(0.7); }
   to {
+    opacity: 1;
     transform: scale(1); } }
 
 #cards--2 {

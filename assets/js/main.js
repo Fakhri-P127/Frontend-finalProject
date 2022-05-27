@@ -195,98 +195,69 @@ reviewBox.forEach((reviewBox) =>
 //   isPlus = !isPlus;
 // });
 
-// Slider
-const slider = function () {
-  const slides = document.querySelectorAll(".hero__sliders__slide");
-  const btnLeft = document.querySelector(".hero__sliders__btn--left");
-  const btnRight = document.querySelector(".hero__sliders__btn--right");
-  const dotContainer = document.querySelector(".dots");
+const basketCount = document.querySelector("#basket-count");
+const basketIcons = document.querySelectorAll(".fa-basket-shopping");
 
-  slides[0].style.opacity = "1";
-  let curSlide = 0;
-  const maxSlide = slides.length;
+// console.log(basketCount, basketIcons);
+let items = localStorage.getItem("items")
+  ? JSON.parse(localStorage.getItem("items"))
+  : [];
+const span = document.createElement("span");
+basketIcons.forEach((basketIcon) => {
+  basketIcon.addEventListener("click", (e) => {
+    // if (basketIcon.classList.contains("fa-regular")) {
+    //   basketIcon.classList.remove("fa-regular");
+    //   basketIcon.classList.add("fa-solid");
+    //   basketIcon.style.color = "crimson";
+    // } else if (basketIcon.classList.contains("fa-solid")) {
+    //   basketIcon.classList.remove("fa-solid");
+    //   basketIcon.classList.add("fa-regular");
+    //   basketIcon.style.color = "black";
+    // }
 
-  // Functions
-  const createDots = function () {
-    slides.forEach(function (_, i) {
-      dotContainer.insertAdjacentHTML(
-        "beforeend",
-        `<button class="dots__dot" data-slide="${i}"></button>`
-      );
-    });
-  };
-
-  const activateDot = function (slide) {
-    document
-      .querySelectorAll(".dots__dot")
-      .forEach((dot) => dot.classList.remove("dots__dot--active"));
-
-    document
-      .querySelector(`.dots__dot[data-slide="${slide}"]`)
-      .classList.add("dots__dot--active");
-  };
-
-  // slides.forEach((slide) => (slide.style.opacity = "0"));
-  // slides[0].style.opacity = "1";
-  // slides;
-  const salam = document.querySelectorAll(".hero__sliders__slide");
-  console.log(salam);
-  const goToSlide = function (slide) {
-    slides.forEach(
-      (s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`)
+    // This is needed for total in basket.html
+    console.log(basketIcon);
+    // const prices = basketIcon.closest(".btn");
+    const prices = Number(
+      // can't use closest() because the names of the parent classes are different in basket icons
+      basketIcon.parentElement.parentElement.parentElement
+        .querySelector("span")
+        .textContent.slice(1)
     );
-    // salam.forEach((sa) => sa.classList.add("active-slider"));
 
-    // slides.forEach((slide) => $(slide).fadeIn());
-  };
+    console.log(prices);
+    const img =
+      basketIcon.parentElement.parentElement.parentElement.parentElement.querySelector(
+        "img"
+      );
+    console.log(img);
 
-  // Next slide
-  const nextSlide = function () {
-    if (curSlide === maxSlide - 1) {
-      curSlide = 0;
-    } else {
-      curSlide++;
-    }
-    salam.forEach((sa) => sa.classList.add("active-slider"));
-
-    goToSlide(curSlide);
-    activateDot(curSlide);
-  };
-
-  const prevSlide = function () {
-    if (curSlide === 0) {
-      curSlide = maxSlide - 1;
-    } else {
-      curSlide--;
-    }
-
-    goToSlide(curSlide);
-    activateDot(curSlide);
-  };
-
-  const init = function () {
-    goToSlide(0);
-    createDots();
-
-    activateDot(0);
-  };
-  init();
-
-  // Event handlers
-  btnRight.addEventListener("click", nextSlide);
-  btnLeft.addEventListener("click", prevSlide);
-
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "ArrowLeft") prevSlide();
-    e.key === "ArrowRight" && nextSlide();
+    // basketIcon.classList.toggle("fa-regular");
+    // basketIcon.classList.toggle("fa-solid");
+    // basketIcon.style.color = "crimson";
+    // if (items.length > 0) {
+    //   if (items.some((item) => item.id === e.target.id)) {
+    //     items = items.filter((item) => item.id !== e.target.id);
+    //   } else {
+    //     items.push({
+    //       id: `${basketIcon.id}`,
+    //       count: 1,
+    //       price: `${prices.textContent}`,
+    //       imgSrc: `${img.src}`,
+    //     });
+    //   }
+    // } else {
+    //   items.push({
+    //     id: `${basketIcon.id}`,
+    //     count: 1,
+    //     price: `${prices.textContent}`,
+    //     imgSrc: `${img.src}`,
+    //   });
   });
+  // localStorage.setItem("items", JSON.stringify(items));
 
-  dotContainer.addEventListener("click", function (e) {
-    if (e.target.classList.contains("dots__dot")) {
-      const { slide } = e.target.dataset;
-      goToSlide(slide);
-      activateDot(slide);
-    }
-  });
-};
-slider();
+  // span.innerHTML = items.length;
+
+  // basketCount.appendChild(span);
+});
+// });
