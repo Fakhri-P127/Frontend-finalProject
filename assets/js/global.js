@@ -2,7 +2,7 @@ const headerBottom = document.querySelector(".header__bottom");
 
 const backToTop = document.querySelector(".btn-fixed");
 // const heroSlider = document.querySelector(".hero");
-console.log(backToTop);
+
 window.addEventListener("scroll", function () {
   //   const clientSection = heroSlider.getBoundingClientRect();
   const mediaQuery = window.matchMedia("(max-width: 993px)");

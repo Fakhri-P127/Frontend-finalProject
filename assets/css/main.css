@@ -845,15 +845,15 @@ a {
           padding-left: 0; } }
       .top-seller__products__sliders__slider__right-side__title {
         color: #333; }
-        .top-seller__products__sliders__slider__right-side__title h6 {
+        .top-seller__products__sliders__slider__right-side__title h5 {
           font-weight: 500;
           line-height: 19.2px;
           font-size: 1.6rem;
           color: #333;
           margin-bottom: 1rem; }
-          .top-seller__products__sliders__slider__right-side__title h6 span {
+          .top-seller__products__sliders__slider__right-side__title h5 span {
             color: #555; }
-          .top-seller__products__sliders__slider__right-side__title h6 del {
+          .top-seller__products__sliders__slider__right-side__title h5 del {
             color: #555; }
       .top-seller__products__sliders__slider__right-side__reviews i {
         font-size: 1.2rem;

@@ -197,67 +197,59 @@ reviewBox.forEach((reviewBox) =>
 
 const basketCount = document.querySelector("#basket-count");
 const basketIcons = document.querySelectorAll(".fa-basket-shopping");
+const basketCard = document.querySelector("#basket-card");
 
-// console.log(basketCount, basketIcons);
 let items = localStorage.getItem("items")
   ? JSON.parse(localStorage.getItem("items"))
   : [];
-const span = document.createElement("span");
-basketIcons.forEach((basketIcon) => {
+
+basketIcons.forEach((basketIcon, index) => {
   basketIcon.addEventListener("click", (e) => {
-    // if (basketIcon.classList.contains("fa-regular")) {
-    //   basketIcon.classList.remove("fa-regular");
-    //   basketIcon.classList.add("fa-solid");
-    //   basketIcon.style.color = "crimson";
-    // } else if (basketIcon.classList.contains("fa-solid")) {
-    //   basketIcon.classList.remove("fa-solid");
-    //   basketIcon.classList.add("fa-regular");
-    //   basketIcon.style.color = "black";
-    // }
+    if (e.target == basketCard) return;
 
-    // This is needed for total in basket.html
-    console.log(basketIcon);
-    // const prices = basketIcon.closest(".btn");
-    const prices = Number(
-      // can't use closest() because the names of the parent classes are different in basket icons
-      basketIcon.parentElement.parentElement.parentElement
-        .querySelector("span")
-        .textContent.slice(1)
-    );
+    // console.log(basketCard);
+    basketIcon.id = `${index}`;
+    console.log(basketIcon.id);
+    // const productID = `${index}`;
+    // console.log(productID);
 
-    console.log(prices);
+    // can't use closest() because the class names of the parent classes are different in basket icons
+    const prices =
+      basketIcon.parentElement.parentElement.parentElement.querySelector(
+        "span"
+      );
     const img =
       basketIcon.parentElement.parentElement.parentElement.parentElement.querySelector(
         "img"
       );
-    console.log(img);
+    const title =
+      basketIcon.parentElement.parentElement.parentElement.parentElement.querySelector(
+        "h5"
+      );
 
-    // basketIcon.classList.toggle("fa-regular");
-    // basketIcon.classList.toggle("fa-solid");
-    // basketIcon.style.color = "crimson";
-    // if (items.length > 0) {
-    //   if (items.some((item) => item.id === e.target.id)) {
-    //     items = items.filter((item) => item.id !== e.target.id);
-    //   } else {
-    //     items.push({
-    //       id: `${basketIcon.id}`,
-    //       count: 1,
-    //       price: `${prices.textContent}`,
-    //       imgSrc: `${img.src}`,
-    //     });
-    //   }
-    // } else {
-    //   items.push({
-    //     id: `${basketIcon.id}`,
-    //     count: 1,
-    //     price: `${prices.textContent}`,
-    //     imgSrc: `${img.src}`,
-    //   });
+    if (items.length > 0) {
+      if (items.some((item) => item.id === e.target.id)) {
+        items = items.filter((item) => item.id !== e.target.id);
+      } else {
+        items.push({
+          id: `${basketIcon.id}`,
+          count: 1,
+          price: `${prices.textContent}`,
+          src: `${img.src}`, //getAttribute() ile de yazmaq olar
+          title: `${title.textContent}`,
+        });
+      }
+    } else {
+      items.push({
+        id: `${basketIcon.id}`,
+        count: 1,
+        price: `${prices.textContent}`,
+        src: `${img.src}`,
+        title: `${title.textContent}`,
+      });
+    }
+    localStorage.setItem("items", JSON.stringify(items));
+    basketCount.innerHTML = items.length;
   });
-  // localStorage.setItem("items", JSON.stringify(items));
-
-  // span.innerHTML = items.length;
-
-  // basketCount.appendChild(span);
 });
 // });
