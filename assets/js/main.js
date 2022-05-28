@@ -83,6 +83,66 @@ $("#brand-carousel").owlCarousel({
   },
 });
 
+const basketCount = document.querySelector("#basket-count");
+const basketIcons = document.querySelectorAll(".fa-basket-shopping");
+const basketCard = document.querySelector("#basket-card");
+
+let items = localStorage.getItem("items")
+  ? JSON.parse(localStorage.getItem("items"))
+  : [];
+
+basketIcons.forEach((basketIcon, index) => {
+  basketIcon.addEventListener("click", (e) => {
+    if (e.target == basketCard) return;
+
+    // console.log(basketCard);
+    basketIcon.id = `${index}`;
+    console.log(basketIcon.id);
+    // const productID = `${index}`;
+    // console.log(productID);
+
+    // can't use closest() because the class names of the parent classes are different in basket icons
+    const prices =
+      basketIcon.parentElement.parentElement.parentElement.querySelector(
+        "span"
+      );
+    const img =
+      basketIcon.parentElement.parentElement.parentElement.parentElement.querySelector(
+        "img"
+      );
+    const title =
+      basketIcon.parentElement.parentElement.parentElement.parentElement.querySelector(
+        "h5"
+      );
+
+    if (items.length > 0) {
+      if (items.some((item) => item.id === e.target.id)) {
+        items = items.filter((item) => item.id !== e.target.id);
+      } else {
+        items.push({
+          id: `${basketIcon.id}`,
+          count: 1,
+          price: `${prices.textContent}`,
+          src: `${img.src}`, //getAttribute() ile de yazmaq olar
+          title: `${title.textContent}`,
+        });
+      }
+    } else {
+      items.push({
+        id: `${basketIcon.id}`,
+        count: 1,
+        price: `${prices.textContent}`,
+        src: `${img.src}`,
+        title: `${title.textContent}`,
+      });
+    }
+    localStorage.setItem("items", JSON.stringify(items));
+    basketCount.innerHTML = items.length;
+  });
+});
+
+// });
+
 // const reviews = document.querySelectorAll(
 //   ".top-seller__products__sliders__slider__right-side__reviews i"
 // );
@@ -193,63 +253,4 @@ $("#brand-carousel").owlCarousel({
 //   e.preventDefault();
 //   toggle.className = isPlus ? "toggle" : "toggle open";
 //   isPlus = !isPlus;
-// });
-
-const basketCount = document.querySelector("#basket-count");
-const basketIcons = document.querySelectorAll(".fa-basket-shopping");
-const basketCard = document.querySelector("#basket-card");
-
-let items = localStorage.getItem("items")
-  ? JSON.parse(localStorage.getItem("items"))
-  : [];
-
-basketIcons.forEach((basketIcon, index) => {
-  basketIcon.addEventListener("click", (e) => {
-    if (e.target == basketCard) return;
-
-    // console.log(basketCard);
-    basketIcon.id = `${index}`;
-    console.log(basketIcon.id);
-    // const productID = `${index}`;
-    // console.log(productID);
-
-    // can't use closest() because the class names of the parent classes are different in basket icons
-    const prices =
-      basketIcon.parentElement.parentElement.parentElement.querySelector(
-        "span"
-      );
-    const img =
-      basketIcon.parentElement.parentElement.parentElement.parentElement.querySelector(
-        "img"
-      );
-    const title =
-      basketIcon.parentElement.parentElement.parentElement.parentElement.querySelector(
-        "h5"
-      );
-
-    if (items.length > 0) {
-      if (items.some((item) => item.id === e.target.id)) {
-        items = items.filter((item) => item.id !== e.target.id);
-      } else {
-        items.push({
-          id: `${basketIcon.id}`,
-          count: 1,
-          price: `${prices.textContent}`,
-          src: `${img.src}`, //getAttribute() ile de yazmaq olar
-          title: `${title.textContent}`,
-        });
-      }
-    } else {
-      items.push({
-        id: `${basketIcon.id}`,
-        count: 1,
-        price: `${prices.textContent}`,
-        src: `${img.src}`,
-        title: `${title.textContent}`,
-      });
-    }
-    localStorage.setItem("items", JSON.stringify(items));
-    basketCount.innerHTML = items.length;
-  });
-});
 // });

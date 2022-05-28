@@ -1394,6 +1394,7 @@ a {
       }
     }
     &__mini-cart {
+      @include flex(null, null, column);
       &__item {
         @include flex();
         padding-bottom: 2rem;
@@ -1481,7 +1482,7 @@ a {
     }
     &__buttons {
       @include flex(null, null, column);
-      button {
+      &__btn {
         font-weight: 500;
         text-transform: uppercase;
         text-align: center;

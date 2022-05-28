@@ -1245,51 +1245,54 @@ a {
         font-size: 2rem;
         cursor: pointer;
         color: #fff; }
-  .canvas__basket__content__mini-cart__item {
+  .canvas__basket__content__mini-cart {
     display: flex;
-    padding-bottom: 2rem;
-    margin-bottom: 2rem;
-    border-bottom: 1px solid #e5e5e5; }
-    .canvas__basket__content__mini-cart__item__img-container {
-      max-width: 8.5rem;
-      border: 1px solid #e5e5e5; }
-      .canvas__basket__content__mini-cart__item__img-container img {
-        max-width: 100%; }
-    .canvas__basket__content__mini-cart__item__body {
-      padding: 0 1rem; }
-      .canvas__basket__content__mini-cart__item__body__title {
-        font-weight: 500;
-        padding-bottom: 1rem; }
-        .canvas__basket__content__mini-cart__item__body__title a {
-          font-size: 1.4rem;
-          color: #333;
+    flex-direction: column; }
+    .canvas__basket__content__mini-cart__item {
+      display: flex;
+      padding-bottom: 2rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid #e5e5e5; }
+      .canvas__basket__content__mini-cart__item__img-container {
+        max-width: 8.5rem;
+        border: 1px solid #e5e5e5; }
+        .canvas__basket__content__mini-cart__item__img-container img {
+          max-width: 100%; }
+      .canvas__basket__content__mini-cart__item__body {
+        padding: 0 1rem; }
+        .canvas__basket__content__mini-cart__item__body__title {
+          font-weight: 500;
+          padding-bottom: 1rem; }
+          .canvas__basket__content__mini-cart__item__body__title a {
+            font-size: 1.4rem;
+            color: #333;
+            transition: 400ms color; }
+            .canvas__basket__content__mini-cart__item__body__title a:hover {
+              color: #e3a51e; }
+        .canvas__basket__content__mini-cart__item__body__quantity-price {
+          padding-top: 0.5rem; }
+          .canvas__basket__content__mini-cart__item__body__quantity-price .item-quantity {
+            font-size: 1.2rem; }
+            .canvas__basket__content__mini-cart__item__body__quantity-price .item-quantity strong {
+              font-size: 1.6rem;
+              font-weight: 400; }
+          .canvas__basket__content__mini-cart__item__body__quantity-price .item-price {
+            font-size: 1.4rem;
+            color: #e3a51e;
+            font-weight: 500; }
+      .canvas__basket__content__mini-cart__item__button {
+        max-width: 3rem;
+        text-align: center;
+        font-size: 1.8rem;
+        line-height: 1;
+        color: #333;
+        background-color: transparent;
+        border: none;
+        cursor: pointer; }
+        .canvas__basket__content__mini-cart__item__button i {
           transition: 400ms color; }
-          .canvas__basket__content__mini-cart__item__body__title a:hover {
-            color: #e3a51e; }
-      .canvas__basket__content__mini-cart__item__body__quantity-price {
-        padding-top: 0.5rem; }
-        .canvas__basket__content__mini-cart__item__body__quantity-price .item-quantity {
-          font-size: 1.2rem; }
-          .canvas__basket__content__mini-cart__item__body__quantity-price .item-quantity strong {
-            font-size: 1.6rem;
-            font-weight: 400; }
-        .canvas__basket__content__mini-cart__item__body__quantity-price .item-price {
-          font-size: 1.4rem;
-          color: #e3a51e;
-          font-weight: 500; }
-    .canvas__basket__content__mini-cart__item__button {
-      max-width: 3rem;
-      text-align: center;
-      font-size: 1.8rem;
-      line-height: 1;
-      color: #333;
-      background-color: transparent;
-      border: none;
-      cursor: pointer; }
-      .canvas__basket__content__mini-cart__item__button i {
-        transition: 400ms color; }
-      .canvas__basket__content__mini-cart__item__button:hover i {
-        color: #e3a51e; }
+        .canvas__basket__content__mini-cart__item__button:hover i {
+          color: #e3a51e; }
   .canvas__basket__content__pricing-box {
     border-bottom: 1px solid #e5e5e5;
     padding: 1.5rem 0 2rem;
@@ -1309,16 +1312,16 @@ a {
   .canvas__basket__content__buttons {
     display: flex;
     flex-direction: column; }
-    .canvas__basket__content__buttons button {
+    .canvas__basket__content__buttons__btn {
       font-weight: 500;
       text-transform: uppercase;
       text-align: center;
       border: none;
       background-color: transparent; }
-      .canvas__basket__content__buttons button i {
+      .canvas__basket__content__buttons__btn i {
         padding-right: 0.8rem;
         font-size: 1.1rem; }
-      .canvas__basket__content__buttons button a {
+      .canvas__basket__content__buttons__btn a {
         color: #fff;
         font-size: 1.3rem;
         padding: 1.7rem 0;
@@ -1328,7 +1331,7 @@ a {
         margin-bottom: 1rem;
         transition: 400ms background-color;
         line-height: 1; }
-        .canvas__basket__content__buttons button a:hover {
+        .canvas__basket__content__buttons__btn a:hover {
           background-color: #e3a51e; }
 
 body::-webkit-scrollbar {

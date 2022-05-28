@@ -116,3 +116,52 @@ accordions.forEach((accordion) =>
     }
   })
 );
+
+// Selecting elements starts
+const miniCart = document.querySelector(".canvas__basket__content__mini-cart");
+const pricingBox = document.querySelector(
+  ".canvas__basket__content__pricing-box"
+);
+// Selecting elements ends
+
+const itemParser = () =>
+  localStorage.getItem("items")
+    ? JSON.parse(localStorage.getItem("items"))
+    : [];
+
+const addToBasket = function () {
+  let items = itemParser();
+  if (items.length > 0) {
+    miniCart.innerHTML = "";
+
+    items.forEach((item) => {
+      const html = `<li class="canvas__basket__content__mini-cart__item">
+         <div class="canvas__basket__content__mini-cart__item__img-container">
+           <img src="${item.src}" alt="shoe">
+         </div>
+         <div class="canvas__basket__content__mini-cart__item__body">
+           <h5 class="canvas__basket__content__mini-cart__item__body__title">
+             <a href="product-details.html">${item.title}</a>
+           </h5>
+           <p class="canvas__basket__content__mini-cart__item__body__quantity-price"><span class="item-quantity">${item.count} <strong>×</strong></span> <span class="item-price">${item.price}</span></p>
+         </div>
+         <button id="${item.id}" class="canvas__basket__content__mini-cart__item__button">
+           <i class="fa-solid fa-xmark"></i>
+         </button>
+       </li>`;
+      miniCart.insertAdjacentHTML("afterbegin", html);
+
+      // updateCartTotals();
+    });
+  } else {
+    pricingBox.innerHTML = "";
+
+    miniCart.innerHTML = `
+    <h3 style="text-transform:uppercase;font-weight:500;font-size:2.4rem">Your Bag is Empty</h3><br>
+    <p style="font-size:1.5rem">Once you add something to your bag, it will appear here. Ready to get started?</p>
+    <br>
+    <button class="canvas__basket__content__buttons__btn"><a style="font-size:1.6rem;display:flex;justify-content:center;align-items:center;" href="shop.html">Go to shop<i style="margin-left:0.8rem" class="fa-solid fa-angles-right"></i></a></button>
+    `;
+  }
+};
+addToBasket();
