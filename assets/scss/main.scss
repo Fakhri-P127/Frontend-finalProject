@@ -754,9 +754,9 @@ a {
     @include main-title();
   }
   &__products {
-    @include breakpoint-down("medium") {
-      // @include flex(null, center);
-    }
+    // @include breakpoint-down("medium") {
+    //   // @include flex(null, center);
+    // }
     &__img-container {
       width: 100%;
       @include breakpoint-down("medium") {
@@ -1091,9 +1091,11 @@ a {
     left: 0%;
     width: 100%;
     height: 100%;
+
     background-color: rgba(0, 0, 0, 0.3);
     z-index: 999;
     transform: translateX(-100%);
+    cursor: url(../images/icons/cancel.jpg), auto;
   }
   .return {
     transform: translateX(0);
@@ -1164,10 +1166,26 @@ a {
 
     &__accordions {
       margin: 3rem 0 1.5rem;
+      max-height: 250px;
+      overflow-y: auto;
+      &::-webkit-scrollbar {
+        width: 0.2rem;
+      }
+      &::-webkit-scrollbar-track {
+        background-color: $grey;
+      }
+      &::-webkit-scrollbar-thumb {
+        background-color: $mainColor;
+      }
       li {
         width: 100%;
         position: relative;
+        transition: 1s all;
 
+        #accordion-account,
+        #accordion-currency {
+          font-size: 1.3rem;
+        }
         div {
           @include flex(center, space-between);
           a {
@@ -1175,56 +1193,49 @@ a {
             color: $dark;
             text-transform: capitalize;
             line-height: 18px;
-
             padding: 1rem 0;
             transition: $main-transition-speed color;
             &:hover {
               color: $mainColor;
             }
           }
-          // .wrap {
-          //   width: 50px;
-          //   height: 50px;
-          //   // background: #f38630;
-          //   display: flex;
-          //   justify-content: center;
-          //   align-items: center;
-          //   cursor: pointer;
-          //   .toggle {
-          //     width: 1rem;
-          //     height: 0.1rem;
-          //     background: $dark;
-          //     position: relative;
-          //     opacity: 1;
-          //     transition: 0.25s all cubic-bezier(0.17, 0.67, 0.09, 0.97);
 
-          //     &.open::after {
-          //       opacity: 0;
-          //       transform: rotate(0deg);
-          //     }
+          .toggle {
+            width: 1rem;
+            height: 0.1rem;
+            background: $dark;
+            position: relative;
+            right: 5%;
+            opacity: 1;
+            transition: 0.4s all cubic-bezier(0.17, 0.67, 0.09, 0.97);
 
-          //     &.open {
-          //       transform: rotate(0deg);
-          //     }
+            &.open::after {
+              opacity: 0;
+              transform: rotate(0deg);
+            }
 
-          //     &::after {
-          //       content: "";
-          //       width: 1rem;
-          //       transition: 0.25s all cubic-bezier(0.17, 0.67, 0.09, 0.97);
-          //       transition-delay: 0.1s;
-          //       height: 0.1rem;
-          //       position: absolute;
-          //       transform: rotate(90deg);
-          //       background: $dark;
-          //     }
-          //   }
-          // }
+            &.open {
+              transform: rotate(0deg);
+            }
+
+            &::after {
+              content: "";
+              width: 1rem;
+              transition: 0.25s all cubic-bezier(0.17, 0.67, 0.09, 0.97);
+              // transition-delay: 0.1s;
+              height: 0.1rem;
+              position: absolute;
+              transform: rotate(90deg);
+              background: $dark;
+              opacity: 1;
+            }
+          }
         }
       }
       &__dropdown {
-        max-height: 0;
+        max-height: 0px;
         overflow: hidden;
-        transition: 0.4s;
+        transition: 0.6s all cubic-bezier(0.17, 0.67, 0.09, 0.97);
         background-color: $white;
         li {
           margin-left: 1.5rem;
@@ -1241,24 +1252,43 @@ a {
         }
       }
     }
-    &__bottom {
-      border-top: 1px solid $grey;
-      padding: 2rem 0;
-      li {
-        padding: 0.8rem 0;
-        font-size: 1.4rem;
-        a {
-          color: $dark;
-          transition: $main-transition-speed color;
-          &:hover {
-            color: $mainColor;
-          }
-        }
-        i {
-          font-size: 1.4rem;
-        }
-      }
-    }
+    // &__bottom {
+    //   border-top: 1px solid $grey;
+    //   padding: 2rem 0;
+    //   .canvas__content__accordions__dropdown {
+    //     // max-height: 0px;
+    //     // overflow: hidden;
+    //     transition: 0.6s all cubic-bezier(0.17, 0.67, 0.09, 0.97);
+    //     background-color: $white;
+    //     li {
+    //       margin-left: 1.5rem;
+    //       padding: 1rem 0;
+    //       font-size: 1.4rem;
+    //       a {
+    //         color: $dark;
+    //         padding: 0.8rem 0;
+    //         transition: $main-transition-speed color;
+    //         &:hover {
+    //           color: $mainColor;
+    //         }
+    //       }
+    //     }
+    //   }
+    //   li {
+    //     padding: 0.8rem 0;
+    //     font-size: 1.4rem;
+    //     a {
+    //       color: $dark;
+    //       transition: $main-transition-speed color;
+    //       &:hover {
+    //         color: $mainColor;
+    //       }
+    //     }
+    //     i {
+    //       font-size: 1.4rem;
+    //     }
+    //   }
+    // }
     &__contact-info {
       padding-top: 8rem;
 
@@ -1290,6 +1320,190 @@ a {
 
         a {
           color: $grey-100;
+        }
+      }
+    }
+  }
+}
+
+.canvas__basket {
+  &__overlay {
+    position: fixed;
+    top: 0%;
+    right: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 999;
+    transform: translateX(100%);
+    cursor: url(../images/icons/cancel.jpg), auto;
+  }
+  .return {
+    transform: translateX(0);
+  }
+  &__content {
+    overflow-y: scroll;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    max-width: 37.5rem;
+    height: 100vh;
+    padding: 5rem 2rem;
+    background-color: $white;
+    z-index: 999;
+    transform: translateX(500%);
+    transition: $main-transition-speed transform ease-in-out;
+    &::-webkit-scrollbar {
+      width: 0.2rem;
+    }
+    &::-webkit-scrollbar-track {
+      background-color: $grey;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: $mainColor;
+    }
+    &__closeBtn {
+      position: absolute;
+      top: 0;
+      right: 100%;
+      width: 5rem;
+      height: 5rem;
+      font-size: 2rem;
+      color: $white;
+      line-height: 4rem;
+      text-align: center;
+      cursor: pointer;
+      transition: 0.4s all;
+
+      button {
+        background-color: $mainColor;
+        border: none;
+        height: 100%;
+        width: 100%;
+        transition: $main-transition-speed transform;
+        &:hover {
+          transform: rotate(180deg);
+        }
+        i {
+          padding: 1.5rem 1.9rem;
+          font-size: 2rem;
+          cursor: pointer;
+          color: $white;
+        }
+      }
+    }
+    &__mini-cart {
+      &__item {
+        @include flex();
+        padding-bottom: 2rem;
+        margin-bottom: 2rem;
+        border-bottom: 1px solid $grey;
+        &__img-container {
+          max-width: 8.5rem;
+          border: 1px solid $grey;
+          img {
+            max-width: 100%;
+          }
+        }
+        &__body {
+          padding: 0 1rem;
+          &__title {
+            font-weight: 500;
+            padding-bottom: 1rem;
+
+            a {
+              font-size: 1.4rem;
+              color: $dark;
+              transition: 400ms color;
+
+              &:hover {
+                color: $mainColor;
+              }
+            }
+          }
+          &__quantity-price {
+            padding-top: 0.5rem;
+            .item-quantity {
+              font-size: 1.2rem;
+
+              strong {
+                font-size: 1.6rem;
+                font-weight: 400;
+              }
+            }
+            .item-price {
+              font-size: 1.4rem;
+              color: $mainColor;
+              font-weight: 500;
+            }
+          }
+        }
+        &__button {
+          max-width: 3rem;
+          text-align: center;
+          font-size: 1.8rem;
+          line-height: 1;
+          color: $dark;
+          background-color: transparent;
+          border: none;
+          cursor: pointer;
+          i {
+            transition: 400ms color;
+          }
+          &:hover {
+            i {
+              color: $mainColor;
+            }
+          }
+        }
+      }
+    }
+    &__pricing-box {
+      border-bottom: 1px solid $grey;
+      padding: 1.5rem 0 2rem;
+      margin-bottom: 2rem;
+      color: $dark;
+      &__item {
+        @include flex(null, space-between);
+        font-size: 1.4rem;
+        line-height: 1.7;
+        margin-bottom: 0.5rem;
+
+        &__price {
+          font-weight: 500;
+          color: $mainColor;
+        }
+      }
+      #canvas__basket__total {
+        font-size: 1.6rem;
+      }
+    }
+    &__buttons {
+      @include flex(null, null, column);
+      button {
+        font-weight: 500;
+        text-transform: uppercase;
+        text-align: center;
+        border: none;
+        background-color: transparent;
+        i {
+          padding-right: 0.8rem;
+          font-size: 1.1rem;
+        }
+        a {
+          color: $white;
+          font-size: 1.3rem;
+          padding: 1.7rem 0;
+          display: block;
+          background-color: $dark;
+          border-radius: 4rem;
+          margin-bottom: 1rem;
+          transition: 400ms background-color;
+          line-height: 1;
+          &:hover {
+            background-color: $mainColor;
+          }
         }
       }
     }

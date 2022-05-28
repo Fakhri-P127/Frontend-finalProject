@@ -51,11 +51,11 @@ $breakpoints-down: (
   animation: moveToLeftRight 800ms forwards;
   @keyframes moveToLeftRight {
     0% {
-      opacity: 0;
+      // opacity: 0;
       transform: translate(30%, 20%);
     }
     70% {
-      opacity: 1;
+      // opacity: 1;
       transform: translate(8%, 20%);
     }
     100% {

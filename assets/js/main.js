@@ -8,7 +8,7 @@ owl.owlCarousel({
   nav: true,
   // dots: false,
   autoplay: true,
-  autoplayTimeout: 3000,
+  autoplayTimeout: 2500,
   autoplayHoverPause: true,
   animateOut: "fadeOut",
 });
@@ -44,7 +44,7 @@ $("#top-seller-carousel").owlCarousel({
     0: {
       items: 1,
     },
-    1000: {
+    1200: {
       items: 2,
     },
   },
@@ -83,13 +83,13 @@ $("#brand-carousel").owlCarousel({
   },
 });
 
-const reviews = document.querySelectorAll(
-  ".top-seller__products__sliders__slider__right-side__reviews i"
-);
+// const reviews = document.querySelectorAll(
+//   ".top-seller__products__sliders__slider__right-side__reviews i"
+// );
 
-const reviewBox = document.querySelectorAll(
-  ".top-seller__products__sliders__slider__right-side__reviews"
-);
+// const reviewBox = document.querySelectorAll(
+//   ".top-seller__products__sliders__slider__right-side__reviews"
+// );
 
 // const fillStarts = function () {
 //   // this.className = "fa-solid fa-star";
@@ -104,17 +104,17 @@ const reviewBox = document.querySelectorAll(
 //   });
 // };
 
-reviewBox.forEach((review) =>
-  review.addEventListener("mouseover", function () {
-    reviews.forEach((review, i) =>
-      review.addEventListener("mouseover", function () {
-        for (let j = 0; j < i + 1; j++) {
-          reviews[j].className = "fa-solid fa-star";
-        }
-      })
-    );
-  })
-);
+// reviewBox.forEach((review) =>
+//   review.addEventListener("mouseover", function () {
+//     reviews.forEach((review, i) =>
+//       review.addEventListener("mouseover", function () {
+//         for (let j = 0; j < i + 1; j++) {
+//           reviews[j].className = "fa-solid fa-star";
+//         }
+//       })
+//     );
+//   })
+// );
 
 // reviewBox.forEach((reviewBox) =>
 //   reviewBox.addEventListener("mouseover", function (e) {
@@ -141,15 +141,15 @@ reviewBox.forEach((review) =>
 //   })
 // );
 
-reviewBox.forEach((reviewBox) =>
-  reviewBox.addEventListener("mouseleave", function (e) {
-    // console.log(e.target.children);
-    const childrenReviews = Array.from(e.target.children);
-    childrenReviews.forEach(
-      (review) => (review.className = "fa-regular fa-star")
-    );
-  })
-);
+// reviewBox.forEach((reviewBox) =>
+//   reviewBox.addEventListener("mouseleave", function (e) {
+//     // console.log(e.target.children);
+//     const childrenReviews = Array.from(e.target.children);
+//     childrenReviews.forEach(
+//       (review) => (review.className = "fa-regular fa-star")
+//     );
+//   })
+// );
 
 // const hideDropdown = function () {
 //   const ulDropdown = this.querySelector("ul");

@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Juan</title>
+    <link rel = "icon" href = 
+"assets/images/comment-icon.jpg" 
+       >
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link
@@ -243,9 +246,8 @@
          <div>
  <a href="shop.html">Pages</a>
          
-         <div class="wrap">
-<div class="toggle"></div>
-         </div>
+         <div class="toggle"></div>
+         
          </div>
          
 
@@ -288,10 +290,7 @@
        <li>
          <div>
  <a href="blogs.html">Blog</a>
-         <div class="wrap">
-<div class="toggle"></div>
-         </div>
-         
+<div class="toggle"></div>         
          </div>
          
 
@@ -306,17 +305,55 @@
          </ul>
        </li>
        <li>
-         <div>
- <a href="index.html">Contact Us</a>
+         <div id="canvas__contact-us">
+ <a  href="index.html">Contact Us</a>
          </div>
        </li>
      </ul>
-     <ul class="canvas__content__bottom">
-       <li>
-         <a href="">Currency</a> <i class="fa-solid fa-angle-down"></i>
+     <ul class="canvas__content__accordions">
+       <li id="accordion-currency">
+         <div>
+ <a href="index.html">Currency <i class="fa-solid fa-angle-down"></i></a>
+         
+         <!-- <div class="toggle"></div> -->
+         </div>
+        
+
+         <ul class="canvas__content__accordions__dropdown">
+           <li>
+             <a href="index.html">
+              Blog Left Sidebar
+             </a>
+            
+           </li>
+           <li>
+             <a href="index.html">
+              Blog Right Sidebar
+             </a>
+           </li>
+         </ul>
        </li>
-       <li>
-        <a href="">My Account</a> <i class="fa-solid fa-angle-down"></i>
+       <li id="accordion-account">
+         <div>
+ <a href="index.html">My Account <i class="fa-solid fa-angle-down"></i></a>
+         
+         <!-- <div class="toggle"></div> -->
+         </div>
+        
+
+         <ul class="canvas__content__accordions__dropdown">
+           <li>
+             <a href="index.html">
+              Blog Left Sidebar
+             </a>
+            
+           </li>
+           <li>
+             <a href="index.html">
+              Blog Right Sidebar
+             </a>
+           </li>
+         </ul>
        </li>
      </ul>
      <ul class="canvas__content__contact-info">
@@ -349,6 +386,78 @@
  </aside>
 <!-- Aside canvas ends -->
 
+
+<!-- Aside right canvas starts -->
+<aside class=" canvas__basket">
+   <div class=" canvas__basket__overlay"></div>
+   <div class="  canvas__basket__content">
+     <div class="canvas__basket__content__closeBtn">
+       <button><i class="fa-solid fa-xmark"></i></button>
+     </div>
+   
+     <ul class="canvas__basket__content__mini-cart">
+       <li class="canvas__basket__content__mini-cart__item">
+         <div class="canvas__basket__content__mini-cart__item__img-container">
+           <img src="assets/images/dragShoes/product-10.jpg" alt="shoe">
+         </div>
+         <div class="canvas__basket__content__mini-cart__item__body">
+           <h5 class="canvas__basket__content__mini-cart__item__body__title">
+             <a href="product-details.html">Flowers bouquet pink for all flower lovers</a>
+           </h5>
+           <p class="canvas__basket__content__mini-cart__item__body__quantity-price"><span class="item-quantity">1 <strong>×</strong></span> <span class="item-price">$80.00</span></p>
+         </div>
+         <button class="canvas__basket__content__mini-cart__item__button">
+           <i class="fa-solid fa-xmark"></i>
+         </button>
+       </li>
+       
+       <li class="canvas__basket__content__mini-cart__item">
+         <div class="canvas__basket__content__mini-cart__item__img-container">
+           <img src="assets/images/dragShoes/product-8.jpg" alt="shoe">
+         </div>
+         <div class="canvas__basket__content__mini-cart__item__body">
+           <h5 class="canvas__basket__content__mini-cart__item__body__title">
+             <a href="product-details.html">Flowers bouquet pink for all flower lovers</a>
+           </h5>
+           <p class="canvas__basket__content__mini-cart__item__body__quantity-price"><span class="item-quantity">1 <strong>×</strong></span> <span class="item-price">$80.00</span></p>
+         </div>
+         <button class="canvas__basket__content__mini-cart__item__button">
+           <i class="fa-solid fa-xmark"></i>
+         </button>
+       </li>
+     </ul>
+
+     <ul class="canvas__basket__content__pricing-box">
+       <li class="canvas__basket__content__pricing-box__item">
+         <span class="canvas__basket__content__pricing-box__item__name">Sub-Total</span>
+         <span class="canvas__basket__content__pricing-box__item__price">$300.00</span>
+       </li>
+       <li class="canvas__basket__content__pricing-box__item">
+         <span class="canvas__basket__content__pricing-box__item__name">Eco Tax (-2.00)</span>
+         <span class="canvas__basket__content__pricing-box__item__price">$10.00</span>
+       </li>
+       <li class="canvas__basket__content__pricing-box__item">
+         <span class="canvas__basket__content__pricing-box__item__name">VAT (20%)</span>
+         <span class="canvas__basket__content__pricing-box__item__price">$60.00</span>
+       </li>
+       <li id="canvas__basket__total" class="canvas__basket__content__pricing-box__item">
+         <span class="canvas__basket__content__pricing-box__item__name">Total</span>
+         <span class="canvas__basket__content__pricing-box__item__price">$370.00</span>
+       </li>
+     </ul>
+     
+     <div class="canvas__basket__content__buttons">
+       <button ><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i>View Cart</a></button>
+       <button ><a href="cart.html"><i class="fa-solid fa-share"></i>Checkout</a></button>
+     </div>
+     
+     
+     
+    
+   </div>
+   
+ </aside>
+<!-- Aside right canvas ends -->
     <!-- Main starts  -->
     <main>
       <!-- Hero slider section starts -->

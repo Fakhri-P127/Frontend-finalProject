@@ -1,36 +1,45 @@
-const btnsMinusElements = document.querySelectorAll(
-  ".cart__table__count__btns--minus"
-);
-const btnsPlusElements = document.querySelectorAll(
-  ".cart__table__count__btns--plus"
-);
-//sehife refresh olandan sonra bax, bele javascript gec oxunur
-console.log(btnsMinusElements);
+// Selecting elements starts
 const tbodyElement = document.querySelector(".cart__table__body");
 const subCostElement = document.querySelector("#sub-total-cost");
 const shippingCostElement = document.querySelector("#shipping-cost");
 const totalCostElement = document.querySelector("#total-cost");
 
-let items = localStorage.getItem("items")
-  ? JSON.parse(localStorage.getItem("items"))
-  : [];
+// let items = localStorage.getItem("items")
+//   ? JSON.parse(localStorage.getItem("items"))
+//   : [];
 
-const addToCartTotals = function () {
+// Selecting elements ends
+
+// Functions start
+const itemParser = () =>
+  localStorage.getItem("items")
+    ? JSON.parse(localStorage.getItem("items"))
+    : [];
+
+const updateCartTotals = function () {
+  let items = itemParser();
   const subCost = items
-    .map((item) => parseInt(item.price.slice(1)))
+    .map((item) => parseInt(item.price.slice(1)) * item.count)
     .reduce((acc, cur) => acc + cur);
+
   const shippingCost = subCost * 0.25;
   const totalCost = shippingCost + subCost;
   subCostElement.textContent = `$${subCost}`;
   shippingCostElement.textContent = `$${shippingCost}`;
   totalCostElement.textContent = `$${totalCost}`;
 };
+// console.log(items);
 
 const addToBasket = function () {
-  items.forEach((item) => {
-    const html = `<tr>
+  let items = itemParser();
+  if (items.length > 0) {
+    tbodyElement.innerHTML = "";
+
+    items.forEach((item) => {
+      const html = `<tr>
                 <td class="cart__table__img-container">
                 <img src="${item.src}" alt="shoe">
+                
             </td>
             <td class="cart__table__title">
                 <span>${item.title}</span>
@@ -38,13 +47,13 @@ const addToBasket = function () {
             <td class="cart__table__price">
                 ${item.price}
             </td>
-            <td class="cart__table__count">
-                <div class="cart__table__count__btns">
-                <span class="cart__table__count__btns--minus">-</span>
+            <td class="cart__table__count ">
+                <div id="${item.id}" class="cart__table__count__btns">
+                <button class="cart__table__count__btns--minus">-</button>
                 <span class="cart__table__count__btns--result">${
                   item.count
                 }</span>
-                <span class="cart__table__count__btns--plus">+</span>
+                <button class="cart__table__count__btns--plus">+</button>
                 </div>
                
                 
@@ -55,66 +64,156 @@ const addToBasket = function () {
             <td class="cart__table__remove"><i class="fa-regular fa-trash-can"></i></td>
             </tr>`;
 
-    tbodyElement.insertAdjacentHTML("afterbegin", html);
-    addToCartTotals();
-  });
+      tbodyElement.insertAdjacentHTML("afterbegin", html);
+      console.log("nou");
+
+      updateCartTotals();
+    });
+  }
 };
 addToBasket();
 
-btnsMinusElements.forEach((btnMinus, index) =>
-  btnMinus.addEventListener("click", (e) => {
-    //   const [...fromItems] = items;
-    //   console.log(fromItems);
-    // console.log(e.target);
+// Functions end
 
-    items.forEach((item) => console.log(item.id));
-    // console.log(item.id);
-    const targetElement = items.find((item) => item.id);
+// Selecting elements starts
+const btnsMinusElements = document.querySelectorAll(
+  ".cart__table__count__btns--minus"
+);
+const btnsPlusElements = document.querySelectorAll(
+  ".cart__table__count__btns--plus"
+);
 
-    // const fastaf = items.find((item) => item.id == e.target.id);
-    const btnResultElement = btnMinus.nextElementSibling;
-    // // console.log(btnResult);
-    // let fromItems = Array.from(items);
-    // console.log(fromItems);
-    // fromItems.forEach((item) => {
-    //   //   if (item.count == 0) {
-    //   //     // btnMinus.classList.add()
-    //   //     fromItems.pop(item);
-    //   //   }
-    //   item.count--;
-    //   btnResultElement.innerHTML = item.count;
-    //   //   btnsResult.forEach((result) => (result.innerHTML = item.count));
-    // });
+const popUp = document.querySelector(".pop-up"); //for pop up message//
 
-    // if (fromItems.some((item) => item.count == 0)) {
-    //   fromItems = fromItems.filter((item) => item.count != 0);
-    // }
+// I used addEventListener() for plus,minus btns container to prevent bubbling.
+const countContainers = document.querySelectorAll("tr td.cart__table__count");
 
-    // //   items[i].count--;
-    //   count.innerHTML = items[i].count;
-    //   btnPlus.classList.remove("disabled");
+const removeBtns = document.querySelectorAll("tr td.cart__table__remove i");
 
-    // if (items.some((item) => item.count == 0)) {
-    //   items = items.filter((item) => item.count != 0);
-    //   //   btnMinus.classList.add("disabled");
-    // }
+// Selecting elements ends
 
-    // localStorage.setItem("items", JSON.stringify(items));
+// Functions start
+const findBasketItem = function (e, items) {
+  return items.find((item) => item.id == e.target.parentElement.id);
+};
+
+const decreaseBasketItem = function (e, btn) {
+  let items = itemParser();
+  const targetElement = findBasketItem(e, items);
+
+  // this is for removing the class from plus button if you reach count 10.
+  if (targetElement.count >= 10) {
+    const btnPlus = btn
+      .closest(".cart__table__count__btns")
+      .querySelector(".cart__table__count__btns--plus");
+
+    btnPlus.classList.remove("btn--disabled");
+    popUp.classList.add("pop-up--hidden");
+  }
+
+  const btnResultElement = btn.nextElementSibling;
+  targetElement.count--;
+  btnResultElement.innerHTML--;
+  updateCartTotals();
+
+  const tr = e.target.closest("tr");
+
+  if (items.some((item) => item.count == 0)) {
+    // I used setTimeout() for the user to see the item getting deleted. Without it, you don't even see it dropping to 0
+    setTimeout(() => {
+      // removing the item dynamically from the website
+      tbodyElement.removeChild(tr);
+      // showing the pop-up message
+      popUp.innerHTML = "You successfully deleted the item";
+      popUp.classList.remove("pop-up--hidden");
+    }, 400);
+    // removing the pop-up message
+    setTimeout(() => popUp.classList.add("pop-up--hidden"), 2500);
+
+    items = items.filter((item) => item.count != 0);
+  }
+
+  localStorage.setItem("items", JSON.stringify(items));
+};
+
+const increaseBasketItem = function (e, btn) {
+  let items = itemParser();
+  const targetElement = findBasketItem(e, items);
+  if (targetElement.count >= 10) {
+    btn.classList.add("btn--disabled");
+    popUp.innerHTML = "You can't have more than 10 per item";
+    popUp.classList.remove("pop-up--hidden");
+    return;
+  }
+  const btnResultElement = btn.previousElementSibling;
+
+  targetElement.count++;
+  btnResultElement.innerHTML++;
+  updateCartTotals();
+  localStorage.setItem("items", JSON.stringify(items));
+};
+// Functions end
+
+// sehifede extra yuk olmasin deye bu metodla yazdim(btn lara event listener qoshsaydim onda butun parentleride bubble olacaqdi, hemde maraqli olsun deye bele yazdim :D)
+countContainers.forEach((countContainer) =>
+  countContainer.addEventListener("click", function (event) {
+    // if event.target isn't (.cart__table__count__btns) container then return
+    const clicked = event.target.closest("td .cart__table__count__btns");
+    if (!clicked) return;
+
+    const btnMinus = event.target.closest(".cart__table__count__btns--minus");
+
+    const btnPlus = event.target.closest(".cart__table__count__btns--plus");
+
+    // if event.target isn't minus or plus btn then return
+    if (!btnMinus && !btnPlus) return;
+
+    if (event.target.classList.contains("cart__table__count__btns--minus")) {
+      decreaseBasketItem(event, btnMinus);
+    } else if (
+      event.target.classList.contains("cart__table__count__btns--plus")
+    ) {
+      increaseBasketItem(event, btnPlus);
+    }
   })
 );
-// btnsPlusElements.forEach((btnPlus) =>
-//   btnPlus.addEventListener("click", () => {
-//     //   if (items[i].count < 10) {
-//     //     items[i].count++;
-//     //     count.innerHTML = items[i].count;
-//     //     btnMinus.classList.remove("disabled");
-//     //   } else {
-//     //     btnPlus.classList.add("disabled");
-//     //   }
 
-//     localStorage.setItem("items", JSON.stringify(items));
-//   })
-// );
+removeBtns.forEach((removeBtn) =>
+  removeBtn.addEventListener("click", function (e) {
+    let items = itemParser();
+    const targetElement = items.find(
+      (item) =>
+        item.id ==
+        e.target.closest("tr").querySelector(" .cart__table__count__btns").id
+    );
+    const check = confirm("Do you really want to remove this item?");
+
+    if (!check) return;
+    const tr = e.target.closest("tr");
+    setTimeout(() => {
+      // removing the item dynamically from the website
+      tbodyElement.removeChild(tr);
+      // showing the pop-up message
+      popUp.innerHTML = "You successfully deleted the item";
+      popUp.classList.remove("pop-up--hidden");
+    }, 400);
+    // removing the pop-up message
+    setTimeout(() => popUp.classList.add("pop-up--hidden"), 2500);
+    items.pop(targetElement);
+    if (items.length == 0) {
+      subCostElement.textContent = "$0";
+      shippingCostElement.textContent = "$0";
+      totalCostElement.textContent = "$0";
+    } else {
+      updateCartTotals();
+    }
+    localStorage.setItem("items", JSON.stringify(items));
+  })
+);
+
+window.addEventListener("storage", function () {
+  addToBasket();
+});
 
 //#region
 // const btnsResult = document.querySelectorAll(
@@ -133,4 +232,64 @@ btnsMinusElements.forEach((btnMinus, index) =>
 
 //   document.querySelector("main").insertAdjacentHTML("afterend", html);
 // }
+
+// const increaseBasketItem = function (e) {
+//   const targetElement = items.find(
+//     (item) => item.id == e.target.parentElement.id
+//   );
+//   const btnResultElement = btnPlus.nextElementSibling;
+//   //   if (items[i].count < 10) {
+//   //     items[i].count++;
+//   //     count.innerHTML = items[i].count;
+//   //     btnMinus.classList.remove("disabled");
+//   //   } else {
+//   //     btnPlus.classList.add("disabled");
+//   //   }
+//   // localStorage.setItem("items", JSON.stringify(items));
+// };
+// btnsMinusElements.forEach((btnMinus) =>
+//   btnMinus.addEventListener("click", function (e) {
+//     const targetElement = items.find(
+//       (item) => item.id == e.target.parentElement.id
+//     );
+//     const btnResultElement = btnMinus.nextElementSibling;
+//     targetElement.count--;
+//     btnResultElement.innerHTML -= 1;
+//     const tr = e.target.closest("tr");
+
+//     if (items.some((item) => item.count == 0)) {
+//       // I used setTimeout() for the user to see the item getting deleted. Without it, you don't even see it dropping to 0
+//       setTimeout(() => {
+//         tbodyElement.removeChild(tr);
+//       }, 200);
+//       items = items.filter((item) => item.count != 0);
+//     }
+
+//     localStorage.setItem("items", JSON.stringify(items));
+//   })
+// );
+// btnsPlusElements.forEach((btnPlus) =>
+//   btnPlus.addEventListener("click", increaseBasketItem)
+// );
+
+// const decreaseBasketItem = function (e) {
+//   const targetElement = items.find(
+//     (item) => item.id == e.target.parentElement.id
+//   );
+//   const btnResultElement = btnMinus.nextElementSibling;
+//   targetElement.count--;
+//   btnResultElement.innerHTML -= 1;
+//   const tr = e.target.closest("tr");
+
+//   if (items.some((item) => item.count == 0)) {
+//     // I used setTimeout() for the user to see the item getting deleted. Without it, you don't even see it dropping to 0
+//     setTimeout(() => {
+//       tbodyElement.removeChild(tr);
+//     }, 200);
+//     items = items.filter((item) => item.count != 0);
+//   }
+
+//   localStorage.setItem("items", JSON.stringify(items));
+// };
+
 //#endregion

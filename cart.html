@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cart</title>
+    <link rel = "icon" href = 
+"assets/images/comment-icon.jpg" 
+       >
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -364,12 +367,7 @@
             </div>
         </div>
 
-       
- 
-    </main>
-    <!-- Main ends -->
-
-    <section class="cart">
+       <section class="cart">
         <div class="custom-container">
             <div id="custom-scroll">
                 <table class="cart__table">
@@ -386,7 +384,7 @@
 
         </thead>
         <tbody class="cart__table__body">
-            <!-- <tr>
+             <!-- <tr>
                 <td class="cart__table__img-container">
                 <img src="assets/images/dragShoes/product-4.jpg" alt="">
             </td>
@@ -397,10 +395,11 @@
                 $45.00
             </td>
             <td class="cart__table__count">
+              
                 <div class="cart__table__count__btns">
-                <span class="cart__table__count__btns--minus">-</span>
+                <button class="cart__table__count__btns--minus">-</button>
                 <span class="cart__table__count__btns--result">1</span>
-                <span class="cart__table__count__btns--plus">+</span>
+                <button class="cart__table__count__btns--plus">+</button>
                 </div>
                
                 
@@ -431,7 +430,7 @@
             <td class="cart__table__total">
                 $50.00
             </td>
-            <td class="cart__table__remove"><i class="fa-regular fa-trash-can"></i></td></tr> -->
+            <td class="cart__table__remove"><i class="fa-regular fa-trash-can"></i></td></tr>  -->
             
         </tbody>
 
@@ -448,7 +447,8 @@
         </div>
         <div class="cart__bottom__update">
             <button class="cart__bottom__update__btn">
-                Update Cart
+              <a href="cart.html"> Update Cart</a>
+               
             </button>
         </div>
     </div>
@@ -485,6 +485,17 @@
         
 
     </section>
+ 
+    </main>
+    <!-- Main ends -->
+
+    <!-- Pop up messages start -->
+
+    <div class="pop-up pop-up--hidden ">
+    </div>
+
+    <!-- Pop up messages end -->
+
     
    
     <!-- Footer starts -->
