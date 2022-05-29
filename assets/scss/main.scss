@@ -416,7 +416,7 @@ a {
               border-radius: 10px;
               margin-right: 1rem;
               cursor: pointer;
-              transition: all 0.4s;
+              transition: all $main-transition-speed;
             }
             &:last-child {
               span {
@@ -953,9 +953,10 @@ a {
         color: $dark;
       }
       &__list {
+        padding-bottom: 1rem;
         li {
           @include flex(center);
-
+          padding: 0.5rem 0;
           img {
             height: 2.2rem;
           }
@@ -1123,7 +1124,7 @@ a {
       line-height: 4rem;
       text-align: center;
       cursor: pointer;
-      transition: 0.4s all;
+      transition: $main-transition-speed all;
       background-color: $mainColor;
 
       button {
@@ -1132,7 +1133,7 @@ a {
         height: 100%;
         transition: $main-transition-speed transform;
         &:hover {
-          transform: rotate(90deg);
+          transform: rotate(180deg);
         }
         i {
           font-size: 2rem;
@@ -1207,7 +1208,8 @@ a {
             position: relative;
             right: 5%;
             opacity: 1;
-            transition: 0.4s all cubic-bezier(0.17, 0.67, 0.09, 0.97);
+            transition: $main-transition-speed all
+              cubic-bezier(0.17, 0.67, 0.09, 0.97);
 
             &.open::after {
               opacity: 0;
@@ -1342,7 +1344,7 @@ a {
     transform: translateX(0);
   }
   &__content {
-    overflow-y: scroll;
+    // overflow-y: scroll;
     position: fixed;
     top: 0;
     right: 0;
@@ -1354,15 +1356,15 @@ a {
     z-index: 999;
     transform: translateX(500%);
     transition: $main-transition-speed transform ease-in-out;
-    &::-webkit-scrollbar {
-      width: 0.2rem;
-    }
-    &::-webkit-scrollbar-track {
-      background-color: $grey;
-    }
-    &::-webkit-scrollbar-thumb {
-      background-color: $mainColor;
-    }
+    // &::-webkit-scrollbar {
+    //   width: 0.2rem;
+    // }
+    // &::-webkit-scrollbar-track {
+    //   background-color: $grey;
+    // }
+    // &::-webkit-scrollbar-thumb {
+    //   background-color: $mainColor;
+    // }
     &__closeBtn {
       position: absolute;
       top: 0;
@@ -1374,7 +1376,7 @@ a {
       line-height: 4rem;
       text-align: center;
       cursor: pointer;
-      transition: 0.4s all;
+      transition: $main-transition-speed all;
 
       button {
         background-color: $mainColor;
@@ -1394,13 +1396,26 @@ a {
       }
     }
     &__mini-cart {
+      overflow-y: auto;
+      max-height: 26rem;
       @include flex(null, null, column);
+      &::-webkit-scrollbar {
+        width: 0.4rem;
+      }
+      &::-webkit-scrollbar-track {
+        background-color: $grey;
+      }
+      &::-webkit-scrollbar-thumb {
+        background-color: $mainColor;
+      }
+
       &__item {
         @include flex();
         padding-bottom: 2rem;
         margin-bottom: 2rem;
         border-bottom: 1px solid $grey;
         &__img-container {
+          cursor: pointer;
           max-width: 8.5rem;
           border: 1px solid $grey;
           img {
@@ -1408,6 +1423,7 @@ a {
           }
         }
         &__body {
+          width: calc(100% - 11.5rem);
           padding: 0 1rem;
           &__title {
             font-weight: 500;
@@ -1441,7 +1457,7 @@ a {
           }
         }
         &__button {
-          max-width: 3rem;
+          width: 3rem;
           text-align: center;
           font-size: 1.8rem;
           line-height: 1;
@@ -1510,6 +1526,161 @@ a {
     }
   }
 }
+
+.pop-up--global {
+  @include moveToRightLeft();
+  position: fixed;
+  top: 5%;
+  left: 0%;
+  background-color: $dark;
+  padding: 2rem 3rem;
+  border-radius: 3px;
+  color: $mainColor;
+  z-index: 9999;
+
+  &--hidden {
+    display: none;
+  }
+}
+
+.search__overlay {
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 999;
+
+  &__closeBtn {
+    width: 5rem;
+    height: 5rem;
+    text-align: center;
+    background-color: $white;
+    color: $mainColor;
+    font-size: 2.2rem;
+    cursor: pointer;
+    top: 5rem;
+    right: 5rem;
+    position: absolute;
+    z-index: 9;
+    button {
+      background-color: $white;
+      border: none;
+      height: 100%;
+      transition: $main-transition-speed transform;
+      &:hover {
+        transform: rotate(180deg);
+      }
+      i {
+        font-size: 2rem;
+        color: $mainColor;
+      }
+    }
+  }
+  &__content {
+    height: 100vh;
+    padding: 0 3rem;
+    @include flex(center, center);
+    transform: translateY(50px);
+    transition: $main-transition-speed all;
+    transition-delay: 0.6s;
+    &__form {
+      width: 100%;
+      border-bottom: 1px solid $mainColor;
+      @include flex();
+      input {
+        width: 100%;
+        border: none;
+        color: $white;
+        font-size: 1.6rem;
+        font-weight: 400;
+        padding-right: 2rem;
+        padding-bottom: 2rem;
+        background-color: transparent;
+        outline: none;
+        &::placeholder {
+          color: $white;
+          font-style: italic;
+        }
+      }
+      button {
+        @include flex();
+        background-color: transparent;
+        border: none;
+        color: $white;
+        cursor: pointer;
+        transition: $main-transition-speed;
+
+        &:hover {
+          color: $mainColor;
+        }
+        i {
+          font-size: 2.2rem;
+          padding-right: 1.5rem;
+        }
+        span {
+          font-size: 1.6rem;
+          text-transform: capitalize;
+        }
+      }
+    }
+  }
+}
+.search__overlay--show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.product-details__modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 80rem;
+  background-color: $white;
+  padding: 5rem 6rem;
+  box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  transition: all $main-transition-speed;
+
+  @include breakpoint-down("small") {
+    width: 90%;
+  }
+
+  &__btn--close-modal {
+    font-family: inherit;
+    color: inherit;
+    position: absolute;
+    top: 0.5rem;
+    right: 2rem;
+    font-size: 4rem;
+    cursor: pointer;
+    border: none;
+    background: none;
+  }
+}
+
+.product-details__modal__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 999;
+  transition: all $main-transition-speed;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+@include product-details();
 
 // Javascript related ends
 

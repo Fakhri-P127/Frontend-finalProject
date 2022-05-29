@@ -126,7 +126,8 @@
         border: none;
         outline: none;
         box-shadow: none;
-        cursor: pointer; }
+        cursor: pointer;
+        width: 100%; }
       @media (max-width: 767px) {
         .cart__bottom__update__btn {
           width: 100%; } }
@@ -178,24 +179,25 @@
         color: #fff; }
 
 .pop-up {
-  animation: moveToLeftRight 800ms forwards;
+  animation: moveToRightLeft 800ms forwards;
   position: fixed;
   top: 10%;
   right: 6%;
   background-color: #333;
   padding: 2rem 3rem;
   border-radius: 3px;
-  color: #e3a51e; }
+  color: #e3a51e;
+  z-index: 9999; }
 
-@keyframes moveToLeftRight {
+@keyframes moveToRightLeft {
   0% {
-    transform: translate(30%, 20%); }
+    opacity: 0;
+    transform: translate(0, 50%); }
   70% {
-    transform: translate(8%, 20%); }
+    opacity: 1;
+    transform: translate(12%, 50%); }
   100% {
-    transform: translate(10%, 20%); } }
-  .pop-up__message {
-    font-size: 2rem; }
+    transform: translate(10%, 50%); } }
 
 .pop-up--hidden {
   display: none; }

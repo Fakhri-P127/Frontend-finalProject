@@ -104,10 +104,10 @@
           select {
             width: 20rem;
             padding: 0 1rem;
-            background-color: #ffffff;
+            background-color: $white;
             border-radius: 5px;
             border: 1px solid #e8e8e8;
-            color: #666666;
+            color: $dark-100;
             padding: 10px 10px;
           }
         }
@@ -115,6 +115,8 @@
     }
 
     &__cards {
+      // overflow: hidden;
+
       @include breakpoint-down("small") {
         #mycol {
           width: 100%;
@@ -131,10 +133,15 @@
 
           &__card {
             @include flex();
+            @include breakpoint-down("small") {
+              flex-direction: column;
+            }
             &__top {
               &__img {
                 width: 27rem;
                 border: 1px solid $grey;
+                @include flex(null, center);
+
                 @include breakpoint-down("medium") {
                   width: 19rem;
                 }
@@ -142,13 +149,17 @@
                   width: 100%;
                 }
                 img {
-                  width: 100%;
+                  max-width: 100%;
                 }
               }
             }
             &__bottom {
               color: $dark;
               margin-left: 3rem;
+              @include breakpoint-down("small") {
+                margin-left: 0;
+                margin-top: 2rem;
+              }
               &__info {
                 h5 {
                   font-size: 2.2rem;
@@ -185,6 +196,7 @@
       }
       .products__cards__card {
         animation: none;
+
         &__top {
           @include flex(null, center);
 

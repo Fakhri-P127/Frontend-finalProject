@@ -25,6 +25,67 @@ window.addEventListener("scroll", function () {
     }
   }
 });
+
+// adding to basket
+const basketCount = document.querySelector("#basket-count");
+const basketIcons = document.querySelectorAll(".fa-basket-shopping");
+const basketCard = document.querySelector("#basket-card");
+
+let items = localStorage.getItem("items")
+  ? JSON.parse(localStorage.getItem("items"))
+  : [];
+
+basketIcons.forEach((basketIcon, index) => {
+  basketIcon.addEventListener("click", (e) => {
+    if (e.target == basketCard) return;
+
+    // console.log(basketCard);
+    basketIcon.id = `${index}`;
+    console.log(basketIcon.id);
+    // const productID = `${index}`;
+    // console.log(productID);
+
+    // can't use closest() because the class names of the parent classes are different in basket icons
+    const prices =
+      basketIcon.parentElement.parentElement.parentElement.querySelector(
+        "span"
+      );
+    const img =
+      basketIcon.parentElement.parentElement.parentElement.parentElement.querySelector(
+        "img"
+      );
+    const title =
+      basketIcon.parentElement.parentElement.parentElement.parentElement.querySelector(
+        "h5"
+      );
+
+    if (items.length > 0) {
+      if (items.some((item) => item.id === e.target.id)) {
+        items = items.filter((item) => item.id !== e.target.id);
+      } else {
+        items.push({
+          id: `${basketIcon.id}`,
+          count: 1,
+          price: `${prices.textContent}`,
+          src: `${img.src}`, //getAttribute() ile de yazmaq olar
+          title: `${title.textContent}`,
+        });
+      }
+    } else {
+      items.push({
+        id: `${basketIcon.id}`,
+        count: 1,
+        price: `${prices.textContent}`,
+        src: `${img.src}`,
+        title: `${title.textContent}`,
+      });
+    }
+    localStorage.setItem("items", JSON.stringify(items));
+    basketCount.innerHTML = items.length;
+  });
+});
+basketCount.innerHTML = items.length;
+
 // Selecting elements starts
 const hamburger = document.querySelector("#hamburger");
 const canvas = document.querySelector(".canvas__content");
@@ -32,7 +93,7 @@ const canvasOverlay = document.querySelector(".canvas__overlay");
 const btnCanvasClose = document.querySelector(".canvas__content__closeBtn");
 
 const basketCardIcon = document.querySelector("#basket-card");
-console.log(basketCardIcon);
+
 const canvasBasket = document.querySelector(".canvas__basket");
 const canvasBasketOverlay = document.querySelector(".canvas__basket__overlay");
 const canvasBasketContent = document.querySelector(".canvas__basket__content");
@@ -41,9 +102,12 @@ const btnCanvasBasketClose = document.querySelector(
   ".canvas__basket__content__closeBtn"
 );
 
+const popUpGlobal = document.querySelector(".pop-up--global");
+
 // Selecting elements ends
 
 // Functions start
+
 const showCanvas = function () {
   canvas.classList.add("return");
   canvasOverlay.classList.add("return");
@@ -53,22 +117,17 @@ const hideCanvas = function () {
   canvasOverlay.classList.remove("return");
 };
 
-const showBasketCanvas = function () {
-  document.body.addEventListener("keydown", hideBasketCanvasKeyboard);
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape" && canvas.classList.contains("return")) {
+    hideCanvas();
+  }
+});
 
-  canvasBasketContent.classList.add("return");
-  canvasBasketOverlay.classList.add("return");
-};
 const hideBasketCanvas = function () {
   canvasBasketContent.classList.remove("return");
   canvasBasketOverlay.classList.remove("return");
 };
-const hideBasketCanvasKeyboard = function (e) {
-  if (e.code == "Escape") {
-    canvasBasketContent.classList.remove("return");
-    canvasBasketOverlay.classList.remove("return");
-  }
-};
+
 // Functions end
 
 // Events start
@@ -77,7 +136,6 @@ hamburger.addEventListener("click", showCanvas);
 canvasOverlay.addEventListener("click", hideCanvas);
 btnCanvasClose.addEventListener("click", hideCanvas);
 
-basketCardIcon.addEventListener("click", showBasketCanvas);
 canvasBasketOverlay.addEventListener("click", hideBasketCanvas);
 btnCanvasBasketClose.addEventListener("click", hideBasketCanvas);
 // Events end
@@ -100,36 +158,93 @@ accordions.forEach((accordion) =>
     }
 
     const targetDropdown = this.querySelector(
-      ".canvas__content__accordions__dropdown"
+      " .canvas__content__accordions__dropdown"
     );
     const dropdownIcon = this.querySelector(".toggle");
 
     if (targetDropdown.style.maxHeight !== "0px") {
       targetDropdown.style.maxHeight = "0px";
-      dropdownIcon.classList.remove("open");
+      dropdownIcon?.classList.remove("open");
     } else {
       allDropdowns.forEach((ul) => (ul.style.maxHeight = "0px"));
       dropdownIcons.forEach((icon) => icon.classList.remove("open"));
 
       targetDropdown.style.maxHeight = `${targetDropdown.scrollHeight}px`;
-      dropdownIcon.classList.add("open");
+      dropdownIcon?.classList.add("open");
     }
   })
 );
 
+// Search button event starts
+const searchBtn = document.querySelector("#search-btn");
+console.log(searchBtn);
+const searchOverlay = document.querySelector(".search__overlay");
+const searchContent = document.querySelector(".search__overlay__content");
+const searchBtnClose = document.querySelector(".search__overlay__closeBtn");
+
+searchBtn.addEventListener("click", function () {
+  searchOverlay.classList.add("search__overlay--show");
+  searchContent.style.transform = "translateY(0)";
+});
+
+const hideSearch = function (e) {
+  searchOverlay.classList.remove("search__overlay--show");
+  searchContent.style.transform = "translateY(50px)";
+};
+
+searchBtnClose.addEventListener("click", hideSearch);
+
+document.addEventListener("keydown", function (e) {
+  if (
+    e.key === "Escape" &&
+    searchOverlay.classList.contains("search__overlay--show")
+  ) {
+    hideSearch();
+  }
+});
+
+// Search button event ends
+
 // Selecting elements starts
 const miniCart = document.querySelector(".canvas__basket__content__mini-cart");
+
 const pricingBox = document.querySelector(
   ".canvas__basket__content__pricing-box"
 );
-// Selecting elements ends
 
+const basketSubtotalElement = document.querySelector("#global__cart-subtotal");
+const basketTaxElement = document.querySelector("#global__cart-tax");
+const basketVATElement = document.querySelector("#global__cart-vat");
+const basketTotalElement = document.querySelector("#global__cart-total");
+
+// Selecting elements ends
 const itemParser = () =>
   localStorage.getItem("items")
     ? JSON.parse(localStorage.getItem("items"))
     : [];
 
-const addToBasket = function () {
+const updateMiniCartTotals = function () {
+  let items = itemParser();
+  if (items.length > 0) {
+    const subCost = items
+      .map((item) => parseInt(item.price.slice(1)) * item.count)
+      .reduce((acc, cur) => acc + cur);
+
+    // I could've done this calculations inside the template literals but I choose to do it like this
+    const taxCost = Number((subCost / 3.33).toFixed(2));
+
+    const VATcost = subCost * 0.2;
+
+    const totalCost = subCost + taxCost + VATcost;
+
+    basketSubtotalElement.textContent = `$${subCost.toFixed(2)}`;
+    basketTaxElement.textContent = `$${taxCost.toFixed(2)}`;
+    basketVATElement.textContent = `$${VATcost.toFixed(2)}`;
+    basketTotalElement.textContent = `$${totalCost.toFixed(2)}`;
+  }
+};
+
+const addToMiniBasket = function () {
   let items = itemParser();
   if (items.length > 0) {
     miniCart.innerHTML = "";
@@ -151,7 +266,8 @@ const addToBasket = function () {
        </li>`;
       miniCart.insertAdjacentHTML("afterbegin", html);
 
-      // updateCartTotals();
+      updateMiniCartTotals();
+      basketCount.innerHTML = items.length;
     });
   } else {
     pricingBox.innerHTML = "";
@@ -160,8 +276,71 @@ const addToBasket = function () {
     <h3 style="text-transform:uppercase;font-weight:500;font-size:2.4rem">Your Bag is Empty</h3><br>
     <p style="font-size:1.5rem">Once you add something to your bag, it will appear here. Ready to get started?</p>
     <br>
-    <button class="canvas__basket__content__buttons__btn"><a style="font-size:1.6rem;display:flex;justify-content:center;align-items:center;" href="shop.html">Go to shop<i style="margin-left:0.8rem" class="fa-solid fa-angles-right"></i></a></button>
+    <button  class="canvas__basket__content__buttons__btn"><a style="font-size:1.6rem;display:flex;justify-content:center;align-items:center;" href="shop.html">Go to shop<i style="margin-left:0.8rem" class="fa-solid fa-angles-right"></i></a></button>
     `;
   }
 };
-addToBasket();
+
+addToMiniBasket();
+
+const miniCartRemoveItem = function () {
+  let items = itemParser();
+  if (items.length > 0) {
+    const basketRemoveBtn = document.querySelectorAll(
+      ".canvas__basket__content__mini-cart__item__button"
+    );
+
+    basketRemoveBtn.forEach((btn) =>
+      btn.addEventListener("click", function (e) {
+        const targetElement = items.find(
+          (item) =>
+            item.id ==
+            e.target.closest(
+              ".canvas__basket__content__mini-cart__item__button"
+            ).id
+        );
+        const li = e.target.closest(
+          ".canvas__basket__content__mini-cart__item"
+        );
+        setTimeout(() => {
+          // removing the item dynamically from the website
+          miniCart.removeChild(li);
+          // showing the pop-up message
+          popUpGlobal.innerHTML = "You successfully deleted the item";
+          popUpGlobal.classList.remove("pop-up--global--hidden");
+        }, 400);
+        // removing the pop-up message
+        setTimeout(
+          () => popUpGlobal.classList.add("pop-up--global--hidden"),
+          2500
+        );
+        items = items.filter((item) => item.id !== targetElement.id);
+        localStorage.setItem("items", JSON.stringify(items));
+        basketCount.innerHTML = items.length;
+        if (items.length == 0) {
+          basketSubtotalElement.textContent = "$0";
+          basketTaxElement.textContent = "$0";
+          basketVATElement.textContent = "$0";
+          basketTotalElement.textContent = "$0";
+        } else {
+          updateMiniCartTotals();
+        }
+      })
+    );
+  }
+};
+
+const showBasketCanvas = function () {
+  miniCartRemoveItem();
+  canvasBasketContent.classList.add("return");
+  canvasBasketOverlay.classList.add("return");
+};
+basketCardIcon.addEventListener("click", showBasketCanvas);
+
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape" && !canvasBasketContent.classList.contains("remove")) {
+    hideBasketCanvas();
+  }
+});
+
+window.addEventListener("storage", addToMiniBasket);

@@ -87,8 +87,8 @@
         <li>
           <a href="index.html">Home<i class="fa fa-angle-down"></i></a> 
         <ul class="home__dropdown">
-          <li><a href="">Home Version 01</a></li>
-          <li><a href="">Home Version 02</a></li>
+          <li><a href="index.html">Home Version 01</a></li>
+          <li><a href="index.html">Home Version 02</a></li>
         </ul></li>
         <li>
          <a href="#">Pages<i class="fa fa-angle-down"></i></a>
@@ -111,18 +111,18 @@
                 <li><a href="product-details.html">product details group</a></li>
               </ul>
             </li>
-            <li><a href="">Column 3</a>
+            <li><a href="cart.html">Column 3</a>
               <ul>
-                <li><a href="#">cart</a></li>
-                <li><a href="#">checkout</a></li>
-                <li><a href="#">compare</a></li>
-                <li><a href="#">wishlist</a></li>
+                <li><a href="cart.html">cart</a></li>
+                <li><a href="cart.html">checkout</a></li>
+                <li><a href="cart.html">compare</a></li>
+                <li><a href="cart.html">wishlist</a></li>
               </ul>
             </li>
             <li><a href="contact-us.html">Column 4</a>
               <ul>
-                <li><a href="#">my-account</a></li>
-                <li><a href="#">login-register</a></li>
+                <li><a href="contact-us.html">my-account</a></li>
+                <li><a href="contact-us.html">login-register</a></li>
                 <li><a href="contact-us.html">contact us</a></li>
               </ul>
             </li>
@@ -132,29 +132,29 @@
           <a href="shop.html">Shop<i class="fa fa-angle-down"></i></a>
           <ul class="shop__dropdown">
             <li>
-              <a href="">shop grid layout<i class="fa-solid fa-angle-right"></i></a>
+              <a href="shop.html">shop grid layout<i class="fa-solid fa-angle-right"></i></a>
             <ul>
-              <li><a href="">shop grid left sidebar</a></li>
-              <li><a href="">shop grid right sidebar</a></li>
-              <li><a href="">shop grid full 3 col</a></li>
-              <li><a href="">shop grid full 4 col</a></li>
+              <li><a href="shop.html">shop grid left sidebar</a></li>
+              <li><a href="shop.html">shop grid right sidebar</a></li>
+              <li><a href="shop.html">shop grid full 3 col</a></li>
+              <li><a href="shop.html">shop grid full 4 col</a></li>
             </ul>
             </li>
             <li>
-              <a href="">shop list layout<i class="fa-solid fa-angle-right"></i></a>
+              <a href="shop.html">shop list layout<i class="fa-solid fa-angle-right"></i></a>
             <ul>
-<li><a href="">shop list left sidebar</a></li>
-<li><a href="">shop list right sidebar</a></li>
-<li><a href="">shop list full width</a></li>
+<li><a href="shop.html">shop list left sidebar</a></li>
+<li><a href="shop.html">shop list right sidebar</a></li>
+<li><a href="shop.html">shop list full width</a></li>
             </ul>
             </li>
             <li>
-              <a href="">products details<i class="fa-solid fa-angle-right"></i></a>
+              <a href="product-details.html">products details<i class="fa-solid fa-angle-right"></i></a>
               <ul>
-<li><a href="">product details</a></li>
-<li><a href="">product details affiliate</a></li>
-<li><a href="">product details variable</a></li>
-<li><a href="">product details group</a></li>
+<li><a href="product-details.html">product details</a></li>
+<li><a href="product-details.html">product details affiliate</a></li>
+<li><a href="product-details.html">product details variable</a></li>
+<li><a href="product-details.html">product details group</a></li>
               </ul>
             </li>
           </ul>
@@ -162,13 +162,13 @@
         <li>
           <a href="blogs.html">Blog<i class="fa fa-angle-down"></i></a>
         <ul class="blog__dropdown">
-          <li><a href="">blog left sidebar</a></li>
-          <li><a href="">blog right sidebar</a></li>
-          <li><a href="">blog grid no sidebar</a></li>
-          <li><a href="">blog details</a></li>
-          <li><a href="">blog details audio</a></li>
-          <li><a href="">blog details video</a></li>
-          <li><a href="">blog details left sidebar</a></li>
+          <li><a href="blogs.html">blog left sidebar</a></li>
+          <li><a href="blogs.html">blog right sidebar</a></li>
+          <li><a href="blogs.html">blog grid no sidebar</a></li>
+          <li><a href="blog-details.html">blog details</a></li>
+          <li><a href="blog-details.html">blog details audio</a></li>
+          <li><a href="blog-details.html">blog details video</a></li>
+          <li><a href="blog-details.html">blog details left sidebar</a></li>
          
         </ul>
         </li>
@@ -180,7 +180,7 @@
         <div class=" col-6 col-lg-2 header__bottom__config">
  
                 <ul>
-                    <li><button><i class="fa-solid fa-magnifying-glass"></i></button></li>
+                    <li><button id="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button></li>
                     <li>
                       <button><i class="fa-solid fa-gear"></i>
                       <ul>
@@ -204,6 +204,27 @@
       </div>
     </header>
     <!-- Header ends -->
+
+    <!-- Search input starts -->
+<div class="search__overlay">
+  <div class="search__overlay__closeBtn">
+     <button><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div class="custom-container">
+    <div class="search__overlay__content">
+      <form class="search__overlay__content__form">
+    <input type="search"  id="" placeholder="Search entire storage here...">
+    <button >
+      <i class="fa-solid fa-magnifying-glass"></i> <span>Search</span>
+    </button>
+  </form>
+    </div>
+
+  </div>
+  
+  
+</div>
+    <!-- Search input ends -->
 
  <!-- Aside canvas starts --> 
  <aside class="canvas">
@@ -254,6 +275,21 @@
          <ul class="canvas__content__accordions__dropdown">
            <li>
              <a href="">Column 01</a>
+             <ul class="canvas__content__accordions__dropdown">
+           <li>
+             <a href="">Column 01</a>
+             
+           </li>
+           <li>
+             <a href="">Column 02</a>
+           </li>
+            <li>
+             <a href="">Column 03</a>
+           </li>
+            <li>
+             <a href="">Column 04</a>
+                       </li>
+         </ul>
            </li>
            <li>
              <a href="">Column 02</a>
@@ -396,7 +432,7 @@
      </div>
    
      <ul class="canvas__basket__content__mini-cart">
-       <li class="canvas__basket__content__mini-cart__item">
+       <!-- <li class="canvas__basket__content__mini-cart__item">
          <div class="canvas__basket__content__mini-cart__item__img-container">
            <img src="assets/images/dragShoes/product-10.jpg" alt="shoe">
          </div>
@@ -409,13 +445,14 @@
          <button class="canvas__basket__content__mini-cart__item__button">
            <i class="fa-solid fa-xmark"></i>
          </button>
-       </li>
+       </li> -->
        
-       <li class="canvas__basket__content__mini-cart__item">
+       <!-- <li class="canvas__basket__content__mini-cart__item">
          <div class="canvas__basket__content__mini-cart__item__img-container">
            <img src="assets/images/dragShoes/product-8.jpg" alt="shoe">
          </div>
-         <div class="canvas__basket__content__mini-cart__item__body">
+         <div class="canvas__basket__conten
+         t__mini-cart__item__body">
            <h5 class="canvas__basket__content__mini-cart__item__body__title">
              <a href="product-details.html">Flowers bouquet pink for all flower lovers</a>
            </h5>
@@ -424,25 +461,25 @@
          <button class="canvas__basket__content__mini-cart__item__button">
            <i class="fa-solid fa-xmark"></i>
          </button>
-       </li>
+       </li> -->
      </ul>
 
      <ul class="canvas__basket__content__pricing-box">
        <li class="canvas__basket__content__pricing-box__item">
          <span class="canvas__basket__content__pricing-box__item__name">Sub-Total</span>
-         <span class="canvas__basket__content__pricing-box__item__price">$300.00</span>
+         <span id="global__cart-subtotal" class="canvas__basket__content__pricing-box__item__price">$300.00</span>
        </li>
        <li class="canvas__basket__content__pricing-box__item">
          <span class="canvas__basket__content__pricing-box__item__name">Eco Tax (-2.00)</span>
-         <span class="canvas__basket__content__pricing-box__item__price">$10.00</span>
+         <span id="global__cart-tax" class="canvas__basket__content__pricing-box__item__price">$10.00</span>
        </li>
        <li class="canvas__basket__content__pricing-box__item">
          <span class="canvas__basket__content__pricing-box__item__name">VAT (20%)</span>
-         <span class="canvas__basket__content__pricing-box__item__price">$60.00</span>
+         <span id="global__cart-vat" class="canvas__basket__content__pricing-box__item__price">$60.00</span>
        </li>
        <li id="canvas__basket__total" class="canvas__basket__content__pricing-box__item">
          <span class="canvas__basket__content__pricing-box__item__name">Total</span>
-         <span class="canvas__basket__content__pricing-box__item__price">$370.00</span>
+         <span id="global__cart-total" class="canvas__basket__content__pricing-box__item__price">$370.00</span>
        </li>
      </ul>
      
@@ -576,7 +613,7 @@
           <div class="products__cards__card__bottom__buttons">
             <button class="btn btn__product btn__product--hidden"><i class="fa-solid fa-heart"></i></button>
             <button class="btn btn__product"><i class="fa-solid fa-basket-shopping"></i></button>
-            <button class="btn btn__product btn__product--hidden"><i class="fa-solid fa-eye"></i></button>
+            <button class="btn btn__product btn__product--hidden quick-look"><i class="fa-solid fa-eye"></i></button>
           </div>
           </div>
          
@@ -599,7 +636,7 @@
           <div class="products__cards__card__bottom__buttons">
             <button class="btn btn__product btn__product--hidden "><i class="fa-solid fa-heart"></i></button>
             <button class="btn btn__product"><i class="fa-solid fa-basket-shopping"></i></button>
-            <button class="btn btn__product btn__product--hidden"><i class="fa-solid fa-eye"></i></button>
+            <button class="btn btn__product btn__product--hidden quick-look"><i class="fa-solid fa-eye"></i></button>
           </div>
           </div>
          
@@ -621,7 +658,7 @@
           <div class="products__cards__card__bottom__buttons">
             <button class="btn btn__product btn__product--hidden"><i class="fa-solid fa-heart"></i></button>
             <button class="btn btn__product"><i class="fa-solid fa-basket-shopping"></i></button>
-            <button class="btn btn__product btn__product--hidden"><i class="fa-solid fa-eye"></i></button>
+            <button class="btn btn__product btn__product--hidden quick-look"><i class="fa-solid fa-eye"></i></button>
           </div>
           </div>
          
@@ -644,7 +681,7 @@
           <div class="products__cards__card__bottom__buttons">
             <button class="btn btn__product btn__product--hidden"><i class="fa-solid fa-heart"></i></button>
             <button class="btn btn__product"><i class="fa-solid fa-basket-shopping"></i></button>
-            <button class="btn btn__product btn__product--hidden"><i class="fa-solid fa-eye"></i></button>
+            <button class="btn btn__product btn__product--hidden quick-look"><i class="fa-solid fa-eye"></i></button>
           </div>
           </div>
          
@@ -749,7 +786,7 @@
                     <div class="top-seller__products__sliders__slider__right-side__buttons">
                       <button class="btn"><i class="fa-regular fa-heart"></i></button>
                       <button class="btn "><i class="fa-solid fa-basket-shopping"></i></button>
-                      <button class="btn "><i class="fa-regular fa-eye"></i></button>
+                      <button  class="btn quick-look"><i class="fa-regular fa-eye"></i></button>
                     </div>
                   </div>
                 </div>
@@ -780,7 +817,7 @@
                     <div class="top-seller__products__sliders__slider__right-side__buttons">
                       <button class="btn"><i class="fa-regular fa-heart"></i></button>
                       <button class="btn "><i class="fa-solid fa-basket-shopping"></i></button>
-                      <button class="btn "><i class="fa-regular fa-eye"></i></button>
+                      <button class="btn quick-look"><i class="fa-regular fa-eye"></i></button>
                     </div>
                   </div>
                 </div>
@@ -810,7 +847,7 @@
                     <div class="top-seller__products__sliders__slider__right-side__buttons">
                       <button class="btn"><i class="fa-regular fa-heart"></i></button>
                       <button class="btn "><i class="fa-solid fa-basket-shopping"></i></button>
-                      <button class="btn "><i class="fa-regular fa-eye"></i></button>
+                      <button class="btn quick-look"><i class="fa-regular fa-eye"></i></button>
                     </div>
                   </div>
                 </div>
@@ -838,7 +875,7 @@
                     <div class="top-seller__products__sliders__slider__right-side__buttons">
                       <button class="btn"><i class="fa-regular fa-heart"></i></button>
                       <button class="btn "><i class="fa-solid fa-basket-shopping"></i></button>
-                      <button class="btn "><i class="fa-regular fa-eye"></i></button>
+                      <button class="btn quick-look"><i class="fa-regular fa-eye"></i></button>
                     </div>
                   </div>
                 </div>
@@ -965,6 +1002,86 @@
     </main>
     <!-- Main ends -->
 
+<!-- Pop up messages start -->
+
+    <div class="pop-up--global pop-up--global--hidden ">
+    </div>
+
+    <!-- Pop up messages end -->
+
+<!-- Modal starts -->
+
+    <div class="product-details__modal__overlay hidden"></div>
+    <section class="product product-details__modal hidden">
+            <div class="custom-container">
+                <div class="row" style="row-gap: 1rem;">
+                    <div class="col-12 col-lg-5">
+                       <button class="product-details__modal__btn--close-modal">&times;</button>
+                        <div class="product__left-side">
+                            <div class="zoom">
+        <img  src="assets/images/dragShoes/product-details-img1.jpg" />
+      </div>
+      <div class="thumbs-container">
+        <div>
+        <img class="thumb" src="assets/images/dragShoes/product-details-img1.jpg">
+        </div>
+        <div>
+      <img class="thumb" src="assets/images/dragShoes/product-details-img2.jpg">
+        </div>
+        <div>
+      <img class="thumb" src="assets/images/dragShoes/product-details-img3.jpg">
+        </div>
+        <div>
+      <img class="thumb" src="assets/images/dragShoes/product-details-img4.jpg">
+        </div>
+      </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-7">
+                        <div class="product__right-side">
+                            <div class="product__right-side__text">
+                                <h3>Primitive Mens Premium Shoes</h3>
+                                <a href="">1 Review(s)</a>
+                                <span>$70.00</span> <del>$80.00</del>
+                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+                            </div>
+
+                            <div class="product__right-side__buy">
+                                <div class="product__right-side__buy--count">
+                                    <span class="count-minus"><i class="fa-solid fa-minus"></i></span>
+                                    <span class="count">1</span>
+                                    <span class="count-plus"><i class="fa-solid fa-plus"></i></span>
+                                </div>
+                                <div class="product__right-side__buy--add">
+                                    <button>Add to Cart</button>
+                                </div>
+                            </div>
+                            <div class="product__right-side__extra">
+                                <div>
+                                    <p>Availability:<span>In Stock</span></p>
+                                </div>
+                                <div>
+                                    <p>Share:</p>
+                                    <ul>
+                                        <li><button><i class="fa-brands fa-facebook-f"></i>
+</button></li>
+<li><button><i class="fa-brands fa-twitter"></i>
+</button></li>
+<li><button><i class="fa-brands fa-pinterest"></i>
+</button></li>
+<li><button><i class="fa-brands fa-google-plus-g"></i>
+</button></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+<!-- Modal ends -->
+
+
     <!-- Footer starts -->
     <footer class="footer">
         <div class="footer__top">
@@ -1031,7 +1148,7 @@
      
          <ul class="footer__bottom__social-medias">
            <li>
-             <a href="">
+             <a href="https://www.facebook.com/fexri.efendiyev220" target="_blank"> 
 <i class="fa-brands fa-facebook-f"></i>
            </a>
           </li>
@@ -1062,14 +1179,16 @@
     <!-- Footer ends -->
     
 
+
     <!-- fixed back to top -->
     <a class="hidden" href="#"><button class="btn btn-fixed"><i class="fa-solid fa-angle-up"></i></button></a>
-
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+     <script src="assets/js/utilities/modal.js"></script>
     <script src="assets/js/global.js"></script>
     <script src="assets/js/main.js"></script>
   </body>

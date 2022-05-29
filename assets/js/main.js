@@ -1,5 +1,3 @@
-"use strict";
-
 var owl = $(".first-slider");
 owl.owlCarousel({
   items: 1,
@@ -83,65 +81,44 @@ $("#brand-carousel").owlCarousel({
   },
 });
 
-const basketCount = document.querySelector("#basket-count");
-const basketIcons = document.querySelectorAll(".fa-basket-shopping");
-const basketCard = document.querySelector("#basket-card");
+const imageContainer = document.querySelector(".zoom");
+imageContainer.onmousemove = (event) => {
+  zoomDetail(event);
+};
 
-let items = localStorage.getItem("items")
-  ? JSON.parse(localStorage.getItem("items"))
-  : [];
+const zoomDetail = (e) => {
+  let imageZoom = e.currentTarget;
+  console.log(imageZoom);
+  console.log(e.currentTarget.offsetWidth);
+  e.offsetX ? (offsetX = e.offsetX) : (offsetX = e.touches[0].pageX);
+  e.offsetY ? (offsetY = e.offsetY) : (offsetY = e.touches[0].pageY);
+  x = (offsetX / imageZoom.offsetWidth) * 100;
+  y = (offsetY / imageZoom.offsetHeight) * 100;
+  imageZoom.style.backgroundPosition = x + "% " + y + "%";
+};
 
-basketIcons.forEach((basketIcon, index) => {
-  basketIcon.addEventListener("click", (e) => {
-    if (e.target == basketCard) return;
+const thumbs = document.getElementsByClassName("thumb");
+for (let i = 0; i < thumbs.length; i++) {
+  thumbs[i].onclick = function () {
+    document.querySelector(".zoom img").src = this.src;
+    document.querySelector(".zoom").style.backgroundImage = `url(${this.src} )`;
+  };
+}
 
-    // console.log(basketCard);
-    basketIcon.id = `${index}`;
-    console.log(basketIcon.id);
-    // const productID = `${index}`;
-    // console.log(productID);
+// const tabs = document.querySelectorAll(".tab");
+// tabs[0].classList.add("tab-show"); //default
+// const tabButtons = document.querySelectorAll(".tabs >div>ul>li>button");
 
-    // can't use closest() because the class names of the parent classes are different in basket icons
-    const prices =
-      basketIcon.parentElement.parentElement.parentElement.querySelector(
-        "span"
-      );
-    const img =
-      basketIcon.parentElement.parentElement.parentElement.parentElement.querySelector(
-        "img"
-      );
-    const title =
-      basketIcon.parentElement.parentElement.parentElement.parentElement.querySelector(
-        "h5"
-      );
+// const showTab = function () {
+//   tabs.forEach((tab) => tab.classList.remove("tab-show"));
+//   tabButtons.forEach((button) => button.classList.remove("active--tab-link"));
+//   const tabContentID = document.querySelector(`#${this.id}-content`);
+//   tabContentID.classList.add("tab-show");
+//   const tabButtonID = document.querySelector(`#${this.id}`);
+//   tabButtonID.classList.add("active--tab-link");
+// };
 
-    if (items.length > 0) {
-      if (items.some((item) => item.id === e.target.id)) {
-        items = items.filter((item) => item.id !== e.target.id);
-      } else {
-        items.push({
-          id: `${basketIcon.id}`,
-          count: 1,
-          price: `${prices.textContent}`,
-          src: `${img.src}`, //getAttribute() ile de yazmaq olar
-          title: `${title.textContent}`,
-        });
-      }
-    } else {
-      items.push({
-        id: `${basketIcon.id}`,
-        count: 1,
-        price: `${prices.textContent}`,
-        src: `${img.src}`,
-        title: `${title.textContent}`,
-      });
-    }
-    localStorage.setItem("items", JSON.stringify(items));
-    basketCount.innerHTML = items.length;
-  });
-});
-
-// });
+// tabButtons.forEach((button) => button.addEventListener("click", showTab));
 
 // const reviews = document.querySelectorAll(
 //   ".top-seller__products__sliders__slider__right-side__reviews i"
@@ -210,47 +187,3 @@ basketIcons.forEach((basketIcon, index) => {
 //     );
 //   })
 // );
-
-// const hideDropdown = function () {
-//   const ulDropdown = this.querySelector("ul");
-//   console.log(ulDropdown.style.maxHeight);
-//   console.log(ulDropdown);
-//   if (ulDropdown.style.maxHeight != "0px") {
-//     ulDropdown.style.maxHeight = "1" + "px";
-//   }
-// };
-
-// accordions.forEach((accordion) =>
-//   accordion.addEventListener("click", hideDropdown)
-// );
-
-// accordions.forEach((accordion) =>
-//   accordion.addEventListener("click", showDropdown)
-// );
-// const toggle = document.querySelector(".toggle");
-// const wrap = document.querySelector(".wrap");
-// let isPlus = false;
-
-// wrap.addEventListener("click", function () {
-//   toggle.className = isPlus ? "toggle" : "toggle open";
-//   isPlus = !isPlus;
-// });
-
-// const btnAccordion = document.querySelectorAll('.');
-// let isPlus = false;
-// const toggles = document.querySelectorAll(".toggle");
-// const li = document.querySelector(".canvas__content__accordions li");
-// li.addEventListener("click", function () {
-//   toggles.forEach((toggle) => {
-//     // toggle.addEventListener("click", function (e) {
-//     toggle.className = isPlus ? "toggle" : "toggle open";
-//     isPlus = !isPlus;
-//     // });
-//   });
-// });
-
-// accordions.addEventListener("click", (e) => {
-//   e.preventDefault();
-//   toggle.className = isPlus ? "toggle" : "toggle open";
-//   isPlus = !isPlus;
-// });

@@ -144,6 +144,7 @@
 
         a {
           @include main-btn();
+          width: 100%;
         }
         @include breakpoint-down("small") {
           width: 100%;
@@ -206,7 +207,7 @@
 }
 
 .pop-up {
-  @include moveToLeftRight();
+  @include moveToRightLeft();
   position: fixed;
   top: 10%;
   right: 6%;
@@ -214,9 +215,7 @@
   padding: 2rem 3rem;
   border-radius: 3px;
   color: $mainColor;
-  &__message {
-    font-size: 2rem;
-  }
+  z-index: 9999;
 }
 .pop-up--hidden {
   display: none;

@@ -11,27 +11,27 @@ const totalCostElement = document.querySelector("#total-cost");
 // Selecting elements ends
 
 // Functions start
-const itemParser = () =>
+const cartItemParser = () =>
   localStorage.getItem("items")
     ? JSON.parse(localStorage.getItem("items"))
     : [];
 
 const updateCartTotals = function () {
-  let items = itemParser();
+  let items = cartItemParser();
   const subCost = items
     .map((item) => parseInt(item.price.slice(1)) * item.count)
     .reduce((acc, cur) => acc + cur);
 
   const shippingCost = subCost * 0.25;
   const totalCost = shippingCost + subCost;
-  subCostElement.textContent = `$${subCost}`;
-  shippingCostElement.textContent = `$${shippingCost}`;
-  totalCostElement.textContent = `$${totalCost}`;
+  subCostElement.textContent = `$${subCost.toFixed(2)}`;
+  shippingCostElement.textContent = `$${shippingCost.toFixed(2)}`;
+  totalCostElement.textContent = `$${totalCost.toFixed(2)}`;
 };
 // console.log(items);
 
 const addToBasket = function () {
-  let items = itemParser();
+  let items = cartItemParser();
   if (items.length > 0) {
     tbodyElement.innerHTML = "";
 
@@ -98,7 +98,7 @@ const findBasketItem = function (e, items) {
 };
 
 const decreaseBasketItem = function (e, btn) {
-  let items = itemParser();
+  let items = cartItemParser();
   const targetElement = findBasketItem(e, items);
 
   // this is for removing the class from plus button if you reach count 10.
@@ -114,7 +114,6 @@ const decreaseBasketItem = function (e, btn) {
   const btnResultElement = btn.nextElementSibling;
   targetElement.count--;
   btnResultElement.innerHTML--;
-  updateCartTotals();
 
   const tr = e.target.closest("tr");
 
@@ -134,10 +133,11 @@ const decreaseBasketItem = function (e, btn) {
   }
 
   localStorage.setItem("items", JSON.stringify(items));
+  updateCartTotals();
 };
 
 const increaseBasketItem = function (e, btn) {
-  let items = itemParser();
+  let items = cartItemParser();
   const targetElement = findBasketItem(e, items);
   if (targetElement.count >= 10) {
     btn.classList.add("btn--disabled");
@@ -149,8 +149,8 @@ const increaseBasketItem = function (e, btn) {
 
   targetElement.count++;
   btnResultElement.innerHTML++;
-  updateCartTotals();
   localStorage.setItem("items", JSON.stringify(items));
+  updateCartTotals();
 };
 // Functions end
 
@@ -180,37 +180,122 @@ countContainers.forEach((countContainer) =>
 
 removeBtns.forEach((removeBtn) =>
   removeBtn.addEventListener("click", function (e) {
-    let items = itemParser();
+    let items = cartItemParser();
     const targetElement = items.find(
       (item) =>
         item.id ==
-        e.target.closest("tr").querySelector(" .cart__table__count__btns").id
+        e.target.closest("tr").querySelector(".cart__table__count__btns").id
     );
-    const check = confirm("Do you really want to remove this item?");
+    console.log(targetElement);
+    // birinci confirm le yazmishdim, qiraqdan popup message getirirdim(indide gelir) amma bunu da elave eledim
+    // const check = confirm("Do you really want to remove this item?");
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will lose this item!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        const tr = e.target.closest("tr");
+        setTimeout(() => {
+          // removing the item dynamically from the website
+          tbodyElement.removeChild(tr);
+          // showing the pop-up message
+          // popUp.innerHTML = swal("Here's the title!", "...and here's the text!");
+          popUp.innerHTML = "You successfully deleted the item";
+          popUp.classList.remove("pop-up--hidden");
+        }, 400);
+        // removing the pop-up message
+        setTimeout(() => popUp.classList.add("pop-up--hidden"), 2500);
+        items = items.filter((item) => item.id !== targetElement.id);
+        console.log(items);
+        localStorage.setItem("items", JSON.stringify(items));
 
-    if (!check) return;
-    const tr = e.target.closest("tr");
-    setTimeout(() => {
-      // removing the item dynamically from the website
-      tbodyElement.removeChild(tr);
-      // showing the pop-up message
-      popUp.innerHTML = "You successfully deleted the item";
-      popUp.classList.remove("pop-up--hidden");
-    }, 400);
-    // removing the pop-up message
-    setTimeout(() => popUp.classList.add("pop-up--hidden"), 2500);
-    items.pop(targetElement);
-    if (items.length == 0) {
-      subCostElement.textContent = "$0";
-      shippingCostElement.textContent = "$0";
-      totalCostElement.textContent = "$0";
-    } else {
-      updateCartTotals();
-    }
-    localStorage.setItem("items", JSON.stringify(items));
+        if (items.length == 0) {
+          subCostElement.textContent = "$0";
+          shippingCostElement.textContent = "$0";
+          totalCostElement.textContent = "$0";
+        } else {
+          updateCartTotals();
+        }
+        swal("You successfully deleted the item!", {
+          icon: "success",
+        });
+      } else {
+        swal({
+          title: "You kept the item!",
+          text: "noice",
+        });
+      }
+    });
+    // if (!check) return;
   })
 );
 
+// removeBtns.forEach((removeBtn) =>
+//   removeBtn.addEventListener("click", function (e) {
+//     let items = itemParser();
+//     const targetElement = items.find(
+//       (item) =>
+//         item.id ==
+//         e.target.closest("tr").querySelector(" .cart__table__count__btns").id
+//     );
+//     // const check = confirm("Do you really want to remove this item?");
+
+//     // if (!check) return;
+//     const tr = e.target.closest("tr");
+//     console.log(tr);
+//     console.log(targetElement);
+//     // setTimeout(() => {
+//     //   // removing the item dynamically from the website
+//     //   tbodyElement.removeChild(tr);
+//     //   // showing the pop-up message
+//     //   popUp.innerHTML = "You successfully deleted the item";
+//     //   popUp.classList.remove("pop-up--hidden");
+//     // }, 400);
+//     // // removing the pop-up message
+//     // setTimeout(() => popUp.classList.add("pop-up--hidden"), 2500);
+//     // items.pop(targetElement);
+//     // if (items.length == 0) {
+//     //   subCostElement.textContent = "$0";
+//     //   shippingCostElement.textContent = "$0";
+//     //   totalCostElement.textContent = "$0";
+//     // } else {
+//     //   updateCartTotals();
+//     // }
+//     localStorage.setItem("items", JSON.stringify(items));
+//   })
+// );
+
+// Checkout button
+document
+  .querySelector("#proceed-checkout")
+  .addEventListener("click", function () {
+    let items = cartItemParser();
+    if (items.length > 0) {
+      swal({
+        title: "Purchase successful",
+        text: "Checkout more of our products",
+        icon: "success",
+        button: "Continue",
+      });
+      subCostElement.textContent = "$0";
+      shippingCostElement.textContent = "$0";
+      totalCostElement.textContent = "$0";
+      localStorage.clear();
+      tbodyElement.innerHTML = "";
+    } else {
+      swal({
+        title: "Your bag is empty",
+        text: "Add some products to your basket",
+        icon: "warning",
+        button: "Okay",
+      });
+    }
+  });
+
+// Storage
 window.addEventListener("storage", function () {
   addToBasket();
 });
