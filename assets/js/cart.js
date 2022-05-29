@@ -18,17 +18,18 @@ const cartItemParser = () =>
 
 const updateCartTotals = function () {
   let items = cartItemParser();
-  const subCost = items
-    .map((item) => parseInt(item.price.slice(1)) * item.count)
-    .reduce((acc, cur) => acc + cur);
+  if (items.length > 0) {
+    const subCost = items
+      .map((item) => parseInt(item.price.slice(1)) * item.count)
+      .reduce((acc, cur) => acc + cur);
 
-  const shippingCost = subCost * 0.25;
-  const totalCost = shippingCost + subCost;
-  subCostElement.textContent = `$${subCost.toFixed(2)}`;
-  shippingCostElement.textContent = `$${shippingCost.toFixed(2)}`;
-  totalCostElement.textContent = `$${totalCost.toFixed(2)}`;
+    const shippingCost = subCost * 0.25;
+    const totalCost = shippingCost + subCost;
+    subCostElement.textContent = `$${subCost.toFixed(2)}`;
+    shippingCostElement.textContent = `$${shippingCost.toFixed(2)}`;
+    totalCostElement.textContent = `$${totalCost.toFixed(2)}`;
+  }
 };
-// console.log(items);
 
 const addToBasket = function () {
   let items = cartItemParser();
@@ -65,8 +66,6 @@ const addToBasket = function () {
             </tr>`;
 
       tbodyElement.insertAdjacentHTML("afterbegin", html);
-      console.log("nou");
-
       updateCartTotals();
     });
   }
@@ -99,6 +98,7 @@ const findBasketItem = function (e, items) {
 
 const decreaseBasketItem = function (e, btn) {
   let items = cartItemParser();
+
   const targetElement = findBasketItem(e, items);
 
   // this is for removing the class from plus button if you reach count 10.
@@ -186,7 +186,7 @@ removeBtns.forEach((removeBtn) =>
         item.id ==
         e.target.closest("tr").querySelector(".cart__table__count__btns").id
     );
-    console.log(targetElement);
+
     // birinci confirm le yazmishdim, qiraqdan popup message getirirdim(indide gelir) amma bunu da elave eledim
     // const check = confirm("Do you really want to remove this item?");
     swal({
@@ -209,7 +209,6 @@ removeBtns.forEach((removeBtn) =>
         // removing the pop-up message
         setTimeout(() => popUp.classList.add("pop-up--hidden"), 2500);
         items = items.filter((item) => item.id !== targetElement.id);
-        console.log(items);
         localStorage.setItem("items", JSON.stringify(items));
 
         if (items.length == 0) {
@@ -232,41 +231,6 @@ removeBtns.forEach((removeBtn) =>
     // if (!check) return;
   })
 );
-
-// removeBtns.forEach((removeBtn) =>
-//   removeBtn.addEventListener("click", function (e) {
-//     let items = itemParser();
-//     const targetElement = items.find(
-//       (item) =>
-//         item.id ==
-//         e.target.closest("tr").querySelector(" .cart__table__count__btns").id
-//     );
-//     // const check = confirm("Do you really want to remove this item?");
-
-//     // if (!check) return;
-//     const tr = e.target.closest("tr");
-//     console.log(tr);
-//     console.log(targetElement);
-//     // setTimeout(() => {
-//     //   // removing the item dynamically from the website
-//     //   tbodyElement.removeChild(tr);
-//     //   // showing the pop-up message
-//     //   popUp.innerHTML = "You successfully deleted the item";
-//     //   popUp.classList.remove("pop-up--hidden");
-//     // }, 400);
-//     // // removing the pop-up message
-//     // setTimeout(() => popUp.classList.add("pop-up--hidden"), 2500);
-//     // items.pop(targetElement);
-//     // if (items.length == 0) {
-//     //   subCostElement.textContent = "$0";
-//     //   shippingCostElement.textContent = "$0";
-//     //   totalCostElement.textContent = "$0";
-//     // } else {
-//     //   updateCartTotals();
-//     // }
-//     localStorage.setItem("items", JSON.stringify(items));
-//   })
-// );
 
 // Checkout button
 document
@@ -299,82 +263,3 @@ document
 window.addEventListener("storage", function () {
   addToBasket();
 });
-
-//#region
-// const btnsResult = document.querySelectorAll(
-//   ".cart__table__count__btns--result"
-// );
-// console.log(btnMinus, btnPlus, btnResult);
-// let fitems = items.getItem("items");
-// console.log(fitems);
-
-// console.log(items[0].src);
-// if (items.length === 0) {
-//   document.querySelector(".cart__table__body").style.display = "none";
-//   const html = `<div style="height:10rem;display:flex;justify-content:center;align-items:center">
-//   <h2 style="font-size:60px">YOUR BAG IS EMPTY</h2>
-//   </div>`;
-
-//   document.querySelector("main").insertAdjacentHTML("afterend", html);
-// }
-
-// const increaseBasketItem = function (e) {
-//   const targetElement = items.find(
-//     (item) => item.id == e.target.parentElement.id
-//   );
-//   const btnResultElement = btnPlus.nextElementSibling;
-//   //   if (items[i].count < 10) {
-//   //     items[i].count++;
-//   //     count.innerHTML = items[i].count;
-//   //     btnMinus.classList.remove("disabled");
-//   //   } else {
-//   //     btnPlus.classList.add("disabled");
-//   //   }
-//   // localStorage.setItem("items", JSON.stringify(items));
-// };
-// btnsMinusElements.forEach((btnMinus) =>
-//   btnMinus.addEventListener("click", function (e) {
-//     const targetElement = items.find(
-//       (item) => item.id == e.target.parentElement.id
-//     );
-//     const btnResultElement = btnMinus.nextElementSibling;
-//     targetElement.count--;
-//     btnResultElement.innerHTML -= 1;
-//     const tr = e.target.closest("tr");
-
-//     if (items.some((item) => item.count == 0)) {
-//       // I used setTimeout() for the user to see the item getting deleted. Without it, you don't even see it dropping to 0
-//       setTimeout(() => {
-//         tbodyElement.removeChild(tr);
-//       }, 200);
-//       items = items.filter((item) => item.count != 0);
-//     }
-
-//     localStorage.setItem("items", JSON.stringify(items));
-//   })
-// );
-// btnsPlusElements.forEach((btnPlus) =>
-//   btnPlus.addEventListener("click", increaseBasketItem)
-// );
-
-// const decreaseBasketItem = function (e) {
-//   const targetElement = items.find(
-//     (item) => item.id == e.target.parentElement.id
-//   );
-//   const btnResultElement = btnMinus.nextElementSibling;
-//   targetElement.count--;
-//   btnResultElement.innerHTML -= 1;
-//   const tr = e.target.closest("tr");
-
-//   if (items.some((item) => item.count == 0)) {
-//     // I used setTimeout() for the user to see the item getting deleted. Without it, you don't even see it dropping to 0
-//     setTimeout(() => {
-//       tbodyElement.removeChild(tr);
-//     }, 200);
-//     items = items.filter((item) => item.count != 0);
-//   }
-
-//   localStorage.setItem("items", JSON.stringify(items));
-// };
-
-//#endregion

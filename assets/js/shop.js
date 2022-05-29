@@ -39,13 +39,10 @@ rangeInput.forEach((input) => {
 
 const sortGrid = document.querySelector("#grid-sort");
 const sortList = document.querySelector("#list-sort");
-// const products = document.querySelecto(".mycol");
 const products = document.querySelectorAll("#mycol");
 
 const card1 = document.querySelector("#cards--1");
 const card2 = document.querySelector("#cards--2");
-
-// console.log(card1, card2);
 
 const listView = function () {
   products.forEach((product) => {
@@ -64,7 +61,6 @@ const gridView = function () {
     if (product.classList.contains("col-lg-12")) {
       product.classList.remove("scale-animation");
       product.classList.remove("move-to-left");
-
       product.classList.remove("col-lg-12");
       product.classList.add("col-md-6", "col-lg-4");
       product.classList.add("scale-animation");

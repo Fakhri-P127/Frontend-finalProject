@@ -39,11 +39,7 @@ basketIcons.forEach((basketIcon, index) => {
   basketIcon.addEventListener("click", (e) => {
     if (e.target == basketCard) return;
 
-    // console.log(basketCard);
     basketIcon.id = `${index}`;
-    console.log(basketIcon.id);
-    // const productID = `${index}`;
-    // console.log(productID);
 
     // can't use closest() because the class names of the parent classes are different in basket icons
     const prices =
@@ -177,7 +173,6 @@ accordions.forEach((accordion) =>
 
 // Search button event starts
 const searchBtn = document.querySelector("#search-btn");
-console.log(searchBtn);
 const searchOverlay = document.querySelector(".search__overlay");
 const searchContent = document.querySelector(".search__overlay__content");
 const searchBtnClose = document.querySelector(".search__overlay__closeBtn");
@@ -218,6 +213,8 @@ const basketVATElement = document.querySelector("#global__cart-vat");
 const basketTotalElement = document.querySelector("#global__cart-total");
 
 // Selecting elements ends
+
+// Functions
 const itemParser = () =>
   localStorage.getItem("items")
     ? JSON.parse(localStorage.getItem("items"))

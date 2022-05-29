@@ -1443,6 +1443,7 @@ a {
 
 .product-details__modal {
   position: fixed;
+  overflow-y: auto;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -1483,7 +1484,7 @@ a {
 
 .product {
   padding: 2rem;
-  overflow: scroll; }
+  overflow-y: auto; }
   .product__left-side {
     margin-right: 2.5rem;
     overflow: hidden; }

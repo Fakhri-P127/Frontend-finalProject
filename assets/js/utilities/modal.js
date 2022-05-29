@@ -6,7 +6,7 @@ const btnCloseModal = document.querySelector(
   ".product-details__modal__btn--close-modal"
 );
 const btnsOpenModal = document.querySelectorAll(".quick-look");
-console.log(btnCloseModal);
+
 const openModal = function () {
   modal.classList.remove("hidden");
   modalOverlay.classList.remove("hidden");

@@ -69,9 +69,6 @@
           height: 100%;
           padding: 0 1rem;
         }
-        // &--result {
-        //   // color: $grey-100
-        // }
 
         .btn--disabled {
           background-color: $white-100;
@@ -79,8 +76,7 @@
         }
       }
     }
-    // &__total {
-    // }
+
     &__remove {
       i {
         cursor: pointer;
@@ -91,8 +87,7 @@
     @include flex(center, space-between);
     border: 1px solid #ccc;
     padding: 1.5rem 2rem;
-    // @include breakpoint-down("medium") {
-    // }
+
     @include breakpoint-down("small") {
       flex-direction: column;
       row-gap: 1.5rem;

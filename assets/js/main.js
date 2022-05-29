@@ -1,17 +1,16 @@
-var owl = $(".first-slider");
+const owl = $(".first-slider");
 owl.owlCarousel({
   items: 1,
   loop: true,
   margin: 10,
   nav: true,
-  // dots: false,
   autoplay: true,
   autoplayTimeout: 2500,
   autoplayHoverPause: true,
   animateOut: "fadeOut",
 });
 $(".play").on("click", function () {
-  owl.trigger("play.owl.autoplay", [3000]);
+  owl.trigger("play.owl.autoplay", [2500]);
 });
 $(".stop").on("click", function () {
   owl.trigger("stop.owl.autoplay");
@@ -47,6 +46,7 @@ $("#top-seller-carousel").owlCarousel({
     },
   },
 });
+
 $("#blog-carousel").owlCarousel({
   loop: true,
   margin: 10,
@@ -65,7 +65,6 @@ $("#blog-carousel").owlCarousel({
 });
 $("#brand-carousel").owlCarousel({
   loop: true,
-  // margin: 10,
   dots: false,
 
   responsive: {
@@ -81,44 +80,7 @@ $("#brand-carousel").owlCarousel({
   },
 });
 
-const imageContainer = document.querySelector(".zoom");
-imageContainer.onmousemove = (event) => {
-  zoomDetail(event);
-};
-
-const zoomDetail = (e) => {
-  let imageZoom = e.currentTarget;
-  console.log(imageZoom);
-  console.log(e.currentTarget.offsetWidth);
-  e.offsetX ? (offsetX = e.offsetX) : (offsetX = e.touches[0].pageX);
-  e.offsetY ? (offsetY = e.offsetY) : (offsetY = e.touches[0].pageY);
-  x = (offsetX / imageZoom.offsetWidth) * 100;
-  y = (offsetY / imageZoom.offsetHeight) * 100;
-  imageZoom.style.backgroundPosition = x + "% " + y + "%";
-};
-
-const thumbs = document.getElementsByClassName("thumb");
-for (let i = 0; i < thumbs.length; i++) {
-  thumbs[i].onclick = function () {
-    document.querySelector(".zoom img").src = this.src;
-    document.querySelector(".zoom").style.backgroundImage = `url(${this.src} )`;
-  };
-}
-
-// const tabs = document.querySelectorAll(".tab");
-// tabs[0].classList.add("tab-show"); //default
-// const tabButtons = document.querySelectorAll(".tabs >div>ul>li>button");
-
-// const showTab = function () {
-//   tabs.forEach((tab) => tab.classList.remove("tab-show"));
-//   tabButtons.forEach((button) => button.classList.remove("active--tab-link"));
-//   const tabContentID = document.querySelector(`#${this.id}-content`);
-//   tabContentID.classList.add("tab-show");
-//   const tabButtonID = document.querySelector(`#${this.id}`);
-//   tabButtonID.classList.add("active--tab-link");
-// };
-
-// tabButtons.forEach((button) => button.addEventListener("click", showTab));
+//#region
 
 // const reviews = document.querySelectorAll(
 //   ".top-seller__products__sliders__slider__right-side__reviews i"
@@ -187,3 +149,5 @@ for (let i = 0; i < thumbs.length; i++) {
 //     );
 //   })
 // );
+
+//#endregion
