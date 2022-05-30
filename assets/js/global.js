@@ -78,6 +78,7 @@ basketIcons.forEach((basketIcon, index) => {
     }
     localStorage.setItem("items", JSON.stringify(items));
     basketCount.innerHTML = items.length;
+    addToMiniBasket();
   });
 });
 basketCount.innerHTML = items.length;
@@ -241,6 +242,17 @@ const updateMiniCartTotals = function () {
   }
 };
 
+const emptyBag = function () {
+  // pricingBox.innerHTML = "";
+
+  miniCart.innerHTML = `
+    <h3 style="text-transform:uppercase;font-weight:500;font-size:2.4rem">Your Bag is Empty</h3><br>
+    <p style="font-size:1.5rem">Once you add something to your bag, it will appear here. Ready to get started?</p>
+    <br>
+    <button  class="canvas__basket__content__buttons__btn"><a style="font-size:1.6rem;display:flex;justify-content:center;align-items:center;" href="shop.html">Go to shop<i style="margin-left:0.8rem" class="fa-solid fa-angles-right"></i></a></button>
+    `;
+};
+
 const addToMiniBasket = function () {
   let items = itemParser();
   if (items.length > 0) {
@@ -267,14 +279,7 @@ const addToMiniBasket = function () {
       basketCount.innerHTML = items.length;
     });
   } else {
-    pricingBox.innerHTML = "";
-
-    miniCart.innerHTML = `
-    <h3 style="text-transform:uppercase;font-weight:500;font-size:2.4rem">Your Bag is Empty</h3><br>
-    <p style="font-size:1.5rem">Once you add something to your bag, it will appear here. Ready to get started?</p>
-    <br>
-    <button  class="canvas__basket__content__buttons__btn"><a style="font-size:1.6rem;display:flex;justify-content:center;align-items:center;" href="shop.html">Go to shop<i style="margin-left:0.8rem" class="fa-solid fa-angles-right"></i></a></button>
-    `;
+    emptyBag();
   }
 };
 
@@ -299,9 +304,20 @@ const miniCartRemoveItem = function () {
         const li = e.target.closest(
           ".canvas__basket__content__mini-cart__item"
         );
+        miniCart.removeChild(li);
+        // const cartPage = document.querySelector("tbody");
+        // console.log(document.querySelector(".cart__table__count__btns"));
+        // const targetTr = items.find(
+        //   (item) =>
+        //     item.id == document.querySelector(".cart__table__count__btns ").id
+        // );
+
+        // console.log(targetTr);
+        // // cartPage.removeChild(targetTr);
+        // items = items.filter((item) => item.id != targetTr.id);
         setTimeout(() => {
           // removing the item dynamically from the website
-          miniCart.removeChild(li);
+
           // showing the pop-up message
           popUpGlobal.innerHTML = "You successfully deleted the item";
           popUpGlobal.classList.remove("pop-up--global--hidden");
@@ -315,6 +331,8 @@ const miniCartRemoveItem = function () {
         localStorage.setItem("items", JSON.stringify(items));
         basketCount.innerHTML = items.length;
         if (items.length == 0) {
+          emptyBag();
+
           basketSubtotalElement.textContent = "$0";
           basketTaxElement.textContent = "$0";
           basketVATElement.textContent = "$0";

@@ -119,12 +119,14 @@ const decreaseBasketItem = function (e, btn) {
 
   if (items.some((item) => item.count == 0)) {
     // I used setTimeout() for the user to see the item getting deleted. Without it, you don't even see it dropping to 0
+    tbodyElement.removeChild(tr);
+
     setTimeout(() => {
       // removing the item dynamically from the website
-      tbodyElement.removeChild(tr);
       // showing the pop-up message
       popUp.innerHTML = "You successfully deleted the item";
       popUp.classList.remove("pop-up--hidden");
+      basketCount.textContent = items.length;
     }, 400);
     // removing the pop-up message
     setTimeout(() => popUp.classList.add("pop-up--hidden"), 2500);
@@ -198,9 +200,10 @@ removeBtns.forEach((removeBtn) =>
     }).then((willDelete) => {
       if (willDelete) {
         const tr = e.target.closest("tr");
+        tbodyElement.removeChild(tr);
+
         setTimeout(() => {
           // removing the item dynamically from the website
-          tbodyElement.removeChild(tr);
           // showing the pop-up message
           // popUp.innerHTML = swal("Here's the title!", "...and here's the text!");
           popUp.innerHTML = "You successfully deleted the item";
@@ -210,7 +213,7 @@ removeBtns.forEach((removeBtn) =>
         setTimeout(() => popUp.classList.add("pop-up--hidden"), 2500);
         items = items.filter((item) => item.id !== targetElement.id);
         localStorage.setItem("items", JSON.stringify(items));
-
+        basketCount.textContent = items.length;
         if (items.length == 0) {
           subCostElement.textContent = "$0";
           shippingCostElement.textContent = "$0";

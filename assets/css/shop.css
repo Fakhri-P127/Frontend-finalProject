@@ -104,8 +104,10 @@
           .shop__products__cards #cards--2 .products__full__cards__card {
             flex-direction: column; } }
         .shop__products__cards #cards--2 .products__full__cards__card__top__img {
+          overflow: hidden;
           width: 27rem;
           border: 1px solid #e5e5e5;
+          cursor: pointer;
           display: flex;
           justify-content: center; }
           @media (max-width: 991px) {
@@ -115,7 +117,10 @@
             .shop__products__cards #cards--2 .products__full__cards__card__top__img {
               width: 100%; } }
           .shop__products__cards #cards--2 .products__full__cards__card__top__img img {
-            max-width: 100%; }
+            max-width: 100%;
+            transition: 400ms transform; }
+            .shop__products__cards #cards--2 .products__full__cards__card__top__img img:hover {
+              transform: scale(1.2); }
         .shop__products__cards #cards--2 .products__full__cards__card__bottom {
           color: #333;
           margin-left: 3rem; }

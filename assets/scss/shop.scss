@@ -139,8 +139,10 @@
             }
             &__top {
               &__img {
+                overflow: hidden;
                 width: 27rem;
                 border: 1px solid $grey;
+                cursor: pointer;
                 @include flex(null, center);
 
                 @include breakpoint-down("medium") {
@@ -151,6 +153,10 @@
                 }
                 img {
                   max-width: 100%;
+                  transition: $main-transition-speed transform;
+                  &:hover {
+                    transform: scale(1.2);
+                  }
                 }
               }
             }
