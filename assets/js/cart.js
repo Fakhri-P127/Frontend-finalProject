@@ -10,14 +10,8 @@ const totalCostElement = document.querySelector("#total-cost");
 
 // Selecting elements ends
 
-// Functions start
-const cartItemParser = () =>
-  localStorage.getItem("items")
-    ? JSON.parse(localStorage.getItem("items"))
-    : [];
-
 const updateCartTotals = function () {
-  let items = cartItemParser();
+  let items = itemParser();
   if (items.length > 0) {
     const subCost = items
       .map((item) => parseInt(item.price.slice(1)) * item.count)
@@ -28,11 +22,17 @@ const updateCartTotals = function () {
     subCostElement.textContent = `$${subCost.toFixed(2)}`;
     shippingCostElement.textContent = `$${shippingCost.toFixed(2)}`;
     totalCostElement.textContent = `$${totalCost.toFixed(2)}`;
+  } else {
+    setToZero();
+    subCostElement.textContent = `$0`;
+    shippingCostElement.textContent = `$0`;
+    totalCostElement.textContent = `$0`;
   }
 };
 
-const addToBasket = function () {
-  let items = cartItemParser();
+// Functions end
+function addToBasket() {
+  let items = itemParser();
   if (items.length > 0) {
     tbodyElement.innerHTML = "";
 
@@ -56,8 +56,6 @@ const addToBasket = function () {
                 }</span>
                 <button class="cart__table__count__btns--plus">+</button>
                 </div>
-               
-                
             </td>
             <td class="cart__table__total">
                 $${item.price.slice(1) * 0.2 + Number(item.price.slice(1))}
@@ -67,13 +65,19 @@ const addToBasket = function () {
 
       tbodyElement.insertAdjacentHTML("afterbegin", html);
       updateCartTotals();
+      basketCount.innerHTML = items.length;
     });
+  } else {
+    tbodyElement.innerHTML = "";
+    setToZero();
+    subCostElement.textContent = `$0`;
+    shippingCostElement.textContent = `$0`;
+    totalCostElement.textContent = `$0`;
   }
-};
+}
+
+// window.addEventListener("load", addToBasket);
 addToBasket();
-
-// Functions end
-
 // Selecting elements starts
 const btnsMinusElements = document.querySelectorAll(
   ".cart__table__count__btns--minus"
@@ -97,7 +101,7 @@ const findBasketItem = function (e, items) {
 };
 
 const decreaseBasketItem = function (e, btn) {
-  let items = cartItemParser();
+  let items = itemParser();
 
   const targetElement = findBasketItem(e, items);
 
@@ -133,13 +137,14 @@ const decreaseBasketItem = function (e, btn) {
 
     items = items.filter((item) => item.count != 0);
   }
-
   localStorage.setItem("items", JSON.stringify(items));
+
   updateCartTotals();
+  addToMiniBasket();
 };
 
 const increaseBasketItem = function (e, btn) {
-  let items = cartItemParser();
+  let items = itemParser();
   const targetElement = findBasketItem(e, items);
   if (targetElement.count >= 10) {
     btn.classList.add("btn--disabled");
@@ -152,37 +157,40 @@ const increaseBasketItem = function (e, btn) {
   targetElement.count++;
   btnResultElement.innerHTML++;
   localStorage.setItem("items", JSON.stringify(items));
+
   updateCartTotals();
+  addToMiniBasket();
 };
 // Functions end
 
+function containerFunction(event) {
+  // if event.target isn't (.cart__table__count__btns) container then return
+  const clicked = event.target.closest("td .cart__table__count__btns");
+  if (!clicked) return;
+
+  const btnMinus = event.target.closest(".cart__table__count__btns--minus");
+
+  const btnPlus = event.target.closest(".cart__table__count__btns--plus");
+
+  // if event.target isn't minus or plus btn then return
+  if (!btnMinus && !btnPlus) return;
+
+  if (event.target.classList.contains("cart__table__count__btns--minus")) {
+    decreaseBasketItem(event, btnMinus);
+  } else if (
+    event.target.classList.contains("cart__table__count__btns--plus")
+  ) {
+    increaseBasketItem(event, btnPlus);
+  }
+}
 // sehifede extra yuk olmasin deye bu metodla yazdim(btn lara event listener qoshsaydim onda butun parentleride bubble olacaqdi, hemde maraqli olsun deye bele yazdim :D)
 countContainers.forEach((countContainer) =>
-  countContainer.addEventListener("click", function (event) {
-    // if event.target isn't (.cart__table__count__btns) container then return
-    const clicked = event.target.closest("td .cart__table__count__btns");
-    if (!clicked) return;
-
-    const btnMinus = event.target.closest(".cart__table__count__btns--minus");
-
-    const btnPlus = event.target.closest(".cart__table__count__btns--plus");
-
-    // if event.target isn't minus or plus btn then return
-    if (!btnMinus && !btnPlus) return;
-
-    if (event.target.classList.contains("cart__table__count__btns--minus")) {
-      decreaseBasketItem(event, btnMinus);
-    } else if (
-      event.target.classList.contains("cart__table__count__btns--plus")
-    ) {
-      increaseBasketItem(event, btnPlus);
-    }
-  })
+  countContainer.addEventListener("click", containerFunction)
 );
 
 removeBtns.forEach((removeBtn) =>
   removeBtn.addEventListener("click", function (e) {
-    let items = cartItemParser();
+    let items = itemParser();
     const targetElement = items.find(
       (item) =>
         item.id ==
@@ -205,7 +213,6 @@ removeBtns.forEach((removeBtn) =>
         setTimeout(() => {
           // removing the item dynamically from the website
           // showing the pop-up message
-          // popUp.innerHTML = swal("Here's the title!", "...and here's the text!");
           popUp.innerHTML = "You successfully deleted the item";
           popUp.classList.remove("pop-up--hidden");
         }, 400);
@@ -214,13 +221,14 @@ removeBtns.forEach((removeBtn) =>
         items = items.filter((item) => item.id !== targetElement.id);
         localStorage.setItem("items", JSON.stringify(items));
         basketCount.textContent = items.length;
-        if (items.length == 0) {
-          subCostElement.textContent = "$0";
-          shippingCostElement.textContent = "$0";
-          totalCostElement.textContent = "$0";
-        } else {
-          updateCartTotals();
-        }
+        updateCartTotals();
+        addToMiniBasket();
+        updateMiniCartTotals();
+        // addToBasket();
+        countContainers.forEach((count) =>
+          count.addEventListener("click", containerFunction)
+        );
+
         swal("You successfully deleted the item!", {
           icon: "success",
         });
@@ -239,7 +247,7 @@ removeBtns.forEach((removeBtn) =>
 document
   .querySelector("#proceed-checkout")
   .addEventListener("click", function () {
-    let items = cartItemParser();
+    let items = itemParser();
     if (items.length > 0) {
       swal({
         title: "Purchase successful",
@@ -263,6 +271,4 @@ document
   });
 
 // Storage
-window.addEventListener("storage", function () {
-  addToBasket();
-});
+window.addEventListener("storage", addToBasket);

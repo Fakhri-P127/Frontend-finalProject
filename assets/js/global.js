@@ -5,16 +5,13 @@ const backToTop = document.querySelector(".btn-fixed");
 window.addEventListener("scroll", function () {
   const mediaQuery = window.matchMedia("(max-width: 993px)");
   if (mediaQuery.matches) {
-    if (this.window.scrollY > 500) {
+    if (this.window.scrollY > 400) {
       headerBottom.classList.add("sticky");
-      headerBottom.style.height = "6rem";
-      backToTop.style.opacity = "1";
     } else {
       headerBottom.classList.remove("sticky");
-      backToTop.style.opacity = "0";
     }
   } else {
-    if (this.window.scrollY > 500) {
+    if (this.window.scrollY > 400) {
       headerBottom.classList.add("sticky");
       headerBottom.style.height = "7.6rem";
       backToTop.style.opacity = "1";
@@ -221,6 +218,13 @@ const itemParser = () =>
     ? JSON.parse(localStorage.getItem("items"))
     : [];
 
+function setToZero() {
+  basketSubtotalElement.textContent = `$0`;
+  basketTaxElement.textContent = `$0`;
+  basketVATElement.textContent = `$0`;
+  basketTotalElement.textContent = `$0`;
+}
+
 const updateMiniCartTotals = function () {
   let items = itemParser();
   if (items.length > 0) {
@@ -239,12 +243,13 @@ const updateMiniCartTotals = function () {
     basketTaxElement.textContent = `$${taxCost.toFixed(2)}`;
     basketVATElement.textContent = `$${VATcost.toFixed(2)}`;
     basketTotalElement.textContent = `$${totalCost.toFixed(2)}`;
+  } else {
+    emptyBag();
+    setToZero();
   }
 };
 
 const emptyBag = function () {
-  // pricingBox.innerHTML = "";
-
   miniCart.innerHTML = `
     <h3 style="text-transform:uppercase;font-weight:500;font-size:2.4rem">Your Bag is Empty</h3><br>
     <p style="font-size:1.5rem">Once you add something to your bag, it will appear here. Ready to get started?</p>
@@ -280,6 +285,8 @@ const addToMiniBasket = function () {
     });
   } else {
     emptyBag();
+    setToZero();
+    basketCount.innerHTML = "0";
   }
 };
 
@@ -287,68 +294,60 @@ addToMiniBasket();
 
 const miniCartRemoveItem = function () {
   let items = itemParser();
-  if (items.length > 0) {
-    const basketRemoveBtn = document.querySelectorAll(
-      ".canvas__basket__content__mini-cart__item__button"
-    );
 
-    basketRemoveBtn.forEach((btn) =>
-      btn.addEventListener("click", function (e) {
-        const targetElement = items.find(
-          (item) =>
-            item.id ==
-            e.target.closest(
-              ".canvas__basket__content__mini-cart__item__button"
-            ).id
+  const basketRemoveBtn = document.querySelectorAll(
+    ".canvas__basket__content__mini-cart__item__button"
+  );
+  basketRemoveBtn.forEach((btn) =>
+    btn.addEventListener("click", function (e) {
+      const targetElement = items.find(
+        (item) =>
+          item.id ==
+          e.target.closest(".canvas__basket__content__mini-cart__item__button")
+            .id
+      );
+      const li = e.target.closest(".canvas__basket__content__mini-cart__item");
+
+      // removing the item dynamically from the website
+      miniCart.removeChild(li);
+      setTimeout(() => {
+        // showing the pop-up message
+        popUpGlobal.innerHTML = "You successfully deleted the item";
+        popUpGlobal.classList.remove("pop-up--global--hidden");
+      }, 400);
+      // removing the pop-up message
+      setTimeout(
+        () => popUpGlobal.classList.add("pop-up--global--hidden"),
+        2500
+      );
+      items = items.filter((item) => item.id !== targetElement.id);
+      localStorage.setItem("items", JSON.stringify(items));
+      updateMiniCartTotals();
+
+      //if there's no cart in the page then don't add(for cart.html page)
+      // document.querySelector("tbody tr td") && addToBasket();
+      if (document.querySelector("tbody tr td")) {
+        // birdefelik addToBasket() metodunu yazmamagimin sebebi bu metod cagirilanda gerek sehifeni refresh edim, yoxsa interaksiya etmek olmur sehife ile. Metodu cagirmadan yazanda amma ishleyir ona gore bele yazdim
+        const targetBtns = document.querySelectorAll(
+          "tbody tr td .cart__table__count__btns"
         );
-        const li = e.target.closest(
-          ".canvas__basket__content__mini-cart__item"
+        const targetBtn = [...targetBtns].find(
+          (target) => target.id == targetElement.id
         );
-        miniCart.removeChild(li);
-        // const cartPage = document.querySelector("tbody");
-        // console.log(document.querySelector(".cart__table__count__btns"));
-        // const targetTr = items.find(
-        //   (item) =>
-        //     item.id == document.querySelector(".cart__table__count__btns ").id
-        // );
 
-        // console.log(targetTr);
-        // // cartPage.removeChild(targetTr);
-        // items = items.filter((item) => item.id != targetTr.id);
-        setTimeout(() => {
-          // removing the item dynamically from the website
+        const tableBody = document.querySelector("tbody");
+        tableBody.removeChild(targetBtn.closest("tr"));
+        updateCartTotals();
+      }
 
-          // showing the pop-up message
-          popUpGlobal.innerHTML = "You successfully deleted the item";
-          popUpGlobal.classList.remove("pop-up--global--hidden");
-        }, 400);
-        // removing the pop-up message
-        setTimeout(
-          () => popUpGlobal.classList.add("pop-up--global--hidden"),
-          2500
-        );
-        items = items.filter((item) => item.id !== targetElement.id);
-        localStorage.setItem("items", JSON.stringify(items));
-        basketCount.innerHTML = items.length;
-        if (items.length == 0) {
-          emptyBag();
-
-          basketSubtotalElement.textContent = "$0";
-          basketTaxElement.textContent = "$0";
-          basketVATElement.textContent = "$0";
-          basketTotalElement.textContent = "$0";
-        } else {
-          updateMiniCartTotals();
-        }
-      })
-    );
-  }
+      basketCount.innerHTML = items.length;
+    })
+  );
 };
-
 const showBasketCanvas = function () {
-  miniCartRemoveItem();
   canvasBasketContent.classList.add("return");
   canvasBasketOverlay.classList.add("return");
+  miniCartRemoveItem();
 };
 basketCardIcon.addEventListener("click", showBasketCanvas);
 
